@@ -14,7 +14,6 @@ env:
     - CI=true
 deploy:
   provider: heroku
-  api-key:
-    secure: $HEROKU_PRODUCTION_API_KEY
+  api-key: $HEROKU_PRODUCTION_API_KEY
   on:
     branch: master
