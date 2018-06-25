@@ -1,5 +1,5 @@
 # Geckos-Team-04
-Add-project-description-here | Chingu Voyage-6 | https://chingu.io/
+Goal of this project is to create clone of [thumbtack.com](thumbtack.com) website. | Chingu Voyage-6 | https://chingu.io/
 
 ## Thumbtack clone
 See the project here: https://thumbtack.com
