@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - cd test-app
+  - npm install
+  - npm test
+  - npm run build
+env:
+  global:
+    - CI=true
+deploy:
+  provider: heroku
+  api-key:
+    secure: $HEROKU_PRODUCTION_API_KEY
+  on:
+    branch: master
