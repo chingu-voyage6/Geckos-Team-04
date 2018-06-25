@@ -5,10 +5,8 @@ cache:
   directories:
   - node_modules
 script:
-  - cd test-app
   - npm install
   - npm test
-  - npm run build
 env:
   global:
     - CI=true
