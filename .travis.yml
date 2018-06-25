@@ -6,6 +6,7 @@ cache:
   - node_modules
 script:
   - npm install
+  - npm install jest-cli
   - npm test
 env:
   global:
