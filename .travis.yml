@@ -12,10 +12,10 @@ env:
   global:
     - CI=true
 deploy:
-  provider: script
+  provider: heroku
+  app: thumbtack-clone
+  api-key: $HEROKU_PRODUCTION_API_KEY
   skip_cleanup: true
-  script:
-    - git remote add heroku https://heroku:$HEROKU_PRODUCTION_API_KEY@git.heroku.com/thumbtack-clone.git
-    - git push -fv heroku master
+  strategy: api
   on:
     branch: feature/ci_deployment
