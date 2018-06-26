@@ -16,7 +16,6 @@ before-deploy:
     - git checkout -- package.json
     - git checkout -- package-lock.json
 deploy:
-  provider: script
-  script: git remote add heroku https://heroku:$HEROKU_PRODUCTION_API_KEY@git.heroku.com/thumbtack-clone.git && git push -fq heroku master
+  provider: heroku
   on:
     branch: feature/ci_deployment
