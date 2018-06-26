@@ -19,5 +19,6 @@ deploy:
   provider: heroku
   app: thumbtack-clone
   api-key: $HEROKU_PRODUCTION_API_KEY
+  skip_cleanup: true
   on:
     branch: feature/ci_deployment
