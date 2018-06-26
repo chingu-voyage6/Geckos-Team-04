@@ -11,10 +11,6 @@ script:
 env:
   global:
     - CI=true
-before-deploy:
-  script:
-    - git checkout -- package.json
-    - git checkout -- package-lock.json
 deploy:
   provider: heroku
   app: thumbtack-clone
