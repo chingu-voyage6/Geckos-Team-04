@@ -17,5 +17,7 @@ before-deploy:
     - git checkout -- package-lock.json
 deploy:
   provider: heroku
+  app: thumbtack-clone
+  api-key: $HEROKU_PRODUCTION_API_KEY
   on:
     branch: feature/ci_deployment
