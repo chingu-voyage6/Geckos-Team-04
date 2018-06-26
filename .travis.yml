@@ -16,6 +16,6 @@ deploy:
   skip_cleanup: true
   script:
     - git remote add heroku https://heroku:$HEROKU_PRODUCTION_API_KEY@git.heroku.com/thumbtack-clone.git
-    - git push -fq heroku master
+    - git push -fv heroku master
   on:
     branch: feature/ci_deployment
