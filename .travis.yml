@@ -11,8 +11,13 @@ script:
 env:
   global:
     - CI=true
+before-deploy:
+  script:
+    - sudo apt-get update -q
+    - sudo apt-get install git
+    - git remote add heroku https://heroku:$HEROKU_PRODUCTION_API_KEY@git.heroku.com/thumbtack-clone.git
 deploy:
-  provider: heroku
-  api-key: $HEROKU_PRODUCTION_API_KEY
+  provider: script
+  script: git push -fq heroku master
   on:
-    branch: master
+    branch: feature/ci_deployment
