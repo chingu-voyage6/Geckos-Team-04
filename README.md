@@ -5,6 +5,4 @@ Goal of this project is to create clone of [thumbtack.com](thumbtack.com) websit
 See the project here: https://thumbtack.com
 See the clone here: https://thumbtack-clone.herokuapp.com
 
-[![Waffle.io - Issues in progress](https://badge.waffle.io/chingu-voyage6/Geckos-Team-04.png?label=in%20progress&title=In%20Progress)](http://waffle.io/chingu-voyage6/Geckos-Team-04)
-
-https://travis-ci.org/chingu-voyage6/Geckos-Team-04.svg?branch=dev
+[![Waffle.io - Issues in progress](https://badge.waffle.io/chingu-voyage6/Geckos-Team-04.png?label=in%20progress&title=In%20Progress)](http://waffle.io/chingu-voyage6/Geckos-Team-04) [![Build Status](https://travis-ci.org/chingu-voyage6/Geckos-Team-04.svg?branch=master)](https://travis-ci.org/chingu-voyage6/Geckos-Team-04)

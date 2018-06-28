@@ -6,13 +6,8 @@ cache:
   - node_modules
 script:
   - npm install
-  - npm install jest-cli
+  - npm install jest-cli@20.0.0
   - npm test
 env:
   global:
     - CI=true
-deploy:
-  provider: heroku
-  api-key: $HEROKU_PRODUCTION_API_KEY
-  on:
-    branch: master
