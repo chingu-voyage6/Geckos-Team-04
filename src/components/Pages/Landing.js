@@ -1,5 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ServiceCard from '../Layout/Cards';
+import UserCard from '../Layout/Cards/UserCard/UserCard';
 
-const landing = () => <div>Wooow Landing</div>;
+class Landing extends Component {
+  getDefaultProps() {
+    return {
+      service: {
+        name: 'House Cleaning',
+        title: 'General House Cleaning',
+      },
+    };
+  }
 
-export default landing;
+  render() {
+    return (
+      <div>
+        <UserCard />
+      </div>
+    );
+  }
+}
+
+export default Landing;
