@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logoFull from '../../../Assets/thumbtack.svg';
+import logoRound from '../../../Assets/thumbtack-round.svg';
 
 const Navigation = styled.nav`
   border-bottom: 1px solid #eee;
@@ -19,8 +20,9 @@ const Navigation = styled.nav`
     display: flex;
     align-items: center;
     min-height: 100%;
-    margin: 0;
+    margin: 0 10px 0 0;
     box-sizing: border-box;
+
     > li {
       list-style: none;
       margin: 0 12px;
@@ -51,6 +53,14 @@ const Logo = styled.img`
   }
 `;
 
+const LogoRound = styled.img`
+  padding: 20px;
+  display: initial;
+  color: #009fd9!important;
+  fill: #009fd9!important;
+  @media (min-width: 700px) {
+    display:none;`
+
 const header = () => (
   <header>
     <div />
@@ -58,7 +68,7 @@ const header = () => (
       <Link to="/">
         <Logo src={logoFull} alt="logo" />
       </Link>
-
+        <LogoRound src={logoRound} alt="logo" />
       <ul>
         <li>
           <Link to="/explore"> Explore </Link>
