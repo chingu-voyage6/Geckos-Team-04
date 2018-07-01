@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logoFull from '../../../Assets/thumbtack.svg';
-import logoRound from '../../../Assets/thumbtack-round.svg';
-import NavToggle from './NavToggle';
+import NavLink from './NavLink';
 
 const Navigation = styled.nav`
   border-bottom: 1px solid #eee;
@@ -123,10 +121,28 @@ const MobileNav = styled.div`
 const MobileHome = styled.li`
   display: initial;
 
-  @media (min-width: 700px) {
-    display: none;
-  }
-`;
+const navLinks = [
+  {
+    to: '/',
+    title: 'Home',
+  },
+  {
+    to: '/explore',
+    title: 'Explore',
+  },
+  {
+    to: '/pro',
+    title: 'Join as a Pro',
+  },
+  {
+    to: '/choose-account',
+    title: 'Sign Up',
+  },
+  {
+    to: '/login',
+    title: 'Login',
+  },
+];
 
 class Header extends React.Component {
   state = {
@@ -150,23 +166,7 @@ class Header extends React.Component {
             <Logo src={logoFull} alt="logo" />
           </Link>
 
-          <ul>
-            <MobileHome>
-              <Link to="/"> Home </Link>
-            </MobileHome>
-            <li>
-              <Link to="/explore"> Explore </Link>
-            </li>
-            <li>
-              <Link to="/pro">Join as a Pro</Link>
-            </li>
-            <li>
-              <Link to="/choose-acount"> Sign Up </Link>
-            </li>
-            <li>
-              <Link to="/login">Log In</Link>
-            </li>
-          </ul>
+          <ul>{navLinks.map(({ to, title }) => <NavLink key={title} to={to} title={title} />)}</ul>
         </Navigation>
       </header>
     );
