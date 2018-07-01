@@ -5,6 +5,13 @@ import MobileMenuToggle from './MobileMenuToggle';
 import LogoFull from '../../Shared/SVG/LogoFull';
 import NavLink from './NavLink';
 
+const HeaderStyled = styled.header`
+  margin-bottom: 60px;
+
+  @media (min-width: 700px) {
+    margin-bottom: 0;
+  }
+`;
 const Navigation = styled.nav`
   border-bottom: 1px solid #eee;
   display: flex;
@@ -16,7 +23,7 @@ const Navigation = styled.nav`
     position: fixed;
     transition: transform 0.3s linear;
     ${({ isClosed }) =>
-      isClosed ? 'transform: translateY(-100vh);' : 'transform: translateY(60px);'} padding: 0;
+      isClosed ? 'transform: translateY(-100vh);' : 'transform: translateY(45px);'} padding: 0;
     width: 100%;
     height: 100vh;
     background: #fff;
@@ -113,7 +120,7 @@ const navLinks = [
   },
   {
     to: '/login',
-    title: 'Login',
+    title: 'Log In',
   },
 ];
 
@@ -129,7 +136,7 @@ class Header extends React.Component {
   render() {
     const { isClosed } = this.state;
     return (
-      <header>
+      <HeaderStyled>
         <MobileNav onClick={this.openDropdownHandler}>
           <MobileMenuToggle isClosed={isClosed} />
         </MobileNav>
@@ -140,7 +147,7 @@ class Header extends React.Component {
 
           <ul>{navLinks.map(({ to, title }) => <NavLink key={title} to={to} title={title} />)}</ul>
         </Navigation>
-      </header>
+      </HeaderStyled>
     );
   }
 }
