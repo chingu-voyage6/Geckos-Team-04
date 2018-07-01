@@ -10,13 +10,13 @@ const ArrowOpen = styled.div`
   margin-left: 4px;
   transform-origin: 50% 50%;
   transition: transform 0.1s linear;
-  transform: ${({ isClosed }) => (isClosed ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: ${({ isClosed }) => (isClosed ? 'rotate(0deg)' : 'rotate(180deg)')};
 `;
 
 const ToggleWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0px 10px 14px;
   width: auto;
 `;
 
@@ -27,7 +27,7 @@ class MobileMenuToggle extends React.Component {
       <ToggleWrapper>
         <LogoRound />
         <ArrowOpen isClosed={isClosed}>
-          <Chevron />
+          <Chevron color="#676d73" />
         </ArrowOpen>
       </ToggleWrapper>
     );

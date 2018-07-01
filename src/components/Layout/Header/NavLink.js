@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const LinkStyled = styled.li`
   list-style: none;
   width: 100%;
-  padding: 10px 0;
+  padding: 20px 14px;
   margin: 0;
   height: auto;
   cursor: pointer;
@@ -14,12 +14,13 @@ const LinkStyled = styled.li`
   > a {
     text-decoration: none;
     color: #000;
-    font-size: 1.6rem;
+    font-size: 18px;
+    font-weight: 700;
   }
   :hover {
-      background-color: #e8e8e8;
+      background-color: #fafafa;
       > a {
-        color: #79d2f2;
+        color: #009fd9;
       }
   }
    @media (min-width: 700px) {
@@ -30,20 +31,20 @@ const LinkStyled = styled.li`
         display: ${({ title }) => (title === 'Home' ? 'none' : 'flex')};
         padding: 0;
         align-items: center;
-        border-bottom: 2px solid rgba(80, 80, 80, 0);
+        border-bottom: 1px solid #e9eced;
         width: auto;
         cursor: pointer;
         > a {
           text-decoration: none;
           color: #676d73;
-          font-size: 1rem;
+          font-size: 14px;
           font-weight: normal;
         }
         :hover {
-        border-bottom: 2px solid #808080;
+        box-shadow: inset 0 -3px 0 #d3d4d5;
         background: transparent;
         > a {
-          color: #282828;
+          color: #2f3033;
         }    
    }
 `;
