@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import MobileMenuToggle from './MobileMenuToggle';
 import LogoFull from '../../Shared/SVG/LogoFull';
 import NavLink from './NavLink';
+import SearchBar from '../../Shared/SearchBar/SearchBar';
 
 const HeaderStyled = styled.header`
   margin-bottom: 60px;
@@ -144,7 +145,7 @@ class Header extends React.Component {
           <LogoFullStyledLink to="/">
             <LogoFull />
           </LogoFullStyledLink>
-
+          <SearchBar />
           <ul>{navLinks.map(({ to, title }) => <NavLink key={title} to={to} title={title} />)}</ul>
         </Navigation>
       </HeaderStyled>
