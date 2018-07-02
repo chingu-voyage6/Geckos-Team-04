@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import MobileMenuToggle from './MobileMenuToggle';
 import LogoFull from '../../Shared/SVG/LogoFull';
 import NavLink from './NavLink';
@@ -60,24 +61,6 @@ const LogoFullStyledLink = styled(Link)`
   }
 `;
 
-// const Logo = styled.img`
-//   padding: 20px;
-//   display: none;
-
-//   @media (min-width: 700px) {
-//     display: initial;
-//   }
-// `;
-
-// const LogoRoundStyled = styled.img`
-//   padding: 20px;
-//   display: initial;
-
-//   @media (min-width: 700px) {
-//     display: none;
-//   }
-// `;
-
 const MobileNav = styled.div`
   position: fixed;
   top: 0;
@@ -94,13 +77,6 @@ const MobileNav = styled.div`
     display: none;
   }
 `;
-// const MobileHome = styled.li`
-//   display: initial;
-
-//   @media (min-width: 700px) {
-//     display: none;
-//   }
-// `;
 
 const navLinks = [
   {
@@ -136,6 +112,7 @@ class Header extends React.Component {
 
   render() {
     const { isClosed } = this.state;
+    const { search } = this.props;
     return (
       <HeaderStyled>
         <MobileNav onClick={this.openDropdownHandler}>
@@ -145,12 +122,20 @@ class Header extends React.Component {
           <LogoFullStyledLink to="/">
             <LogoFull />
           </LogoFullStyledLink>
-          <SearchBar />
+          {search ? <SearchBar /> : null}
           <ul>{navLinks.map(({ to, title }) => <NavLink key={title} to={to} title={title} />)}</ul>
         </Navigation>
       </HeaderStyled>
     );
   }
 }
+
+Header.propTypes = {
+  search: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  search: false,
+};
 
 export default Header;
