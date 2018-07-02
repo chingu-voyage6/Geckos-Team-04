@@ -123,7 +123,11 @@ class Header extends React.Component {
             <LogoFull />
           </LogoFullStyledLink>
           {search ? <SearchBar /> : null}
-          <ul>{navLinks.map(({ to, title }) => <NavLink key={title} to={to} title={title} />)}</ul>
+          <ul>
+            {navLinks.map(({ to, title }) => (
+              <NavLink close={this.openDropdownHandler} key={title} to={to} title={title} />
+            ))}
+          </ul>
         </Navigation>
       </HeaderStyled>
     );

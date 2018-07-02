@@ -51,10 +51,12 @@ const LinkStyled = styled.li`
 
 export default class NavLink extends React.Component {
   render() {
-    const { to, title } = this.props;
+    const { to, title, close } = this.props;
     return (
       <LinkStyled title={title}>
-        <Link to={to}>{title}</Link>
+        <Link onClick={close} to={to}>
+          {title}
+        </Link>
       </LinkStyled>
     );
   }
@@ -63,4 +65,5 @@ export default class NavLink extends React.Component {
 NavLink.propTypes = {
   to: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  close: PropTypes.func.isRequired,
 };
