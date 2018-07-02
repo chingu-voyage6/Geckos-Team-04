@@ -75,6 +75,11 @@ const PillStyled = styled(Link)`
         margin-bottom: 7px;
       }
     }
+    :hover {
+      > span {
+        color: #009fd9;
+      }
+    }
   }
 `;
 
