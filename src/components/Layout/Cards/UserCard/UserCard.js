@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Card from '../Card';
 import CardHeader from '../CardHeader';
@@ -14,7 +15,7 @@ const UserAvatar = styled.div`
   width: 6rem;
   top: calc(50% - 3rem);
   left: calc(50% - 3rem);
-  background-image: url('https://source.unsplash.com/collection/1109127/250x350');
+  background-image: url('https://source.unsplash.com/collection/1358089/250x350');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -22,17 +23,25 @@ const UserAvatar = styled.div`
   z-index: 10;
 `;
 
-function UserCard() {
+const UserCard = props => {
+  const {
+    user: { name, title },
+  } = props;
+
   return (
     <Card>
       <CardHeader />
       <UserAvatar />
       <CardBody>
-        <CardName>Remy Wandui</CardName>
-        <CardTitle>Full Stack Software Developer</CardTitle>
+        <CardName>{name}</CardName>
+        <CardTitle>{title}</CardTitle>
       </CardBody>
     </Card>
   );
-}
+};
+
+UserCard.propTypes = {
+  user: PropTypes.object.isRequired,
+};
 
 export default UserCard;
