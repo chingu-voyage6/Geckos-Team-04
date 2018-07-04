@@ -7,11 +7,9 @@ const StyledCard = styled.div`
   position: relative;
   max-width: 100%;
   width: 250px;
-  min-width: 250px;
-  min-height: 350px;
   display: flex;
   flex-flow: column;
-  background-color: #ecf0f1;
+  background-color: inherit;
   border-radius: 0.25rem;
   margin: 1rem;
   user-select: none;
@@ -24,19 +22,6 @@ const StyledCard = styled.div`
 `;
 
 class Card extends Component {
-  propTypes = {
-    children: PropTypes.arrayOf(PropTypes.element).isRequired,
-    loading: PropTypes.bool,
-    error: PropTypes.string,
-  };
-
-  getDefaultProps() {
-    return {
-      error: null,
-      loading: false,
-    };
-  }
-
   render() {
     const { loading: isLoading, error, children } = this.props;
     const content = <div>{error ? <p>{error} </p> : <StyledCard>{children}</StyledCard>}</div>;
@@ -44,4 +29,18 @@ class Card extends Component {
   }
 }
 
-export default Card;
+Card.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  loading: PropTypes.bool,
+  error: PropTypes.string,
+};
+
+Card.defaultProps = {
+  error: null,
+  loading: false,
+};
+
+export default styled(Card)`
+  background-color: #ecf0f1;
+`;
+export { StyledCard };
