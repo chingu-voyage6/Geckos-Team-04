@@ -10,19 +10,28 @@ import CardBody from '../CardBody';
 import { LocationIcon, PricingIcon } from '../../Icon/Icon';
 
 const StyledServiceCard = StyledCard.extend`
-  width: ${props =>
-    css`
-      ${props.width};
-    ` || 'inherit'};
-  box-shadow: ${props =>
-    css`
-      ${props.boxShadow};
-    `};
+  width: ${props => {
+    const { width } = props;
+    return (
+      css`
+        ${width};
+      ` || 'inherit'
+    );
+  }};
+  box-shadow: ${props => {
+    const { boxShadow } = props;
+    return css`
+      ${boxShadow};
+    `;
+  }};
 `;
 
 const ServiceHeader = CardHeader.extend`
-  background-image: url('${props => props.image}');
-  height: 12rem;
+background-image: url('${props => {
+  const { image } = props;
+  return image;
+}} ');
+height: 12rem;
 `;
 
 const ServiceCardBody = CardBody.extend`
