@@ -124,4 +124,10 @@ CategoryCard.propTypes = {
 };
 
 export default ServiceCard;
-export { ServiceLocationCard, ServicePricingCard, CategoryCard };
+export {
+  ServiceLocationCard,
+  ServicePricingCard,
+  CategoryCard,
+  StyledServiceCard,
+  ServiceCardBody,
+};
