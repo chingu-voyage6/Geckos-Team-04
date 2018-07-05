@@ -5,17 +5,21 @@ import PropTypes from 'prop-types';
 const StyledSection = styled.section`
   background-color: ${({ isGray }) => (isGray ? '#FAFAFA' : '#FFF')};
   border-bottom: ${({ hasBorder }) => (hasBorder ? '1px solid #e9eced;' : 'none')};
-  width: 100%;
-  padding: 60px 20px;
+  max-width: 100%;
+  padding: ${({ padding }) => (padding ? '60px' : '0')} 20px;
 `;
-
+const ChildrenWrapper = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  min-height: 100%;
+`;
 export default class Section extends React.Component {
   render() {
-    const { children, isGray, hasBorder } = this.props;
+    const { children, isGray, hasBorder, padding, className } = this.props;
 
     return (
-      <StyledSection isGray={isGray} hasBorder={hasBorder}>
-        {children}
+      <StyledSection className={className} isGray={isGray} hasBorder={hasBorder} padding={padding}>
+        <ChildrenWrapper>{children}</ChildrenWrapper>
       </StyledSection>
     );
   }
@@ -23,6 +27,14 @@ export default class Section extends React.Component {
 
 Section.propTypes = {
   children: PropTypes.element.isRequired,
-  isGray: PropTypes.bool.isRequired,
-  hasBorder: PropTypes.bool.isRequired,
+  isGray: PropTypes.bool,
+  hasBorder: PropTypes.bool,
+  padding: PropTypes.bool,
+  className: PropTypes.string,
+};
+Section.defaultProps = {
+  isGray: false,
+  hasBorder: false,
+  padding: true,
+  className: '',
 };

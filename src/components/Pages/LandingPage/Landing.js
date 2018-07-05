@@ -1,13 +1,12 @@
 import React from 'react';
-import Layout from '../Layout/Layout';
-import Section from '../Layout/Section/Section';
+import Layout from '../../Layout/Layout';
+import Section from '../../Layout/Section/Section';
+import HeroSection from './Sections/HeroSection';
 
 const landing = () => (
   <Layout>
+    <HeroSection />
     <Section isGray hasBorder>
-      <h1>Hero</h1>
-    </Section>
-    <Section hasBorder>
       <h1>Popular services in your area</h1>
     </Section>
     <Section hasBorder>
