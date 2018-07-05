@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
-import LandingPage from './Pages/Landing';
+import LandingPage from './Pages/LandingPage/Landing';
 import ExplorePage from './Pages/Explore';
 
 class App extends Component {
