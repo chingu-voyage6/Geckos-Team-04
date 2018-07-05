@@ -1,4 +1,14 @@
-import UserCard from './UserCard/UserCard';
-import ServiceCard from './ServiceCard/ServiceCard';
+import UtilCard from './UtilCard/UtilCard';
+import ServiceCard, {
+  ServiceLocationCard,
+  ServicePricingCard,
+  CategoryCard,
+} from './ServiceCard/ServiceCard';
 
-export default { UserCard, ServiceCard };
+export default {
+  UtilCard,
+  ServiceCard,
+  ServiceLocationCard,
+  ServicePricingCard,
+  CategoryCard,
+};
