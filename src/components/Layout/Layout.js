@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import Section from './Section/Section';
 
 class Layout extends Component {
   render() {
@@ -10,14 +11,16 @@ class Layout extends Component {
     return (
       <div>
         <Header search={search} /> {children}
-        <Footer isFooterFull={isFooterFull} />
+        <Section padding={false}>
+          <Footer isFooterFull={isFooterFull} />
+        </Section>
       </div>
     );
   }
 }
 
 Layout.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
   search: PropTypes.bool,
   isFooterFull: PropTypes.bool,
 };
