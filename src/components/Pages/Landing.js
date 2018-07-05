@@ -7,6 +7,18 @@ const landing = () => (
     <Section isGray hasBorder>
       <div>Main</div>
     </Section>
+    <Section hasBorder>
+      <div>Main</div>
+    </Section>
+    <Section hasBorder>
+      <div>Main</div>
+    </Section>
+    <Section isGray hasBorder>
+      <div>Main</div>
+    </Section>
+    <Section hasBorder>
+      <div>Main</div>
+    </Section>
   </Layout>
 );
 

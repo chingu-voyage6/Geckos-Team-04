@@ -6,10 +6,10 @@ import Footer from './Footer/Footer';
 
 class Layout extends Component {
   render() {
-    const { children, isSearchPresent, isFooterFull } = this.props;
+    const { children, search, isFooterFull } = this.props;
     return (
       <div>
-        <Header isSearchPresent={isSearchPresent} /> {children}
+        <Header search={search} /> {children}
         <Footer isFooterFull={isFooterFull} />
       </div>
     );
@@ -18,12 +18,12 @@ class Layout extends Component {
 
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
-  isSearchPresent: PropTypes.bool,
+  search: PropTypes.bool,
   isFooterFull: PropTypes.bool,
 };
 
 Layout.defaultProps = {
-  isSearchPresent: false,
+  search: false,
   isFooterFull: false,
 };
 
