@@ -26,7 +26,8 @@ export default class Section extends React.Component {
 }
 
 Section.propTypes = {
-  children: PropTypes.element.isRequired,
+  // children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   isGray: PropTypes.bool,
   hasBorder: PropTypes.bool,
   padding: PropTypes.bool,
