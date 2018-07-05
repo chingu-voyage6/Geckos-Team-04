@@ -3,7 +3,6 @@ import './footer.css';
 import styled from 'styled-components';
 
 const FooterSection = styled.footer`
-  border-top: 1px solid #e9eced;
   padding: 48px 0 0 0;
   margin: 10px 0 0 0;
   width: 100%;
@@ -11,7 +10,7 @@ const FooterSection = styled.footer`
 
 const Footer = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: 0 auto 0 auto;
   box-sizing: border-box;
   flex: 0 1 auto;
