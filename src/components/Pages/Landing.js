@@ -1,5 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const landing = () => <div>Wooow Landing</div>;
+class Landing extends Component {
+  render() {
+    const { children } = this.props;
+    return <div>{children}</div>;
+  }
+}
 
-export default landing;
+Landing.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+};
+
+export default Landing;
