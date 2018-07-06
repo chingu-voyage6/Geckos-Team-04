@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
-import Layout from './Layout/Layout';
-import Landing from './Pages/Landing';
-import Explore from './Pages/Explore';
+import LandingPage from './Pages/LandingPage/Landing';
+import ExplorePage from './Pages/Explore';
+import PrivacyPage from './Pages/Privacy';
+import TermsPage from './Pages/Terms';
+import LoginPage from './Pages/Login';
 
 class App extends Component {
   render() {
     return (
-      <Layout>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/explore" component={Explore} />
-      </Layout>
+      <Fragment>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/explore" component={ExplorePage} />
+        <Route exact path="/privacy" component={PrivacyPage} />
+        <Route exact path="/terms" component={TermsPage} />
+        <Route exact path="/login" component={LoginPage} />
+      </Fragment>
     );
   }
 }

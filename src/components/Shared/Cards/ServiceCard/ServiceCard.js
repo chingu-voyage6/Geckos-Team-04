@@ -27,10 +27,7 @@ const StyledServiceCard = StyledCard.extend`
 `;
 
 const ServiceHeader = CardHeader.extend`
-background-image: url('${props => {
-  const { image } = props;
-  return image;
-}} ');
+background-image: url('${({ image }) => image}}');
 height: 12rem;
 `;
 
@@ -88,7 +85,7 @@ const ServiceLocationCard = props => {
   return (
     <ServiceCard service={service}>
       <LocationIcon />
-      {title}
+      <span>{title}</span>
     </ServiceCard>
   );
 };

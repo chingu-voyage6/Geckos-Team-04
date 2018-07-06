@@ -50,6 +50,9 @@ const PillWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  z-index: 100;
+  background-color: #fff;
+  transform: translateY(-50%);
 `;
 
 const PillStyled = styled(Link)`
