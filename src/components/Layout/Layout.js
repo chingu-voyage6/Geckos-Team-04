@@ -8,12 +8,13 @@ import { CopyRight } from './Footer/CopyRight';
 
 class Layout extends Component {
   render() {
-    const { children, search } = this.props;
+    const { children, search, footerIsVisible } = this.props;
     return (
       <div>
-        <Header search={search} /> {children}
+        <Header search={search} />
+        {children}
         <Section padding={false}>
-          <Footer />
+          <Footer isVisible={footerIsVisible} />
           <CopyRight />
         </Section>
       </div>
@@ -24,10 +25,12 @@ class Layout extends Component {
 Layout.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   search: PropTypes.bool,
+  footerIsVisible: PropTypes.bool,
 };
 
 Layout.defaultProps = {
   search: false,
+  footerIsVisible: true,
 };
 
 export default Layout;
