@@ -28,22 +28,6 @@ const Guarantee = styled.div`
   margin: 2rem 0 0 0;
   color: #8795a1;
 `;
-const CopyWrap = styled.div`
-  width: 100%;
-  padding: 10px;
-  color: #8795a1;
-  background: #fafafa;
-  margin: 20px 0 0 0;
-`;
-const CopyRight = styled.div`
-  display: flex;
-  width: 80%;
-  margin: 0 auto 0 auto;
-`;
-const PrivacyPolicy = styled.div`
-  text-align: right;
-  flex: 1;
-`;
 
 const footer = () => (
   <FooterSection>
@@ -182,12 +166,6 @@ const footer = () => (
         </div>
       </FooterCol2>
     </Footer>
-    <CopyWrap>
-      <CopyRight>
-        &copy; 2018 Thumbtack, Inc.
-        <PrivacyPolicy>Privacy Policy | Terms of Use</PrivacyPolicy>
-      </CopyRight>
-    </CopyWrap>
   </FooterSection>
 );
 
