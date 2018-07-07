@@ -21,13 +21,12 @@ const prop = {
   },
   // image: 'http://thecatapi.com/api/images/get?format=src&size=full',
   // image: 'http://thecatapi.com/api/images/get',
-  width: '300px',
+  width: '33.3%',
 };
 const PopularServicesInAreaSection = () => (
   <StyledSection isGray hasBorder>
     <h3>Popular services in Your Area.</h3>
     <CrouselNeeded>
-      <ServiceLocationCard {...prop} />
       <ServiceLocationCard {...prop} />
       <ServiceLocationCard {...prop} />
       <ServiceLocationCard {...prop} />
