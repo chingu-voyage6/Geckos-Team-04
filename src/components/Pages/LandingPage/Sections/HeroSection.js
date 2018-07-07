@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Section from '../../../Layout/Section/Section';
+import { SearchButton } from '../../../Shared/UI/Button/Button';
 import { PlayIcon } from '../../../Shared/Icon/Icon';
 
 const StyledSection = styled(Section)`
@@ -38,15 +39,6 @@ const HeroTile = styled.div`
   margin-bottom: 2.2rem;
   line-height: 2.6rem;
 `;
-const GetStartedButton = styled.button`
-  color: #fff;
-  font-weight: bold;
-  background-color: #009fd9;
-  font-size: 0.8rem;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 0 4px 4px 0 !important;
-`;
 
 const VideoButton = styled.div`
   display: flex;
@@ -64,7 +56,7 @@ const heroSection = () => (
       <HeroTile>Find local professionals for pretty much anything.</HeroTile>
       <SearchWrappper>
         <SearchInput type="text" placeholder="Who do you need to hire?" />
-        <GetStartedButton type="button">Get Started</GetStartedButton>
+        <SearchButton click={() => {}}>Get Started</SearchButton>
       </SearchWrappper>
       <VideoButton role="button">
         <PlayIcon color="#000" size="28" />
