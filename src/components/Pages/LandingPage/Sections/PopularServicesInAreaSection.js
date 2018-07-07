@@ -5,7 +5,7 @@ import { ServiceLocationCard } from '../../../Shared/Cards/ServiceCard/ServiceCa
 
 const StyledSection = styled(Section)`
   > div {
-    padding-top: 100px;
+    padding-top: 40px;
   }
 `;
 
