@@ -14,9 +14,11 @@ const CrouselNeeded = styled.div`
 `;
 
 const prop = {
-  name: 'House cleaning',
-  pros: 0,
-  image: 'https://source.unsplash.com/collection/1791908/250x350',
+  service: {
+    name: 'House cleaning',
+    pros: Math.round(Math.random() * 1000),
+    image: 'https://source.unsplash.com/collection/1791908/250x350',
+  },
   // image: 'http://thecatapi.com/api/images/get?format=src&size=full',
   // image: 'http://thecatapi.com/api/images/get',
   width: '300px',
@@ -25,10 +27,10 @@ const PopularServicesInAreaSection = () => (
   <StyledSection isGray hasBorder>
     <h3>Popular services in Your Area.</h3>
     <CrouselNeeded>
-      <ServiceLocationCard service={prop} />
-      <ServiceLocationCard service={prop} />
-      <ServiceLocationCard service={prop} />
-      <ServiceLocationCard service={prop} />
+      <ServiceLocationCard {...prop} />
+      <ServiceLocationCard {...prop} />
+      <ServiceLocationCard {...prop} />
+      <ServiceLocationCard {...prop} />
     </CrouselNeeded>
   </StyledSection>
 );
