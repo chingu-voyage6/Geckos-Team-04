@@ -11,7 +11,9 @@ export default class Carousel extends Component {
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.node
-  ]),
+    ]),
+    hideNextButton: PropTypes.bool,
+    hidePrevButton: PropTypes.bool,
   };
 
   events = [
@@ -38,9 +40,17 @@ export default class Carousel extends Component {
       props
     );
 
+    this.state = {
+      hideNextButton: false,
+      hidePrevButton: false,
+    };
+
     this.events.forEach(handler => {
       this[handler] = this[handler].bind(this);
     });
+
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +62,7 @@ export default class Carousel extends Component {
 
   setStyle(target, styles) {
     Object.keys(styles).forEach((attribute) => {
-        target.style[attribute] = styles[attribute];
+      target.style[attribute] = styles[attribute];
     });
   }
 
@@ -61,7 +71,6 @@ export default class Carousel extends Component {
   }
 
   setInnerElements() {
-    // This one converts NodeList into Array
     this.innerElements = [].slice.call(this.sliderFrame.children);
   }
 
@@ -78,7 +87,7 @@ export default class Carousel extends Component {
     this.setSelectorWidth();
     this.setInnerElements();
     this.resolveSlidesNumber();
-
+    
     // set width & transition to the outer div of elements
     this.setStyle(this.sliderFrame, {
       width: `${(this.selectorWidth / this.perPage) * this.innerElements.length}px`,
@@ -89,12 +98,29 @@ export default class Carousel extends Component {
     // set width to each slide based a number of slides
     for (let i = 0; i < this.innerElements.length; i++) {
       this.setStyle(this.innerElements[i], {
-          width: `${100 / this.innerElements.length}%`
+        width: `${100 / this.innerElements.length}%`,
       });
     }
 
     this.slideToCurrent();
-    
+  }
+
+  next() {
+    if (this.currentSlide === this.innerElements.length - this.perPage && this.config.loop) {
+      this.currentSlide = 0;
+    } else {
+      this.currentSlide = Math.min(this.currentSlide + 1, this.innerElements.length - this.perPage);
+    }
+    this.slideToCurrent();
+  }
+
+  prev() {
+    if (this.currentSlide === 0 && this.config.loop) {
+      this.currentSlide = this.innerElements.length - this.perPage;
+    } else {
+      this.currentSlide = Math.max(this.currentSlide - 1, 0);
+    }
+    this.slideToCurrent();
   }
 
   onTouchStart(e) {};
@@ -102,6 +128,7 @@ export default class Carousel extends Component {
   onTouchMove(e) {};
 
   render() {
+    const { hideNextButton, hidePrevButton } = this.state;
     return (
       <div
         ref={selector => (this.selector = selector)}
@@ -116,6 +143,8 @@ export default class Carousel extends Component {
             })
           )}
         </div>
+        {!hideNextButton ? <button onClick={this.next}>Next</button> : null}
+        {!hidePrevButton ? <button onClick={this.prev}>Prev</button> : null}
       </div>
     );
   }
