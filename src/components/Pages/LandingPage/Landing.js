@@ -9,6 +9,8 @@ import CategorieTabsSection from './Sections/CategoryTabs/CategoryTabsSection';
 import CostEstimateSection from './Sections/CostEstimateSection';
 import OpenForBusinessSection from './Sections/OpenForBusinessSection';
 
+import AboutThumbtack from './Sections/AboutThumbtackSection';
+
 const NavPillContainer = styled.div`
   height: 0;
 `;
@@ -20,9 +22,7 @@ const landing = () => (
       <NavPillBar />
     </NavPillContainer>
     <PopularServicesInAreaSection />
-    <Section hasBorder>
-      <h1>Large image carousel</h1>
-    </Section>
+    <AboutThumbtack />
     <CategorieTabsSection />
     <CostEstimateSection />
     <OpenForBusinessSection />
