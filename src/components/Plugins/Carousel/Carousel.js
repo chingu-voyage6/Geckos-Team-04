@@ -60,6 +60,10 @@ export default class Carousel extends Component {
     this.init();
   }
 
+  componentDidUpdate() {
+    this.init();
+  }
+
   setStyle(target, styles) {
     Object.keys(styles).forEach((attribute) => {
       target.style[attribute] = styles[attribute];
@@ -80,17 +84,21 @@ export default class Carousel extends Component {
 
   slideToCurrent() {
     this.sliderFrame.style.transform = `translate3d(-${Math.round(this.currentSlide * (this.selectorWidth / this.perPage))}px, 0, 0)`;
-    //this.sliderFrame.style.transform = `translateX(-${(100 / this.innerElements.length) * this.perPage}%)`;
   }
 
   init() {
     this.setSelectorWidth();
     this.setInnerElements();
     this.resolveSlidesNumber();
-    
+
     // set width & transition to the outer div of elements
+    const widthItem = this.selectorWidth / this.perPage;
+    const itemsToBuild = this.config.loop
+      ? this.innerElements.length + this.perPage * 2
+      : this.innerElements.length;
+
     this.setStyle(this.sliderFrame, {
-      width: `${(this.selectorWidth / this.perPage) * this.innerElements.length}px`,
+      width: `${widthItem * itemsToBuild}px`,
       webkitTransition: `all ${this.config.duration}ms ${this.config.easing}`,
       transition: `all ${this.config.duration}ms ${this.config.easing}`,
     });
@@ -98,7 +106,12 @@ export default class Carousel extends Component {
     // set width to each slide based a number of slides
     for (let i = 0; i < this.innerElements.length; i++) {
       this.setStyle(this.innerElements[i], {
-        width: `${100 / this.innerElements.length}%`,
+        width: `${
+          this.config.loop
+            ? 100 / (this.innerElements.length + this.perPage * 2)
+            : 100 / this.innerElements.length
+        }%`,
+        float: 'left',
       });
     }
 
@@ -139,7 +152,6 @@ export default class Carousel extends Component {
           {React.Children.map(this.props.children, (children, index) =>
             React.cloneElement(children, {
               key: index,
-              style: { float: 'left' },
             })
           )}
         </div>
