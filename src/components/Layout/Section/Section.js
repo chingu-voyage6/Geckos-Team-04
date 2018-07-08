@@ -7,6 +7,7 @@ const StyledSection = styled.section`
   border-bottom: ${({ hasBorder }) => (hasBorder ? '1px solid #e9eced;' : 'none')};
   max-width: 100%;
   padding: ${({ padding }) => (padding ? '60px' : '0')} 20px;
+  overflow: hidden;
 `;
 const ChildrenWrapper = styled.div`
   max-width: 960px;
