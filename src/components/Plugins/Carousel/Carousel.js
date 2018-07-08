@@ -6,12 +6,14 @@ export default class Carousel extends Component {
     title: PropTypes.string,
     resizeDebounce: PropTypes.number,
     duration: PropTypes.number,
-    perPage: PropTypes.number,
+    easing: PropTypes.string,
+    slidesToShow: PropTypes.number,
     loop: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.node
     ]),
+    slidesToScroll: PropTypes.number,
     hideNextButton: PropTypes.bool,
     hidePrevButton: PropTypes.bool,
   };
@@ -31,10 +33,11 @@ export default class Carousel extends Component {
     this.config = Object.assign(
       {},
       {
-        resizeDebounce: 250,
         startIndex: 0,
         duration: 200,
-        perPage: 1,
+        easing: 'ease-out',
+        slidesToShow: 1,
+        slidesToScroll: 1,
         loop: false,
       },
       props
@@ -48,9 +51,6 @@ export default class Carousel extends Component {
     this.events.forEach(handler => {
       this[handler] = this[handler].bind(this);
     });
-
-    this.next = this.next.bind(this);
-    this.prev = this.prev.bind(this);
   }
 
   componentDidMount() {
@@ -65,7 +65,7 @@ export default class Carousel extends Component {
   }
 
   setStyle(target, styles) {
-    Object.keys(styles).forEach((attribute) => {
+    Object.keys(styles).forEach(attribute => {
       target.style[attribute] = styles[attribute];
     });
   }
@@ -79,59 +79,64 @@ export default class Carousel extends Component {
   }
 
   resolveSlidesNumber() {
-    this.perPage = this.config.perPage;
+    this.slidesToShow = this.config.slidesToShow;
   }
 
   slideToCurrent() {
-    this.sliderFrame.style.transform = `translate3d(-${Math.round(this.currentSlide * (this.selectorWidth / this.perPage))}px, 0, 0)`;
+    this.sliderFrame.style.transform = `translate3d(-${Math.round(
+      this.currentSlide * (this.selectorWidth / this.slidesToShow)
+    )}px, 0, 0)`;
   }
 
   init() {
     this.setSelectorWidth();
     this.setInnerElements();
     this.resolveSlidesNumber();
-
     // set width & transition to the outer div of elements
-    const widthItem = this.selectorWidth / this.perPage;
+    const widthItem = this.selectorWidth / this.slidesToShow;
     const itemsToBuild = this.config.loop
-      ? this.innerElements.length + this.perPage * 2
+      ? this.innerElements.length + this.slidesToShow * 2
       : this.innerElements.length;
-
-    this.setStyle(this.sliderFrame, {
-      width: `${widthItem * itemsToBuild}px`,
-      webkitTransition: `all ${this.config.duration}ms ${this.config.easing}`,
-      transition: `all ${this.config.duration}ms ${this.config.easing}`,
-    });
-
-    // set width to each slide based a number of slides
+    this.sliderFrame.style.width = `${widthItem * itemsToBuild}px`;
+    this.enableTransition();
+    // set width to each slide based on a number of slides
+    // and if loop is enabled or not
     for (let i = 0; i < this.innerElements.length; i++) {
       this.setStyle(this.innerElements[i], {
-        width: `${
-          this.config.loop
-            ? 100 / (this.innerElements.length + this.perPage * 2)
-            : 100 / this.innerElements.length
-        }%`,
+        width: `${100 / itemsToBuild}%`,
         float: 'left',
       });
     }
-
     this.slideToCurrent();
   }
 
-  next() {
-    if (this.currentSlide === this.innerElements.length - this.perPage && this.config.loop) {
+  disableTransition() {
+    this.sliderFrame.style.webkitTransition = `all 0ms ${this.config.easing}`;
+    this.sliderFrame.style.transition = `all 0ms ${this.config.easing}`;
+  }
+
+  enableTransition() {
+    this.sliderFrame.style.webkitTransition = `all ${this.config.duration}ms ${this.config.easing}`;
+    this.sliderFrame.style.transition = `all ${this.config.duration}ms ${this.config.easing}`;
+  }
+
+  next(slidesToScroll = 1) {
+    if (this.currentSlide === this.innerElements.length - this.slidesToShow && this.config.loop) {
       this.currentSlide = 0;
     } else {
-      this.currentSlide = Math.min(this.currentSlide + 1, this.innerElements.length - this.perPage);
+      this.currentSlide = Math.min(
+        this.currentSlide + slidesToScroll,
+        this.innerElements.length - this.slidesToShow
+      );
     }
     this.slideToCurrent();
   }
 
-  prev() {
+  prev(slidesToScroll = 1) {
     if (this.currentSlide === 0 && this.config.loop) {
-      this.currentSlide = this.innerElements.length - this.perPage;
+      this.currentSlide = this.innerElements.length - this.slidesToShow;
     } else {
-      this.currentSlide = Math.max(this.currentSlide - 1, 0);
+      this.currentSlide = Math.max(this.currentSlide - slidesToScroll, 0);
     }
     this.slideToCurrent();
   }
@@ -142,21 +147,25 @@ export default class Carousel extends Component {
 
   render() {
     const { hideNextButton, hidePrevButton } = this.state;
+    const { slidesToScroll } = this.config;
     return (
       <div
         ref={selector => (this.selector = selector)}
         style={{ overflow: 'hidden' }}
-        {...this.events.reduce((props, event) => Object.assign({}, props, { [event]: this[event] }), {})}
+        {...this.events.reduce(
+          (props, event) => Object.assign({}, props, { [event]: this[event] }),
+          {}
+        )}
       >
         <div ref={sliderFrame => (this.sliderFrame = sliderFrame)}>
-          {React.Children.map(this.props.children, (children, index) =>
-            React.cloneElement(children, {
+          {React.Children.map(this.props.children, (child, index) =>
+            React.cloneElement(child, {
               key: index,
             })
           )}
         </div>
-        {!hideNextButton ? <button onClick={this.next}>Next</button> : null}
-        {!hidePrevButton ? <button onClick={this.prev}>Prev</button> : null}
+        {!hideNextButton ? <button onClick={() => this.next(slidesToScroll)}>Next</button> : null}
+        {!hidePrevButton ? <button onClick={() => this.prev(slidesToScroll)}>Prev</button> : null}
       </div>
     );
   }
