@@ -9,6 +9,7 @@ const DefaultButton = styled.button`
   font-size: 0.8rem;
   padding-left: 22px;
   padding-right: 22px;
+  padding: 12px 22px;
   border-radius: 0.25rem !important; // required to override normalize from footer!
 
   :focus {
