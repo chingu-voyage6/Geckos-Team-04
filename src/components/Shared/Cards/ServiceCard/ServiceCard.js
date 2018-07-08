@@ -26,7 +26,7 @@ const StyledServiceCard = StyledCard.extend`
   }};
 `;
 
-const ServiceHeader = CardHeader.extend`
+export const ServiceHeader = CardHeader.extend`
 background-image: url('${({ image }) => image}}');
 height: 12rem;
 `;
