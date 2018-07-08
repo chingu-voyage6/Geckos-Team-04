@@ -101,9 +101,9 @@ ServiceLocationCard.defaultProps = {
 };
 
 const ServicePricingCard = props => {
-  const { service } = props;
+  const { service, width } = props;
   return (
-    <ServiceCard service={service}>
+    <ServiceCard service={service} width={width}>
       <PricingIcon />
       <ServiceCardTitle>&nbsp;See prices</ServiceCardTitle>
     </ServiceCard>
@@ -112,6 +112,7 @@ const ServicePricingCard = props => {
 
 ServicePricingCard.propTypes = {
   service: PropTypes.object.isRequired,
+  width: PropTypes.string.isRequired,
 };
 
 const CategoryCard = props => {
