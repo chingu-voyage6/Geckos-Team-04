@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../../Layout/Layout';
-import Section from '../../Layout/Section/Section';
 import HeroSection from './Sections/HeroSection';
 import NavPillBar from '../../Shared/NavPillBar/NavPillBar';
 import PopularServicesInAreaSection from './Sections/PopularServicesInAreaSection';

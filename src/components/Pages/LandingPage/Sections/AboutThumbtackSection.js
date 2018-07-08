@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { DefaultButton } from '../../../Shared/UI/Button/Button';
+// import { DefaultButton } from '../../../Shared/UI/Button/Button';
 import Section from '../../../Layout/Section/Section';
 
 const StyledSection = styled(Section)`
