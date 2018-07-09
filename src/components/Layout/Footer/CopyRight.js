@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CopyWrap = styled.div`
@@ -30,7 +30,8 @@ const CopySnap = styled.div`
   }
 
   @media (min-width: 1026px) {
-    max-width: 946px;
+    // max-width: 946px;
+    max-width: 100%;
   }
 `;
 
@@ -45,7 +46,12 @@ const CopyRightBox = styled.div`
   white-space: nowrap;
 `;
 
-const CopyDocs = styled.div`
+const HelpDocs = styled.div`
+  display: flex;
+  list-style: none;
+`;
+
+const CopyDocs = HelpDocs.extend`
   display: flex;
   list-style: none;
 
@@ -60,29 +66,71 @@ const CopyDocs = styled.div`
   }
 `;
 
+const CopyRightFooter = styled.div`
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+  box-sizing: inherit;
+  background: #fafafa;
+  border-top: 1px solid #e9eced;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-align: center;
+`;
+
 const CopyAnchor = styled.a`
-  fill: #676d73;
-  color: #676d73;
+  fill: ${({ fill }) => fill || '#676d73'};
+  color: ${({ fill }) => fill || '#676d73'};
   text-decoration: none;
   cursor: pointer;
 `;
 
-export const CopyRight = () => (
-  <CopyWrap>
-    <CopySnap>
-      <CopyLegal>
-        <CopyRightBox>&copy; 2018 Thumbtack, Inc.</CopyRightBox>
-        <CopyDocs>
-          <li>
-            <CopyAnchor href="/privacy">Privacy Policy</CopyAnchor>
-          </li>
-          <li>
-            <CopyAnchor href="/terms">Terms of Use</CopyAnchor>
-          </li>
-        </CopyDocs>
-      </CopyLegal>
-    </CopySnap>
-  </CopyWrap>
+const DefaultCopyBox = () => (
+  <CopyLegal>
+    <CopyRightBox>&copy; 2018 Thumbtack, Inc.</CopyRightBox>
+    <CopyDocs>
+      <li>
+        <CopyAnchor href="/privacy">Privacy Policy</CopyAnchor>
+      </li>
+      <li>
+        <CopyAnchor href="/terms">Terms of Use</CopyAnchor>
+      </li>
+    </CopyDocs>
+  </CopyLegal>
 );
+
+const HelpBox = () => (
+  <CopyLegal>
+    <CopyRightBox>&copy; 2018 Thumbtack, Inc. All Rights Reserved</CopyRightBox>
+    <HelpDocs>
+      <li>
+        Questions?{' '}
+        <CopyAnchor href="https://help.thumbtack.com" fill="#009fd9">
+          Help Center
+        </CopyAnchor>
+      </li>
+    </HelpDocs>
+  </CopyLegal>
+);
+
+export const CopyRight = props => {
+  const { defaultCopyright } = props;
+
+  return (
+    <CopyRightFooter>
+      <CopyWrap>
+        <CopySnap>{defaultCopyright ? <DefaultCopyBox /> : <HelpBox />}</CopySnap>
+      </CopyWrap>
+    </CopyRightFooter>
+  );
+};
+
+CopyRight.propTypes = {
+  defaultCopyright: PropTypes.bool,
+};
+
+CopyRight.defaultProps = {
+  defaultCopyright: true,
+};
 
 export default CopyRight;
