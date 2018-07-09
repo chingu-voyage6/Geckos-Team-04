@@ -10,6 +10,18 @@ const StyledSection = styled.section`
   overflow: hidden;
 `;
 const ChildrenWrapper = styled.div`
+  @media only screen and (max-width: 1023px) {
+    max-width: 728px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    max-width: 474px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   max-width: 960px;
   margin: 0 auto;
   min-height: 100%;
