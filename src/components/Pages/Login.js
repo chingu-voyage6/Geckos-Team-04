@@ -93,7 +93,7 @@ const Form = () => (
 );
 
 const Login = () => (
-  <Layout footerIsVisible={false}>
+  <Layout footerIsVisible={false} defaultCopyright={false}>
     <Form />
   </Layout>
 );
