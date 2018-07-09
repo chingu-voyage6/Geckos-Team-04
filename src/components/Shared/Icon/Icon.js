@@ -12,7 +12,7 @@ class Icon extends Component {
         width={size}
         height={size}
         viewBox={viewBox}
-        fill={color}
+        fill="currentColor"
       >
         <path d={path} />
       </svg>
