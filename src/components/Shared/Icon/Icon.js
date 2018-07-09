@@ -111,3 +111,10 @@ export const PlayIcon = props => {
 
   return <Icon path={path} {...props} />;
 };
+
+export const ChevronIcon = props => {
+  const path =
+    'M14.646 6.764L9 13 3.311 6.725a1 1 0 0 1 1.342-1.482L9 10l4.285-4.699c.2-.187.435-.301.715-.301a1 1 0 0 1 1 1c0 .306-.151.537-.354.764z';
+
+  return <Icon path={path} {...props} />;
+};
