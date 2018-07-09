@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 
 export default class Carousel extends Component {
   static propTypes = {
@@ -7,13 +8,16 @@ export default class Carousel extends Component {
     resizeDebounce: PropTypes.number,
     duration: PropTypes.number,
     easing: PropTypes.string,
-    slidesToShow: PropTypes.number,
+    slidesToShow: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number
+    ]),
+    slidesToScroll: PropTypes.number,
     loop: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.node
     ]),
-    slidesToScroll: PropTypes.number,
     hideNextButton: PropTypes.bool,
     hidePrevButton: PropTypes.bool,
   };
@@ -39,6 +43,7 @@ export default class Carousel extends Component {
         slidesToShow: 1,
         slidesToScroll: 1,
         loop: false,
+        resizeDebounce: 250,
       },
       props
     );
@@ -58,10 +63,23 @@ export default class Carousel extends Component {
     this.currentSlide = this.config.startIndex;
 
     this.init();
+
+    this.onResize = debounce(() => {
+      this.resize();
+      this.slideToCurrent();
+      // onresize follow slidesToShow value
+      this.config.slidesToScroll = this.slidesToShow;
+    }, this.config.resizeDebounce);
+
+    window.addEventListener('resize', this.onResize);
   }
 
   componentDidUpdate() {
     this.init();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
   }
 
   setStyle(target, styles) {
@@ -79,7 +97,33 @@ export default class Carousel extends Component {
   }
 
   resolveSlidesNumber() {
-    this.slidesToShow = this.config.slidesToShow;
+    const { slidesToShow } = this.config;
+    if (typeof slidesToShow === 'number') {
+      this.slidesToShow = slidesToShow;
+    } else if (typeof slidesToShow === 'object') {
+      this.slidesToShow = 1;
+      Object.keys(slidesToShow).forEach(viewport => {
+        if (window.innerWidth > viewport) {
+          this.slidesToShow = slidesToShow[viewport];
+        }
+      });
+    }
+  }
+
+  resize() {
+    this.resolveSlidesNumber();
+    this.selectorWidth = this.selector.getBoundingClientRect().width;
+
+    this.setStyle(this.sliderFrame, {
+      width: `${(this.selectorWidth / this.slidesToShow) * this.innerElements.length}px`,
+    });
+
+    for (let i = 0; i < this.innerElements.length; i++) {
+      this.setStyle(this.innerElements[i], {
+        width: `${100 / this.innerElements.length}%`,
+        float: 'left',
+      });
+    }
   }
 
   slideToCurrent() {
@@ -107,6 +151,7 @@ export default class Carousel extends Component {
         float: 'left',
       });
     }
+
     this.slideToCurrent();
   }
 
@@ -122,6 +167,7 @@ export default class Carousel extends Component {
 
   next(slidesToScroll = 1) {
     if (this.currentSlide === this.innerElements.length - this.slidesToShow && this.config.loop) {
+      this.disableTransition();
       this.currentSlide = 0;
     } else {
       this.currentSlide = Math.min(
@@ -129,6 +175,7 @@ export default class Carousel extends Component {
         this.innerElements.length - this.slidesToShow
       );
     }
+
     this.slideToCurrent();
   }
 
@@ -138,6 +185,7 @@ export default class Carousel extends Component {
     } else {
       this.currentSlide = Math.max(this.currentSlide - slidesToScroll, 0);
     }
+
     this.slideToCurrent();
   }
 
@@ -147,7 +195,6 @@ export default class Carousel extends Component {
 
   render() {
     const { hideNextButton, hidePrevButton } = this.state;
-    const { slidesToScroll } = this.config;
     return (
       <div
         ref={selector => (this.selector = selector)}
@@ -164,8 +211,8 @@ export default class Carousel extends Component {
             })
           )}
         </div>
-        {!hideNextButton ? <button onClick={() => this.next(slidesToScroll)}>Next</button> : null}
-        {!hidePrevButton ? <button onClick={() => this.prev(slidesToScroll)}>Prev</button> : null}
+        {!hideNextButton ? <button onClick={() => this.next(this.config.slidesToScroll)}>Next</button> : null}
+        {!hidePrevButton ? <button onClick={() => this.prev(this.config.slidesToScroll)}>Prev</button> : null}
       </div>
     );
   }
