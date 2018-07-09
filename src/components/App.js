@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
 import LandingPage from './Pages/LandingPage/Landing';
-import ExplorePage from './Pages/Explore';
+import ExplorePage from './Pages/ExplorePage/Explore';
 import PrivacyPage from './Pages/Privacy';
 import TermsPage from './Pages/Terms';
 import LoginPage from './Pages/Login';
