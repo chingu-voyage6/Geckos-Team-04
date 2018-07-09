@@ -1,9 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-const CategorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-  },
+const CategorySchema = new Schema({
+  name: String,
 });
 
 export default mongoose.model('Category', CategorySchema);

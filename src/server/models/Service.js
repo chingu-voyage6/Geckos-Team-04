@@ -1,20 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const ServiceSchema = new mongoose.Schema({
   name: {
     type: Number,
     default: 0,
   },
-  image: {
-    type: String,
-  },
-  serviceCount: {
-    type: Number,
-    default: 0,
-  },
-  category: {
-    type: Array,
-  },
+  image: String,
+  category: { type: Schema.Types.ObjectId, ref: 'Category' },
 });
 
 export default mongoose.model('Service', ServiceSchema);
