@@ -8,6 +8,8 @@ const SectionTitle = styled.div`
   text-align: left;
 `;
 const CardSubsection = styled.div`
+  margin-left: -8px;
+  margin-right: -8px;
   div:first-child a {
     border-radius: 4px 4px 0 0;
   }
