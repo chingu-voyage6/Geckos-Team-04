@@ -36,6 +36,11 @@ const CardSubsection = styled.div`
   }
 `;
 
+const GetIcon = ({ tag }) => {
+  const TagName = tag;
+  return <TagName size="28" />;
+};
+
 const allServicesSection = () => (
   <Section isGray hasBorder>
     <SectionTitle>
