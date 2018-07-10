@@ -2,7 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
-import { HomeCard } from '../../../Shared/Cards/UtilCard/UtilCard';
+import {
+  HomeIcon,
+  EventIcon,
+  AppleIcon,
+  FlowerIcon,
+  BriefCaseIcon,
+  CraftsIcon,
+  WebIcon,
+  LegalIcon,
+  HandIcon,
+  PawIcon,
+  CameraIcon,
+  ServiceIcon,
+} from '../../../Shared/Icon/Icon';
 
 const cardData = [
   {
