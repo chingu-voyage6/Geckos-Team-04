@@ -14,7 +14,7 @@ class Icon extends Component {
         viewBox={viewBox}
         fill="currentColor"
       >
-        <path d={path} />
+        <path d={path} fillRule="evenodd" />
       </svg>
     );
   }
