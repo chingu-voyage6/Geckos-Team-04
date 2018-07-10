@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { ServiceCardBody } from '../ServiceCard/ServiceCard';
+import { Link } from 'react-router-dom';
 import { HomeIcon, PricingIcon, EventIcon, CarretIcon } from '../../Icon/Icon';
 
 // const UtilsCardBody = ServiceCardBody.extend`
@@ -84,7 +84,7 @@ const CardWrapper = styled.div`
   }
 `;
 
-const CardBody = styled.a`
+const CardBody = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   width: 100%;
@@ -96,6 +96,7 @@ const CardBody = styled.a`
   background-color: #fff;
   flex-direction: row;
   transition: all 0.1s ease-in-out;
+  color: #2f3033;
 
   :hover {
     color: #009fd9;
@@ -122,7 +123,7 @@ const UtilCard = props => {
     children,
   } = props;
 
-  return <CardBody>{children}</CardBody>;
+  return <CardBody to={categoryName}>{children}</CardBody>;
 };
 
 const CardIconWrapper = styled.div`
@@ -163,16 +164,16 @@ const CardTitle = styled.div`
   }
 `;
 
-export default UtilCard;
-export const HomeCard = props => {
+export const CategoryCard = props => {
   /* An example of how to go about creating a UtilCard */
-  const { utility } = props;
+  const { utility, children } = props;
   const size = '28';
   return (
     <CardWrapper>
       <UtilCard utility={utility}>
         <CardIconWrapper>
-          <HomeIcon size={size} />
+          {/* <HomeIcon size={size} /> */}
+          {children}
         </CardIconWrapper>
         <CardTitle>{utility.name}</CardTitle>
         <CarrotWrapper>
@@ -182,6 +183,7 @@ export const HomeCard = props => {
     </CardWrapper>
   );
 };
-HomeCard.propTypes = {
+
+CategoryCard.propTypes = {
   utility: PropTypes.object.isRequired,
 };
