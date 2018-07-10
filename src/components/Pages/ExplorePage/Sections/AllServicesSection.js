@@ -126,13 +126,11 @@ const allServicesSection = () => (
       <h3>All Services</h3>
     </SectionTitle>
     <CardSubsection>
-      <HomeCard utility={{ name: 'Home' }} />
-      <HomeCard utility={{ name: 'Home' }} />
-      <HomeCard utility={{ name: 'Home' }} />
-      <HomeCard utility={{ name: 'Home' }} />
-      <HomeCard utility={{ name: 'Home' }} />
-      <HomeCard utility={{ name: 'Home' }} />
-      <HomeCard utility={{ name: 'Home' }} />
+      {cardData.map(({ component, name, to }) => (
+        <CategoryCard key={name} utility={{ name, categoryName: to }}>
+          <GetIcon tag={component} />
+        </CategoryCard>
+      ))}
     </CardSubsection>
   </Section>
 );
