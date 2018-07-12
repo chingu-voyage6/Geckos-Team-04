@@ -1,3 +1,32 @@
+/* 
+-----------------Icons included---------------------------
+
+#############################################################
+# When adding additional icons provide brief description,
+# if neccessary and
+# list it under corresponding heading, add new on if needed.
+#############################################################
+
+---------------------------------------
+  NavPills bar/ Category Bar, Category Card icons:
+  - HouseIcon, ConfettiIcon, AppleIcon, FlowerIcon, BriefCaseIcon, ButtonIcon,
+    ScreenIcon, CourtHouseIcon, HandIcon, PawIcon, CameraIcon, WrenchIcon, ThreeDotsIcon, CakeIcon
+---------------------------------------
+  More Services sidebar category icons:
+  - HomeImprovementIcon, WellnessIcon, PetsIcon, BusinessIcon, EventsIcon,
+    CraftsIcon, WebDesignIcon, LegalIcon, PersonalIcon, PhotographyIcon, RepairIcon, WritingIcon
+---------------------------------------
+  Card icons:
+  - LocationIcon, PricingIcon
+---------------------------------------
+  Logos:
+  - LogoRoundIcon, LogoFullIcon
+---------------------------------------
+  UI elements icons:
+  - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass)
+  
+*/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
