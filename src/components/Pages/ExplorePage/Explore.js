@@ -4,14 +4,11 @@ import Section from '../../Layout/Section/Section';
 
 import HowTTWorksSection from './Sections/HowTTWorksSection';
 import AllServiceSection from './Sections/AllServicesSection';
+import ExploreHeroSection from './Sections/ExploreHeroSection';
 
 const explore = () => (
   <Layout>
-    <Section isGray hasBorder>
-      <div>
-        <h1>Hire skilled pros for over 1,000 services.</h1>
-      </div>
-    </Section>
+    <ExploreHeroSection />
     <Section hasBorder>
       <div>Lots and Lots of carousels</div>
     </Section>
