@@ -5,28 +5,28 @@ import Section from '../../../Layout/Section/Section';
 import { CategoryCard } from '../../../Shared/Cards/UtilCard/UtilCard';
 
 import {
-  HomeIcon,
-  EventIcon,
+  HouseIcon,
+  ConfettiIcon,
   AppleIcon,
   FlowerIcon,
   BriefCaseIcon,
-  CraftsIcon,
-  WebIcon,
-  LegalIcon,
+  ButtonIcon,
+  ScreenIcon,
+  CourtHouseIcon,
   HandIcon,
   PawIcon,
   CameraIcon,
-  ServiceIcon,
+  WrenchIcon,
 } from '../../../Shared/Icon/Icon';
 
 const cardData = [
   {
-    component: HomeIcon,
+    component: HouseIcon,
     to: 'home-improvement',
     name: 'Home',
   },
   {
-    component: EventIcon,
+    component: ConfettiIcon,
     to: 'events',
     name: 'Events',
   },
@@ -46,17 +46,17 @@ const cardData = [
     name: 'Business',
   },
   {
-    component: CraftsIcon,
+    component: ButtonIcon,
     to: 'more-services#category-group-crafts',
     name: 'Crafts',
   },
   {
-    component: WebIcon,
+    component: ScreenIcon,
     to: 'more-services#category-group-designWeb',
     name: 'Design & Web',
   },
   {
-    component: LegalIcon,
+    component: CourtHouseIcon,
     to: 'more-services#category-group-legal',
     name: 'Legal',
   },
@@ -76,7 +76,7 @@ const cardData = [
     name: 'Photography',
   },
   {
-    component: ServiceIcon,
+    component: WrenchIcon,
     to: 'more-services#category-group-repairSupport',
     name: 'Tech Repair',
   },
