@@ -6,8 +6,7 @@ const PolicySnap = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  padding-left: 48px;
-  padding-right: 48px;
+  padding: 48px;
 
   border: 0;
   font-size: 100%;
@@ -29,12 +28,6 @@ const PolicySnap = styled.div`
     max-width: 946px;
   }
 
-  > h1 {
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 700;
-  }
-
   > h2 {
     font-size: 18px;
     line-height: 24px;
@@ -50,11 +43,28 @@ const PolicySnap = styled.div`
   ul {
     list-style-type: disc;
   }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #009fd9;
+  }
+`;
+
+const PolicyTitle = styled.h1`
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+
+  @media (min-width: 701px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 `;
 
 const Policy = () => (
   <PolicySnap>
-    <h1>Privacy Policy</h1>
+    <PolicyTitle>Privacy Policy</PolicyTitle>
 
     <p>
       <em>Last Updated: October 24, 2016</em>
@@ -89,13 +99,13 @@ const Policy = () => (
       information from you, such as information collected from your browser or device.
     </p>
 
-    <p className="c2 c6">
+    <p>
       <em>Information You Provide Directly to Us</em>
     </p>
 
     <p>We may collect information from you during your use or access of the Platform, such as:</p>
 
-    <ul className="c4 lst-kix_an48178t9320-0 start">
+    <ul>
       <li>When you register for an Account;</li>
       <li>When you participate in polls or surveys;</li>
       <li>When you enroll for electronic newsletters;</li>
@@ -448,7 +458,7 @@ const Policy = () => (
       If you are interested in more information about tailored browser advertising and how you can
       generally control cookies from being put on your computer to deliver tailored marketing, you
       may visit the{' '}
-      <a className="c0" href="http://www.networkadvertising.org/choices">
+      <a href="http://www.networkadvertising.org/choices">
         Network Advertising Initiative's Consumer Opt-Out Link
       </a>{' '}
       and/or the{' '}
@@ -581,7 +591,7 @@ const Policy = () => (
       information as described in this Policy.
     </p>
 
-    <h3 className="c2 c10">CONTACT US</h3>
+    <h3>CONTACT US</h3>
 
     <p>
       If you have any questions about the Privacy Policy or the Platform, please contact us by

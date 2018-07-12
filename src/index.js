@@ -6,6 +6,13 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 injectGlobal`
+  @font-face {
+    font-family: "Mark";
+    src: url('https://fonts.thumbtack.com/mark/mark-tt.woff2') format("woff2");
+    font-style: normal;
+    font-weight: normal;
+  }
+
   body {
     margin: 0;
     padding: 0;
