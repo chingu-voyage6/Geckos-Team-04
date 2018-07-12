@@ -16,7 +16,7 @@ const Profile = props => (
 
 Profile.defaultProps = {
   name: 'John Doe',
-  avatar: 'https://via.placeholder.com/150x150',
+  avatar: 'https://via.placeholder.com/124x124',
   email: 'john.doe@example.com',
   projects: 1,
   reviews: 0,
