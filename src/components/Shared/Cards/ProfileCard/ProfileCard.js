@@ -10,6 +10,11 @@ const Card = styled(StyledServiceCard)`
   align-items: center;
   background-color: #fff;
   float: left;
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
 `;
 
 const Title = styled.div`

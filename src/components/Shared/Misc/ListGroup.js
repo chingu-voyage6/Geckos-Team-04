@@ -9,6 +9,11 @@ const StyledListGroup = styled.ul`
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 -1px 1px 0 rgba(0,0,0,.04), 0 1px 2px 0 rgba(0,0,0,.16);
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    border-radius: 0;
+  }
 `;
 
 const StyledListGroupItem = styled.li`
