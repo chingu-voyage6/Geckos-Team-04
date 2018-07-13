@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 
 import LandingPage from './Pages/LandingPage/Landing';
 import ExplorePage from './Pages/Explore';
-import PrivacyPage from './Pages/Privacy';
-import TermsPage from './Pages/Terms';
+import PrivacyPage from './Pages/Policy/Privacy';
+import TermsPage from './Pages/Policy/Terms';
 import LoginPage from './Pages/Login';
 
 class App extends Component {
