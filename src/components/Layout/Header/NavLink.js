@@ -31,7 +31,7 @@ const LinkStyled = styled.li`
         display: ${({ title }) => (title === 'Home' ? 'none' : 'flex')};
         padding: 0;
         align-items: center;
-        border-bottom: 1px solid #e9eced;
+        border-bottom: 0 solid #e9eced;
         width: auto;
         cursor: pointer;
         > a {

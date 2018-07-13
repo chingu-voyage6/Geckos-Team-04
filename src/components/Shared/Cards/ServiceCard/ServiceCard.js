@@ -27,10 +27,7 @@ const StyledServiceCard = StyledCard.extend`
 `;
 
 const ServiceHeader = CardHeader.extend`
-background-image: url('${props => {
-  const { image } = props;
-  return image;
-}} ');
+background-image: url('${({ image }) => image}}');
 height: 12rem;
 `;
 
@@ -83,18 +80,24 @@ const ServiceLocationCard = props => {
   const {
     service,
     service: { pros },
+    width,
   } = props;
   const title = `${pros} pros in your area`;
   return (
-    <ServiceCard service={service}>
+    <ServiceCard service={service} width={width}>
       <LocationIcon />
-      {title}
+      <span>{title}</span>
     </ServiceCard>
   );
 };
 
 ServiceLocationCard.propTypes = {
   service: PropTypes.object.isRequired,
+  width: PropTypes.string,
+};
+
+ServiceLocationCard.defaultProps = {
+  width: 'inherit',
 };
 
 const ServicePricingCard = props => {
@@ -115,11 +118,11 @@ const CategoryCard = props => {
   const {
     service,
     service: { pros },
+    width,
+    height,
   } = props;
   const title = `${pros} pros near you`;
   const boxShadow = '0 -1px 1px 0 rgba(0,0,0,.04), 0 1px 2px 0 rgba(0,0,0,.16)';
-  const width = '200px';
-  const height = '219px';
   return (
     <ServiceCard service={service} boxShadow={boxShadow} width={width} height={height}>
       <LocationIcon />
@@ -130,6 +133,13 @@ const CategoryCard = props => {
 
 CategoryCard.propTypes = {
   service: PropTypes.object.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
+
+CategoryCard.defaultProps = {
+  width: '200px',
+  height: '219px',
 };
 
 export default ServiceCard;
