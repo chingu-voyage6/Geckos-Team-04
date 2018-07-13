@@ -39,8 +39,8 @@ import PropTypes from 'prop-types';
 
 class Icon extends Component {
   render() {
-    const { size, path } = this.props;
-    const viewBox = `0 0 ${size} ${size}`;
+    const { size, path, viewBoxSize } = this.props;
+    const viewBox = `0 0 ${viewBoxSize || size} ${viewBoxSize || size}`;
 
     return (
       <svg
@@ -59,11 +59,13 @@ class Icon extends Component {
 Icon.defaultProps = {
   size: '18',
   path: '',
+  viewBoxSize: null,
 };
 
 Icon.propTypes = {
   size: PropTypes.string,
   path: PropTypes.string,
+  viewBoxSize: PropTypes.string,
 };
 
 export default Icon;
