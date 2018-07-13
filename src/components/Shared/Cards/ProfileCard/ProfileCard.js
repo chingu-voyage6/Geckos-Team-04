@@ -5,16 +5,19 @@ import styled from 'styled-components';
 import { StyledServiceCard } from '../ServiceCard/ServiceCard';
 
 const Card = styled(StyledServiceCard)`
+  padding: 24px;
   text-align: center;
   align-items: center;
-  padding: 24px;
+  background-color: #fff;
+  float: left;
 `;
 
-const CardName = styled.div`
+const Title = styled.div`
   font-size: 18px;
   line-height: 24px;
   font-weight: 700;
   color: #2f3033;
+  margin-top: 10px;
 `;
 
 const MutedText = styled.div`
@@ -23,12 +26,13 @@ const MutedText = styled.div`
   color: #676d73;
 `;
 
-const CardAvatar = styled.img`
+const Avatar = styled.img`
   width: 124px;
   height: 124px;
-  border-radius:50%
+  border-radius: 50%;
   position: relative;
   overflow: hidden;
+  margin-bottom: 10px;
 `;
 
 const Button = styled.button`
@@ -51,7 +55,6 @@ const InfoBox = styled.div`
   align-items: center;
   width: 250px;
   height: 68px;
-  border-right: 1px;
 `;
 
 const InfoBoxItem = styled.div`
@@ -70,10 +73,10 @@ const ProfileCard = props => {
   const boxShadow = `0 -1px 1px 0 rgba(0,0,0,.04), 0 1px 2px 0 rgba(0,0,0,.16)`;
 
   return (
-    <Card width={364} boxShadow={boxShadow}>
-      <CardAvatar src={avatar} />
+    <Card width="290px" boxShadow={boxShadow}>
+      <Avatar src={avatar} />
       <Button>Upload Photo</Button>
-      <CardName>{name}</CardName>
+      <Title>{name}</Title>
       <MutedText>{email}</MutedText>
       <InfoBox>
         <InfoBoxItem>

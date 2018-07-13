@@ -1,16 +1,38 @@
 import React from 'react';
+import styled from 'styled-components';
 import Layout from '../../Layout/Layout';
-import Section from '../../Layout/Section/Section';
 import ProfileCard from '../../Shared/Cards/ProfileCard';
+import { ListGroup } from '../../Shared/Misc';
+
+const StyledSection = styled.section`
+  display: flex;
+  padding: 60px;
+  align-content: center;
+  align-items: flex-start;
+  background-color: #fafafa;
+  justify-content: center;
+`;
+
+const Footer = styled.div`
+  margin: 1rem;
+  flex-grow: 1;
+  flex-direction: column;
+`;
 
 const Profile = props => (
   <Layout>
-    <Section>
+    <StyledSection>
       <ProfileCard {...props} />
-      <div>Account Settings</div>
-      <div>Notification Settings</div>
-      <div>Logout</div>
-    </Section>
+      <Footer>
+        <ListGroup>
+          <div>Account Settings</div>
+          <div>Notification Settings</div>
+        </ListGroup>
+        <ListGroup>
+          <div>Logout</div>
+        </ListGroup>
+      </Footer>
+    </StyledSection>
   </Layout>
 );
 
