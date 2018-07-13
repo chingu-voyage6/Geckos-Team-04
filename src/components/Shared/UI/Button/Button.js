@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 
 const DefaultButton = styled.button`
   color: #fff;
-  font-weight: bold;
-  background-color: #009fd9;
-  font-size: 0.8rem;
-  padding-left: 22px;
-  padding-right: 22px;
-  padding: 12px 22px;
-  border-radius: 0.25rem !important; // required to override normalize from footer!
 
+  background-color: #009fd9;
+  font-size: 1rem;
+
+  padding: 12px 30px;
+  border-radius: 0.25rem !important; // required to override normalize from footer!
+  display: flex;
+  align-items: center;
+  justify-content: center;
   :focus {
     text-decoration: underline;
     background-color: #007fad;
