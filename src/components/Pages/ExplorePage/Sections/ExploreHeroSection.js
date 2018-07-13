@@ -86,6 +86,16 @@ const SearchInput = styled.input`
     opacity: 1;
   }
 `;
+const SearchGlass = styled.span`
+  display: inline-block;
+
+  transform: scale(1.1) translateY(3px);
+`;
+
+const SpanBtnLabel = styled.span`
+  display: inline-block;
+`;
+
 const exploreHeroSection = () => (
   <StyledSection isGray hasBorder>
     <SectionTitle>
@@ -93,9 +103,14 @@ const exploreHeroSection = () => (
     </SectionTitle>
     <SearchWrappper>
       <SearchInput type="text" placeholder="What service are you looking for?" />
-      <SearchButton click={() => {}}>Search</SearchButton>
+      <SearchButton click={() => {}}>
+        <SearchGlass>
+          <SearchIconButton size="24" />
+        </SearchGlass>
+        <SpanBtnLabel>Search</SpanBtnLabel>
+      </SearchButton>
     </SearchWrappper>
-    <CategoryBar>Icons lkalalala</CategoryBar>
+    <CategoryBar categories={iconData} />
   </StyledSection>
 );
 
