@@ -25,6 +25,13 @@
   UI elements icons:
   - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass)
   
+##############    TEMPLATE     ############
+export const  = props => {
+  const path = '';
+
+  return <Icon path={path} {...props} />;
+};
+
 */
 
 import React, { Component } from 'react';
