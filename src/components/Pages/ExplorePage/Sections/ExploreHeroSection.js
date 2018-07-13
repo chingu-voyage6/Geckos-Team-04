@@ -3,12 +3,67 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
+import CategoryBar from '../../../Shared/CategoryBar/CategoryBar';
+
+import {
+  SearchIconButton,
+  HouseIconSmall,
+  ConfettiIconSmall,
+  AppleIconSmall,
+  FlowerIconSmall,
+  PawIconSmall,
+  ButtonIconSmall,
+  BriefcaseIconSmall,
+  ThreeDotsIconSmall,
+} from '../../../Shared/Icon/Icon';
 
 const SectionTitle = styled.div`
   margin-bottom: 1.5rem;
 `;
-const CategoryBar = styled.div``;
+// const CategoryBar = styled.div``;
+const iconData = [
+  {
+    icon: HouseIconSmall,
+    to: '/home-improvement',
+    categoryTitle: 'Home',
+  },
+  {
+    icon: ConfettiIconSmall,
+    to: '/events',
+    categoryTitle: 'Events',
+  },
+  {
+    icon: AppleIconSmall,
+    to: '/lessons',
+    categoryTitle: 'Lessons',
+  },
+  {
+    icon: FlowerIconSmall,
+    to: '/wellness',
+    categoryTitle: 'Wellness',
+  },
+  {
+    icon: PawIconSmall,
+    to: '/more-services#category-group-pets',
+    categoryTitle: 'Pets',
+  },
 
+  {
+    icon: ButtonIconSmall,
+    to: '/more-services#category-group-crafts',
+    categoryTitle: 'Crafts',
+  },
+  {
+    icon: BriefcaseIconSmall,
+    to: '/more-services#category-group-business',
+    categoryTitle: 'Business',
+  },
+  {
+    icon: ThreeDotsIconSmall,
+    to: '/more-services',
+    categoryTitle: 'More',
+  },
+];
 const StyledSection = styled(Section)`
   padding-top: 40px;
   padding-bottom: 40px;
