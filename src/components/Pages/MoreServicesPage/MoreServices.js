@@ -55,11 +55,3 @@ const moreServices = () => (
 );
 
 export default moreServices;
-
-/* <CategoriesSection>
-        <CategoryHeading>{heading}</CategoryHeading>
-        <ServicesSection>{categories.map( => <SomeCard {...props} />)}</ServicesSection>
-        <ServicesSection>
-          {categories.map(({icon, categoryId, categoryTitle}) => <StyledLink to={`more-services${categoryId}`}>{service}</StyledLink>)}
-        </ServicesSection>
-      </CategoriesSection> */
