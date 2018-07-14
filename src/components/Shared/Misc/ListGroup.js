@@ -18,7 +18,6 @@ const StyledListGroup = styled.ul`
 
 const StyledListGroupItem = styled.li`
   border-bottom: 1px solid #e9eced;
-  padding: 12px 12px 12px 20px;
   font-size: 16px;
   font-weight: 700;
   color: #2f3033;
@@ -30,7 +29,7 @@ const ListGroup = props => {
   const childrenArray = React.Children.toArray(children);
   return (
     <StyledListGroup>
-      {childrenArray.map(child => <StyledListGroupItem>{child}</StyledListGroupItem>)}
+      {childrenArray.map((child, i) => <StyledListGroupItem key={i}>{child}</StyledListGroupItem>)}
     </StyledListGroup>
   );
 };

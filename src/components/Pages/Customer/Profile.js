@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../../Layout/Layout';
 import ProfileCard from '../../Shared/Cards/ProfileCard';
-import { ListGroup } from '../../Shared/Misc';
+import { ListGroup, ButtonArrowLink } from '../../Shared/Misc';
 
 const StyledSection = styled.section`
   display: flex;
@@ -36,11 +36,11 @@ const Profile = props => (
       <ProfileCard {...props} />
       <Footer>
         <ListGroup>
-          <div>Account Settings</div>
-          <div>Notification Settings</div>
+          <ButtonArrowLink to="/profile/information">Account Settings</ButtonArrowLink>
+          <ButtonArrowLink to="/profile/notifications">Notification Settings</ButtonArrowLink>
         </ListGroup>
         <ListGroup>
-          <div>Logout</div>
+          <ButtonArrowLink to="/logout">Logout</ButtonArrowLink>
         </ListGroup>
       </Footer>
     </StyledSection>
