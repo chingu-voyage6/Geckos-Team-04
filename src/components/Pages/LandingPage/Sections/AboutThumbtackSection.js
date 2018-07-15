@@ -37,7 +37,7 @@ const StoreLogo = styled.img`
   margin-right: 1rem;
 `;
 const ConentWrapper = styled.div`
-  padding: 1rem;
+  padding: 1rem 0;
 
   @media (min-width: 701px) {
     padding: 0;

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
 import CategoryBar from '../../../Shared/CategoryBar/CategoryBar';
