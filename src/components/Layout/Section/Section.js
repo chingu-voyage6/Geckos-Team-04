@@ -10,21 +10,21 @@ const StyledSection = styled.section`
   overflow: hidden;
 `;
 const ChildrenWrapper = styled.div`
-  @media only screen and (max-width: 1023px) {
-    max-width: 728px;
     padding-left: 16px;
     padding-right: 16px;
-  }
-
-  @media only screen and (max-width: 767px) {
-    max-width: 474px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  max-width: 960px;
+  width: 100%;
   margin: 0 auto;
-  min-height: 100%;
+
+  @media only screen and (min-width: 482px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media only screen and (min-width: 1026px) {
+  max-width: 960px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 `;
 export default class Section extends React.Component {
   render() {
