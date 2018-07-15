@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import CategoryHeading from './CategoryHeading';
 import ServicesSection from './ServicesSection';
 import ServiceLink from './ServiceLink';
-import { CategoryCard } from '../../Shared/Cards/ServiceCard/ServiceCard';
+import { PureServiceCard } from '../../Shared/Cards/ServiceCard/ServiceCard';
 
 const StyledCategorie = styled.div`
   padding-bottom: 2rem;
@@ -25,12 +25,10 @@ const categorieSection = ({ categoryId, categoryTitle, cards, categoryServices }
     <ServicesSection>
       {cards.map(({ title, imgUrl, to }) => (
         <CardWrapper to={to} key={title}>
-          <CategoryCard
+          <PureServiceCard
             width="100%"
             service={{ name: title, image: 'http://thecatapi.com/api/images/get' }}
-          >
-            {title}
-          </CategoryCard>
+          />
         </CardWrapper>
       ))}
     </ServicesSection>
