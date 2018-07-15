@@ -13,8 +13,11 @@ const StyledSection = styled(Section)`
   }
 `;
 const HeroContentWrapper = styled.div`
-  width: 66.7%;
-  height: auto;
+  width: 100%;
+
+  @media (min-width: 701px) {
+    width: 66.7%;
+  }
 `;
 const SearchWrappper = styled.div`
   width: 100%;

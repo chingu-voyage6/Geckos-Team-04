@@ -14,8 +14,11 @@ const SectionTitle = styled.div`
 `;
 
 const SectionTextWrapper = styled.div`
-  max-width: 50%;
+  width: 100%;
   margin-bottom: 2rem;
+  @media (min-width: 482px) {
+    width: 50%;
+  }
 `;
 const costEstimateSection = () => (
   <Section hasBorder>

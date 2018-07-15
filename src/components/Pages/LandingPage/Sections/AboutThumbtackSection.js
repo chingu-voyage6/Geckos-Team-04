@@ -6,15 +6,22 @@ import Section from '../../../Layout/Section/Section';
 const StyledSection = styled(Section)`
   > div {
     display: flex;
+    flex-direction: column;
+    @media (min-width: 701px) {
+      flex-direction: row;
+    }
   }
 `;
 
 const SectionHalf = styled.div`
-  max-width: 50%;
-  display: block;
+  width: 100%;
   min-height: 100%;
   display: flex;
   align-items: center;
+
+  @media (min-width: 701px) {
+    width: 50%;
+  }
 `;
 
 const SectionText = styled.div`
@@ -27,17 +34,22 @@ const StoreLogo = styled.img`
   height: 40px;
   width: auto;
   display: inline-block;
-
   margin-right: 1rem;
 `;
+const ConentWrapper = styled.div`
+  padding: 1rem;
 
+  @media (min-width: 701px) {
+    padding: 0;
+  }
+`;
 const SectionTitle = styled.div`
   margin-bottom: 1rem;
 `;
 const aboutThumbtackSection = () => (
   <StyledSection hasBorder padding={false}>
     <SectionHalf>
-      <div>
+      <ConentWrapper>
         <SectionTitle>
           <h2>
             When you need to hire someone – a landscaper, a DJ, anyone – Thumbtack finds them for
@@ -59,7 +71,7 @@ const aboutThumbtackSection = () => (
             alt="Google Play Store"
           />
         </a>
-      </div>
+      </ConentWrapper>
     </SectionHalf>
     <SectionHalf>
       <img
