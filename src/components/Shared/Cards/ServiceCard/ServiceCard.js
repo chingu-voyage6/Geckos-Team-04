@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledCard } from '../Card';
 import CardHeader from '../CardHeader';
 import CardName from '../CardName';
@@ -74,6 +74,31 @@ ServiceCard.propTypes = {
 ServiceCard.defaultProps = {
   width: 'inherit',
   boxShadow: 'none',
+};
+const ServiceTitle = styled.div`
+  padding: 16px 16px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #2f3033;
+`;
+const StyledServiceHeader = ServiceHeader.extend`
+  border-radius: 4px 4px 0 0;
+  margin: 0;
+  height: 10rem;
+`;
+const PureServiceCard = props => {
+  const {
+    service: { name, image },
+  } = props;
+
+  const width = '100%';
+  const boxShadow = '0 -1px 1px 0 rgba(0,0,0,.04), 0 1px 2px 0 rgba(0,0,0,.16)';
+  return (
+    <StyledServiceCard width={width} boxShadow={boxShadow}>
+      <StyledServiceHeader image={image} role="img" aria-label={name} />
+      <ServiceTitle>{name}</ServiceTitle>
+    </StyledServiceCard>
+  );
 };
 
 const ServiceLocationCard = props => {
@@ -150,4 +175,5 @@ export {
   CategoryCard,
   StyledServiceCard,
   ServiceCardBody,
+  PureServiceCard,
 };
