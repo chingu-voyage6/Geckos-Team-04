@@ -6,33 +6,39 @@ const StyledSection = styled.section`
   background-color: ${({ isGray }) => (isGray ? '#FAFAFA' : '#FFF')};
   border-bottom: ${({ hasBorder }) => (hasBorder ? '1px solid #e9eced;' : 'none')};
   max-width: 100%;
-  padding: ${({ padding }) => (padding ? '60px' : '0')} 20px;
+  padding-top: ${({ padding }) => (padding ? '60px' : '0')};
+  padding-bottom: ${({ padding }) => (padding ? '60px' : '0')};
   overflow: hidden;
 `;
 const ChildrenWrapper = styled.div`
-  @media only screen and (max-width: 1023px) {
-    max-width: 728px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  @media only screen and (max-width: 767px) {
-    max-width: 474px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  max-width: 960px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
   margin: 0 auto;
-  min-height: 100%;
+  max-width: 100%;
+  @media only screen and (min-width: 482px) {
+    padding-left: 32px;
+    padding-right: 32px;
+
+    ${({ isNarrow }) =>
+      isNarrow ? 'max-width: 449px;  padding-left: 0px;  padding-right: 0px;' : ''};
+  }
+
+  @media only screen and (min-width: 701px) {
+    ${({ isNarrow }) => (isNarrow ? 'max-width: 668px;' : '')};
+  }
+
+  @media only screen and (min-width: 1026px) {
+    max-width: 946px;
+  }
 `;
 export default class Section extends React.Component {
   render() {
-    const { children, isGray, hasBorder, padding, className } = this.props;
+    const { children, isGray, hasBorder, padding, className, isNarrow } = this.props;
 
     return (
       <StyledSection className={className} isGray={isGray} hasBorder={hasBorder} padding={padding}>
-        <ChildrenWrapper>{children}</ChildrenWrapper>
+        <ChildrenWrapper isNarrow={isNarrow}>{children}</ChildrenWrapper>
       </StyledSection>
     );
   }
@@ -44,6 +50,7 @@ Section.propTypes = {
   isGray: PropTypes.bool,
   hasBorder: PropTypes.bool,
   padding: PropTypes.bool,
+  isNarrow: PropTypes.bool,
   className: PropTypes.string,
 };
 Section.defaultProps = {
@@ -51,4 +58,5 @@ Section.defaultProps = {
   hasBorder: false,
   padding: true,
   className: '',
+  isNarrow: false,
 };

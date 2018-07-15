@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const DefaultButton = styled.button`
   color: #fff;
-
+  white-space: nowrap;
   background-color: #009fd9;
-  font-size: 1rem;
-
-  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 20px;
   border-radius: 0.25rem !important; // required to override normalize from footer!
   display: flex;
   align-items: center;

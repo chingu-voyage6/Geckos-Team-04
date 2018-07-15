@@ -34,15 +34,25 @@ const SectionTitle = styled.div`
 
 const HowTTWorksSteps = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1026px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledStep = styled.div`
-  width: 33.3%;
+  width: 100%;
   text-align: center;
-  padding: 1rem;
+  padding-bottom: 3rem;
+
+  @media (min-width: 1026px) {
+    width: 33.3%;
+    padding: 1rem;
+  }
   > img {
     width: 80%;
-    height: auto;
+    height: 150px;
     display: inline-block;
     margin-bottom: 1rem;
   }

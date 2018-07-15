@@ -6,7 +6,11 @@ import { CarouselTempLocation } from '../../../Shared/CarouselTemp/CarouselTemp'
 
 const StyledSection = styled(Section)`
   > div {
-    padding-top: 40px;
+    padding-top: 100px;
+
+    @media (min-width: 701px) {
+      padding-top: 40px;
+    }
   }
 `;
 

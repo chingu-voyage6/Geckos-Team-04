@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
 import CategoryBar from '../../../Shared/CategoryBar/CategoryBar';
@@ -66,7 +65,11 @@ const iconData = [
 ];
 const StyledSection = styled(Section)`
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 0;
+
+  @media (min-width: 482px) {
+    padding-bottom: 40px;
+  }
 `;
 
 const SearchWrappper = styled.div`
@@ -78,7 +81,7 @@ const SearchInput = styled.input`
   padding: 15px;
   border: solid 1px #d3d4d5;
   flex-grow: 1;
-  box-shadow: 0 0 5px 0 rgba(47, 48, 51, 0.2);
+
   border-radius: 4px 0 0 4px;
 
   ::placeholder {
@@ -86,31 +89,70 @@ const SearchInput = styled.input`
     opacity: 1;
   }
 `;
-const SearchGlass = styled.span`
-  display: inline-block;
+export const SearchGlass = styled.span`
+  display: inline;
+  height: ${({ size }) => size}px;
+  transform: scale(1.1) translateY(-2px);
+  padding: 0;
+  @media (min-width: 482px) {
+    padding: 0 20px;
+  }
 
-  transform: scale(1.1) translateY(3px);
+  @media (min-width: 1026px) {
+    padding: 0 5px 0 0;
+  }
 `;
 
 const SpanBtnLabel = styled.span`
-  display: inline-block;
+  display: none;
+
+  @media (min-width: 1026px) {
+    display: inline;
+  }
+`;
+
+const StyledCategoryBar = styled(CategoryBar)`
+  li {
+    display: none;
+  }
+  @media (min-width: 482px) {
+    li:nth-child(1),
+    li:nth-child(2),
+    li:nth-child(3),
+    li:last-child {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 701px) {
+    li:nth-child(4),
+    li:nth-child(5) {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 1026px) {
+    li {
+      display: flex;
+    }
+  }
 `;
 
 const exploreHeroSection = () => (
-  <StyledSection isGray hasBorder>
+  <StyledSection isNarrow isGray hasBorder>
     <SectionTitle>
       <h1>Hire skilled pros for over 1,000 services.</h1>
     </SectionTitle>
     <SearchWrappper>
       <SearchInput type="text" placeholder="What service are you looking for?" />
       <SearchButton click={() => {}}>
-        <SearchGlass>
-          <SearchIconButton size="24" />
+        <SearchGlass size="18">
+          <SearchIconButton size="18" />
         </SearchGlass>
         <SpanBtnLabel>Search</SpanBtnLabel>
       </SearchButton>
     </SearchWrappper>
-    <CategoryBar categories={iconData} />
+    <StyledCategoryBar categories={iconData} />
   </StyledSection>
 );
 

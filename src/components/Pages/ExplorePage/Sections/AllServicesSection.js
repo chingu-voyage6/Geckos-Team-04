@@ -120,8 +120,12 @@ const GetIcon = ({ tag }) => {
   return <TagName size="28" />;
 };
 
+GetIcon.propTypes = {
+  tag: PropTypes.element.isRequired,
+};
+
 const allServicesSection = () => (
-  <Section isGray hasBorder>
+  <Section isNarrow isGray hasBorder>
     <SectionTitle>
       <h3>All Services</h3>
     </SectionTitle>

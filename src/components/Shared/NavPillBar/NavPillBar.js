@@ -45,7 +45,6 @@ const pillContent = [
 
 const PillWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(47, 48, 51, 0.2);
-  max-width: 960px;
   margin: auto;
   display: flex;
   justify-content: space-around;
@@ -53,6 +52,10 @@ const PillWrapper = styled.div`
   z-index: 100;
   background-color: #fff;
   transform: translateY(-50%);
+
+  @media (min-width: 482px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 const PillStyled = styled(Link)`
