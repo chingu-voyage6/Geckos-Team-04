@@ -121,7 +121,7 @@ const GetIcon = ({ tag }) => {
 };
 
 const allServicesSection = () => (
-  <Section isGray hasBorder>
+  <Section isNarrow isGray hasBorder>
     <SectionTitle>
       <h3>All Services</h3>
     </SectionTitle>

@@ -15,25 +15,30 @@ const ChildrenWrapper = styled.div`
   padding-right: 16px;
   width: 100%;
   margin: 0 auto;
-
+  max-width: 100%;
   @media only screen and (min-width: 482px) {
     padding-left: 32px;
     padding-right: 32px;
+
+    ${({ isNarrow }) =>
+      isNarrow ? 'max-width: 449px;  padding-left: 0px;  padding-right: 0px;' : ''};
+  }
+
+  @media only screen and (min-width: 701px) {
+    ${({ isNarrow }) => (isNarrow ? 'max-width: 668px;' : '')};
   }
 
   @media only screen and (min-width: 1026px) {
-    max-width: 960px;
-    padding-left: 0px;
-    padding-right: 0px;
+    max-width: 946px;
   }
 `;
 export default class Section extends React.Component {
   render() {
-    const { children, isGray, hasBorder, padding, className } = this.props;
+    const { children, isGray, hasBorder, padding, className, isNarrow } = this.props;
 
     return (
       <StyledSection className={className} isGray={isGray} hasBorder={hasBorder} padding={padding}>
-        <ChildrenWrapper>{children}</ChildrenWrapper>
+        <ChildrenWrapper isNarrow={isNarrow}>{children}</ChildrenWrapper>
       </StyledSection>
     );
   }
@@ -45,6 +50,7 @@ Section.propTypes = {
   isGray: PropTypes.bool,
   hasBorder: PropTypes.bool,
   padding: PropTypes.bool,
+  isNarrow: PropTypes.bool,
   className: PropTypes.string,
 };
 Section.defaultProps = {
@@ -52,4 +58,5 @@ Section.defaultProps = {
   hasBorder: false,
   padding: true,
   className: '',
+  isNarrow: false,
 };
