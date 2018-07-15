@@ -33,6 +33,10 @@ const CategoriesWrapper = styled.div`
   display: flex;
   width: 66.6%;
   flex-direction: column;
+
+  div:last-child {
+    border-bottom: none;
+  }
 `;
 
 const moreServices = () => (
