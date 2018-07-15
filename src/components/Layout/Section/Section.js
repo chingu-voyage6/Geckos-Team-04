@@ -6,12 +6,13 @@ const StyledSection = styled.section`
   background-color: ${({ isGray }) => (isGray ? '#FAFAFA' : '#FFF')};
   border-bottom: ${({ hasBorder }) => (hasBorder ? '1px solid #e9eced;' : 'none')};
   max-width: 100%;
-  padding: ${({ padding }) => (padding ? '60px' : '0')} 20px;
+  padding-top: ${({ padding }) => (padding ? '60px' : '0')};
+  padding-bottom: ${({ padding }) => (padding ? '60px' : '0')};
   overflow: hidden;
 `;
 const ChildrenWrapper = styled.div`
-    padding-left: 16px;
-    padding-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
   width: 100%;
   margin: 0 auto;
 
@@ -21,7 +22,7 @@ const ChildrenWrapper = styled.div`
   }
 
   @media only screen and (min-width: 1026px) {
-  max-width: 960px;
+    max-width: 960px;
     padding-left: 0px;
     padding-right: 0px;
   }
