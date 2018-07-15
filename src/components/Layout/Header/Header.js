@@ -22,7 +22,7 @@ const Navigation = styled.nav`
   > ul {
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     transition: transform 0.3s linear;
     ${({ isClosed }) =>
       isClosed ? 'transform: translateY(-100vh);' : 'transform: translateY(60px);'} padding: 0;
@@ -63,7 +63,7 @@ const LogoFullStyledLink = styled(Link)`
 `;
 
 const MobileNav = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
