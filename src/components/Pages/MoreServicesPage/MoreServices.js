@@ -41,6 +41,9 @@ const CategoriesWrapper = styled.div`
 
 const moreServices = () => (
   <Layout search>
+    <MobileCategoriesWrapper>
+      <MobileBar size="24" viewBoxSize="48" categories={categories} />
+    </MobileCategoriesWrapper>
     <StyledSection isGray hasBorder>
       <StyledCategoryBar size="24" viewBoxSize="48" categories={categories} />
       <CategoriesWrapper>
