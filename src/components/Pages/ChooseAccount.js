@@ -43,6 +43,9 @@ const LeftBox = styled.div`
   display: flex;
   flex-direction: column;
   background-image: url(https://static.thumbtackstatic.com/_assets/images/release/pages/choose-account/images/cta-bg.13ec385980b40b2756ef995707ace920.jpg);
+  @media (max-width: 701px) {
+    display: block;
+  }
   > div {
     flex: 1;
     color: #ffffff;
