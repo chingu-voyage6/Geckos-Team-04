@@ -72,6 +72,10 @@ const FooterCard = styled.div`
     > li {
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
+      > a {
+        color: #8795a1;
+        text-decoration: none;
+      }
     }
   }
 `;
@@ -154,39 +158,75 @@ const Footer = props => {
           <FooterCard>
             <FooterLinkHeader>Company</FooterLinkHeader>
             <ul>
-              <li>About</li>
-              <li>Career</li>
-              <li>Press</li>
-              <li>Blog</li>
+              <li>
+                <a href="/about">About</a>
+              </li>
+              <li>
+                <a href="/career">Career</a>
+              </li>
+              <li>
+                <a href="/press">Press</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
             </ul>
           </FooterCard>
           <FooterCard>
             <FooterLinkHeader>Customers</FooterLinkHeader>
             <ul>
-              <li>How it works</li>
-              <li>Safety</li>
-              <li>iPhone App</li>
-              <li>Android App</li>
-              <li>Services Near Me</li>
-              <li>Cost Estimates</li>
-              <li>How To Pages</li>
-              <li>Thumbtack Guides</li>
+              <li>
+                <a href="/how-it-works">How it works</a>
+              </li>
+              <li>
+                <a href="/safety">Safety</a>
+              </li>
+              <li>
+                <a href="/apple">iPhone App</a>
+              </li>
+              <li>
+                <a href="/andriod">Android App</a>
+              </li>
+              <li>
+                <a href="/services">Services Near Me</a>
+              </li>
+              <li>
+                <a href="/prices">Cost Estimates</a>
+              </li>
+              <li>
+                <a href="/sitemap">How To Pages</a>
+              </li>
+              <li>
+                <a href="/guides">Thumbtack Guides</a>
+              </li>
             </ul>
           </FooterCard>
           <FooterCard>
             <FooterLinkHeader>Pros</FooterLinkHeader>
             <ul>
-              <li>How it works</li>
-              <li>Sign up</li>
-              <li>Pro center</li>
-              <li>Success stories</li>
-              <li>Mobile app</li>
+              <li>
+                <a href="/how-it-works">How it works</a>
+              </li>
+              <li>
+                <a href="/choose-account">Sign up</a>
+              </li>
+              <li>
+                <a href="/pro">Pro center</a>
+              </li>
+              <li>
+                <a href="/testimonies">Success stories</a>
+              </li>
+              <li>
+                <a href="/apps">Mobile app</a>
+              </li>
             </ul>
           </FooterCard>
           <FooterCard>
             <FooterLinkHeader>Support</FooterLinkHeader>
             <ul>
-              <li>Help center</li>
+              <li>
+                <a href="/help">Help center</a>
+              </li>
             </ul>
           </FooterCard>
         </FooterCol2>
