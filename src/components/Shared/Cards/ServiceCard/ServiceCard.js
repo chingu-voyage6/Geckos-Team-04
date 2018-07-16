@@ -77,9 +77,11 @@ ServiceCard.defaultProps = {
 };
 const ServiceTitle = styled.div`
   padding: 16px 16px 12px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #2f3033;
+  ${({ catPage }) => (catPage ? 'font-weight: normal' : '')};
+  ${({ catPage }) => (catPage ? 'text-align: center' : '')};
 `;
 const StyledServiceHeader = ServiceHeader.extend`
   border-radius: 4px 4px 0 0;
@@ -88,7 +90,7 @@ const StyledServiceHeader = ServiceHeader.extend`
 `;
 const PureServiceCard = props => {
   const {
-    service: { name, image },
+    service: { name, catPage, image },
   } = props;
 
   const width = '100%';
@@ -96,7 +98,7 @@ const PureServiceCard = props => {
   return (
     <StyledServiceCard width={width} boxShadow={boxShadow}>
       <StyledServiceHeader image={image} role="img" aria-label={name} />
-      <ServiceTitle>{name}</ServiceTitle>
+      <ServiceTitle catPage={catPage}>{name}</ServiceTitle>
     </StyledServiceCard>
   );
 };
