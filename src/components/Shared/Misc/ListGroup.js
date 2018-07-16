@@ -46,7 +46,7 @@ ListGroup.defaultProps = {
 };
 
 ListGroup.propTypes = {
-  children: PropTypes.array, // eslint-disable-line react/require-default-props
+  children: PropTypes.node, // eslint-disable-line react/require-default-props
   hasBorder: PropTypes.bool,
   isRounded: PropTypes.bool,
   hasBoxShadow: PropTypes.bool,
