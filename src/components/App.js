@@ -9,6 +9,7 @@ import LoginPage from './Pages/Login';
 import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
 import CustomerProfile from './Pages/Customer/Profile';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
+import ServiceNearMe from './Pages/ServiceNearMePage/ServiceNearMe';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
         <Route path="/home-improvement" component={CategoryPage} />
         <Route path="/wellness" component={CategoryPage} />
         <Route path="/events" component={CategoryPage} />
+        <Route path="/:service/near-me" component={ServiceNearMe} />
       </Fragment>
     );
   }
