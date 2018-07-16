@@ -8,7 +8,7 @@ const CardHeader = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 0.25rem 0.25rem 0 0;
+  /* border-radius: 0.25rem 0.25rem 0 0; */
   background-image: url('https://source.unsplash.com/collection/1791908/250x350');
   z-index: 2;
 `;
