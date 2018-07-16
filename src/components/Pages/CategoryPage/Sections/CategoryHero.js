@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
 
@@ -62,5 +63,11 @@ const CategoryHero = ({ imgUrl, title, slogan }) => (
     </Content>
   </HeroContainer>
 );
+
+CategoryHero.propTypes = {
+  imgUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  slogan: PropTypes.string.isRequired,
+};
 
 export default CategoryHero;
