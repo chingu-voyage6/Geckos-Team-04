@@ -1,4 +1,5 @@
-import express from 'express';
+const express = require('express');
+const service = require('../models/Service');
 
 const router = express.Router();
 
@@ -10,4 +11,4 @@ router.route('/:service_id').get((req, res) => {
   res.json({ success: true });
 });
 
-export default router;
+module.exports = router;

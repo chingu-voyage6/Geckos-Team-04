@@ -1,6 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import services from './service';
+const express = require('express');
+
+const bodyParser = require('body-parser');
+const services = require('./service');
 
 const app = express.Router();
 
@@ -20,4 +21,4 @@ app.get('/', (req, res) => {
 /* Routes assignment */
 app.use('/services', services);
 
-export default app;
+module.exports = app;
