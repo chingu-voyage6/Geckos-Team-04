@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Chevron from '../../Shared/SVG/Chevron';
+import { ChevronIcon } from '../../Shared/Icon/Icon';
 import LogoRound from '../../Shared/SVG/LogoRound';
 
 const ArrowOpen = styled.div`
-  height: 18px;
-  width: 18px;
   margin-left: 4px;
   transform-origin: 50% 50%;
   transition: transform 0.1s linear;
   transform: ${({ isClosed }) => (isClosed ? 'rotate(0deg)' : 'rotate(180deg)')};
+  > * {
+    display: block;
+  }
 `;
 
 const ToggleWrapper = styled.div`
@@ -27,7 +28,7 @@ class MobileMenuToggle extends React.Component {
       <ToggleWrapper>
         <LogoRound />
         <ArrowOpen isClosed={isClosed}>
-          <Chevron color="#676d73" />
+          <ChevronIcon width={18} height={18} color="#676d73" />
         </ArrowOpen>
       </ToggleWrapper>
     );

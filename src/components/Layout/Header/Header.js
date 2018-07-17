@@ -25,10 +25,11 @@ const Navigation = styled.nav`
     position: fixed;
     transition: transform 0.3s linear;
     ${({ isClosed }) =>
-      isClosed ? 'transform: translateY(-100vh);' : 'transform: translateY(45px);'} padding: 0;
+      isClosed ? 'transform: translateY(-100vh);' : 'transform: translateY(60px);'} padding: 0;
     width: 100%;
     height: 100vh;
     background: #fff;
+    z-index: 900;
   }
   @media (min-width: 700px) {
     border-bottom: 1px solid #eee;

@@ -2,11 +2,13 @@ import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
 import LandingPage from './Pages/LandingPage/Landing';
-import ExplorePage from './Pages/Explore';
+import ExplorePage from './Pages/ExplorePage/Explore';
 import PrivacyPage from './Pages/Privacy';
 import TermsPage from './Pages/Terms';
 import LoginPage from './Pages/Login';
 import ChooseAccountPage from './Pages/ChooseAccount';
+import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
+import CustomerProfile from './Pages/Customer/Profile';
 
 class App extends Component {
   render() {
@@ -18,6 +20,8 @@ class App extends Component {
         <Route exact path="/terms" component={TermsPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/choose-account" component={ChooseAccountPage} />
+        <Route path="/more-services" component={MoreServicesPage} />
+        <Route exact path="/customer/profile" component={CustomerProfile} />
       </Fragment>
     );
   }
