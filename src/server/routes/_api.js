@@ -1,4 +1,5 @@
 const faker = require('mongoose-fakery');
+const Services = require('../models/Service');
 
 const serviceList = [
   {
@@ -159,7 +160,9 @@ const generateServiceData = () => {
 };
 
 const services = generateServiceData();
+const servicesFaker = faker.fake('services', Services, services);
 
 module.exports = {
   services,
+  servicesFaker,
 };
