@@ -9,6 +9,7 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "mongoose": "5.0.0",
+    "mongoose-fakery": "^0.1.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
