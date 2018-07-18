@@ -8,6 +8,7 @@ import TermsPage from './Pages/Terms';
 import LoginPage from './Pages/Login';
 import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
 import CustomerProfile from './Pages/Customer/Profile';
+import EditProfile from './Pages/Customer/EditProfile';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage} />
         <Route path="/more-services" component={MoreServicesPage} />
         <Route exact path="/customer/profile" component={CustomerProfile} />
+        <Route exact path="/profile/account_edit" component={EditProfile} />
       </Fragment>
     );
   }
