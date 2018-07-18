@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const DefaultButton = styled.button`
-  color: #fff;
+  color: ${({ color }) => color || '#fff'};
   white-space: nowrap;
-  background-color: #009fd9;
+  background-color: ${({ background }) => background || '#009fd9'};
   font-size: 14px;
   font-weight: bold;
   padding: 12px 20px;
-  border-radius: 0.25rem !important; // required to override normalize from footer!
+  border-radius: 0.25rem !important; /* required to override normalize from footer! */
+  border: ${({ border }) => border || '2px solid transparent'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,6 +34,7 @@ defaultButton.propTypes = {
 const SearchBarButtonStyled = DefaultButton.extend`
   border-radius: 0 0.25rem 0.25rem 0 !important;
 `;
+
 const SearchButton = ({ click, children }) => (
   <SearchBarButtonStyled onCLick={click} type="button">
     {children}
@@ -43,7 +45,8 @@ SearchButton.propTypes = {
   click: PropTypes.func.isRequired,
   children: PropTypes.string.isRequired,
 };
-// Button.defaultProps = {
+
+// DefaultButton.defaultProps = {
 //   color: '#009fd9',
 // };
 
