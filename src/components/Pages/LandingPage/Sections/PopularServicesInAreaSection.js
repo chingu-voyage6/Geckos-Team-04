@@ -9,7 +9,9 @@ const StyledSection = styled(Section)`
     padding-top: 100px;
 
     @media (min-width: 701px) {
-      padding-top: 40px;
+      > div {
+        padding-top: 40px;
+      }
     }
   }
 `;
