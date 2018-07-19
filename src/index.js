@@ -6,15 +6,24 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 injectGlobal`
+  *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
   body {
     margin: 0;
     padding: 0;
-    display: block;
     font-family: Mark,Avenir,Helvetica,Arial,sans-serif;
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: anti-aliased;
   }
+  img {
+    max-width: 100%;
+    height: auto;
+}
 `;
 
 ReactDOM.render(
