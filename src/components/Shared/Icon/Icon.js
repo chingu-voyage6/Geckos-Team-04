@@ -13,12 +13,12 @@
     ScreenIcon, CourtHouseIcon, HandIcon, PawIcon, CameraIcon, WrenchIcon, ThreeDotsIcon, CakeIcon
 ---------------------------------------
   Category Bar: 
-  - HouseIconSmall, ConfettiIconSmall, AppleIconSmall, FlowerIconSmall, PawIconSmall, ButtonIconSmall, BriefcaseIconSmall, ThreeDotsIconSmall
+  - HouseIconSmall, ConfettiIconSmall, AppleIconSmall, FlowerIconSmall, PawIconSmall, ButtonIconSmall, BriefcaseIconSmall, ThreeDotsIconSmall, CakeIconSmall
 ---------------------------------------
 
-  More Services sidebar category icons:
+  More Services sidebar category icons/service near me top icons:
   - HomeImprovementIcon, WellnessIcon, PetsIcon, BusinessIcon, EventsIcon,
-    CraftsIcon, WebDesignIcon, LegalIcon, PersonalIcon, PhotographyIcon, RepairIcon, WritingIcon
+    CraftsIcon, WebDesignIcon, LegalIcon, PersonalIcon, PhotographyIcon, RepairIcon, WritingIcon, WeddingsIcon, ThreeDotsLarge
 ---------------------------------------
   Card icons:
   - LocationIcon, PricingIcon
@@ -74,6 +74,19 @@ Icon.propTypes = {
 
 export default Icon;
 
+export const ThreeDotsLarge = props => (
+  <svg viewBox="0 0 48 48" width="48" height="48" fill="currentColor">
+    <circle cx="24" cy="24" r="4.5" />
+    <circle cx="9" cy="24" r="4.5" />
+    <circle cx="39" cy="24" r="4.5" />
+  </svg>
+);
+export const CakeIconSmall = props => {
+  const path =
+    'M 4 15 h 10 v -3 H 4 v 3 Z m 1 -5 h 8 V 7 H 5 v 3 Z m 2 -5 h 4 V 3 H 7 v 2 Z m 9 10 v -4 a 1 1 0 0 0 -1 -1 V 6 a 1 1 0 0 0 -1 -1 h -1 V 2 a 1 1 0 0 0 -1 -1 H 6 a 1 1 0 0 0 -1 1 v 3 H 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 1 0 0 2 h 14 a 1 1 0 1 0 0 -2 Z';
+
+  return <Icon path={path} {...props} />;
+};
 export const LocationIcon = props => {
   const path =
     'M3.002 7.25c0 3.248 4.342 7.756 5.23 8.825l.769.925.769-.926c.888-1.068 5.234-5.553 5.234-8.824C15.004 4.145 13 1 9.001 1c-3.999 0-6 3.145-6 6.25zm1.993 0C4.995 5.135 6.176 3 9.001 3s4.002 2.135 4.002 4.25c0 1.777-2.177 4.248-4.002 6.59C7.1 11.4 4.995 9.021 4.995 7.25zM8.91 5.5c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5 1.5-.673 1.5-1.5-.673-1.5-1.5-1.5';
@@ -349,6 +362,13 @@ export const ThreeDotsIconSmall = props => {
 export const Arrow = props => {
   const path =
     'M10.764 21.646L19 14l-8.275-7.689a1 1 0 0 0-1.482 1.342L16 14l-6.699 6.285c-.187.2-.301.435-.301.715a1 1 0 0 0 1 1c.306 0 .537-.151.764-.354z';
+
+  return <Icon path={path} {...props} />;
+};
+
+export const WeddingsIcon = props => {
+  const path =
+    'M 4 15 h 10 v -3 H 4 v 3 Z m 1 -5 h 8 V 7 H 5 v 3 Z m 2 -5 h 4 V 3 H 7 v 2 Z m 9 10 v -4 a 1 1 0 0 0 -1 -1 V 6 a 1 1 0 0 0 -1 -1 h -1 V 2 a 1 1 0 0 0 -1 -1 H 6 a 1 1 0 0 0 -1 1 v 3 H 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 1 0 0 2 h 14 a 1 1 0 1 0 0 -2 Z';
 
   return <Icon path={path} {...props} />;
 };
