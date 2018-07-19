@@ -1,9 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Section from '../Section/Section';
 
+const StyledSection = styled(Section)`
+  > div {
+    @media (min-width: 482px) {
+      max-width: 449px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @media (min-width: 701px) {
+      max-width: 668px;
+    }
+
+    @media (min-width: 1026px) {
+      max-width: 946px;
+    }
+  }
+`;
 const CopyWrap = styled.div`
-  margin-top: 24px !important;
   padding-top: 12px;
   padding-bottom: 12px;
   background: #fafafa;
@@ -13,26 +30,7 @@ const CopyWrap = styled.div`
 `;
 
 const CopySnap = styled.div`
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
-
-  @media (min-width: 482px) {
-    max-width: 449px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @media (min-width: 701px) {
-    max-width: 668px;
-  }
-
-  @media (min-width: 1026px) {
-    // max-width: 946px;
-    max-width: 100%;
-  }
 `;
 
 const CopyLegal = styled.div`
@@ -72,10 +70,8 @@ const CopyRightFooter = styled.div`
   flex: none;
   box-sizing: inherit;
   background: #fafafa;
-  border-top: 1px solid #e9eced;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  text-align: center;
+
+  text-align: left;
 `;
 
 const CopyAnchor = styled.a`
@@ -98,30 +94,50 @@ const DefaultCopyBox = () => (
     </CopyDocs>
   </CopyLegal>
 );
+const StyledLegal = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  > div {
+    text-align: center;
+    > li {
+      width: 100%;
+    }
+  }
+  @media (min-width: 768px) {
+    flex-direction: row;
+
+    div:first-child {
+      text-align: left;
+    }
+  }
+`;
 
 const HelpBox = () => (
-  <CopyLegal>
+  <StyledLegal>
     <CopyRightBox>&copy; 2018 Thumbtack, Inc. All Rights Reserved</CopyRightBox>
     <HelpDocs>
       <li>
-        Questions?{' '}
+        Questions?
         <CopyAnchor href="https://help.thumbtack.com" fill="#009fd9">
           Help Center
         </CopyAnchor>
       </li>
     </HelpDocs>
-  </CopyLegal>
+  </StyledLegal>
 );
 
 export const CopyRight = props => {
   const { defaultCopyright } = props;
 
   return (
-    <CopyRightFooter>
-      <CopyWrap>
-        <CopySnap>{defaultCopyright ? <DefaultCopyBox /> : <HelpBox />}</CopySnap>
-      </CopyWrap>
-    </CopyRightFooter>
+    <StyledSection isGray hasBorder padding={false}>
+      <CopyRightFooter>
+        <CopyWrap>
+          <CopySnap>{defaultCopyright ? <DefaultCopyBox /> : <HelpBox />}</CopySnap>
+        </CopyWrap>
+      </CopyRightFooter>
+    </StyledSection>
   );
 };
 
