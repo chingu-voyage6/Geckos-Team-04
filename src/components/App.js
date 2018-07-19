@@ -8,7 +8,7 @@ import TermsPage from './Pages/Terms';
 import LoginPage from './Pages/Login';
 import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
 import CustomerProfile from './Pages/Customer/Profile';
-import EditProfile from './Pages/Customer/EditProfile';
+import { EditProfile } from './Pages/Customer/EditProfile/';
 
 class App extends Component {
   render() {
