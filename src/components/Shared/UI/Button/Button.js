@@ -42,7 +42,7 @@ const SearchButton = ({ click, children }) => (
 
 SearchButton.propTypes = {
   click: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
 };
 // Button.defaultProps = {
 //   color: '#009fd9',

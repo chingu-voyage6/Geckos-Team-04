@@ -11,6 +11,12 @@ injectGlobal`
   margin: 0;
   box-sizing: border-box;
 }
+  @font-face {
+    font-family: "Mark";
+    src: url('https://fonts.thumbtack.com/mark/mark-tt.woff2') format("woff2");
+    font-style: normal;
+    font-weight: normal;
+  }
 
   body {
     margin: 0;

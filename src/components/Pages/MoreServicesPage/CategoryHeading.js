@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledHeading = styled.div`
   font-size: 2rem;
@@ -8,5 +9,9 @@ const StyledHeading = styled.div`
 `;
 
 const categorieHeading = ({ heading }) => <StyledHeading>{heading}</StyledHeading>;
+
+categorieHeading.propTypes = {
+  heading: PropTypes.string.isRequired,
+};
 
 export default categorieHeading;

@@ -9,17 +9,23 @@ const StyledSection = styled.section`
   padding-top: ${({ padding }) => (padding ? '60px' : '0')};
   padding-bottom: ${({ padding }) => (padding ? '60px' : '0')};
   overflow: hidden;
-`;
-const ChildrenWrapper = styled.div`
   padding-left: 16px;
   padding-right: 16px;
+
+  @media only screen and (min-width: 482px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media only screen and (min-width: 1026px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+`;
+const ChildrenWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   max-width: 100%;
   @media only screen and (min-width: 482px) {
-    padding-left: 32px;
-    padding-right: 32px;
-
     ${({ isNarrow }) =>
       isNarrow ? 'max-width: 449px;  padding-left: 0px;  padding-right: 0px;' : ''};
   }
