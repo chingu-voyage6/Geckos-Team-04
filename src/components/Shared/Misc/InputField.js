@@ -23,22 +23,22 @@ const StyledLabel = styled.label`
   padding-top: 16px;
 `;
 
-const InputField = ({ type, label, placeholder }) => {
-  return (
-    <span>
-      <StyledLabel>{label}</StyledLabel>
-      <StyledInput type={type} name={label} placeholder={placeholder} />
-    </span>
-  );
-};
+const InputField = ({ type, label, placeholder, value, ...props }) => (
+  <span>
+    <StyledLabel>{label}</StyledLabel>
+    <StyledInput type={type} name={label} placeholder={placeholder} value={value} {...props} />
+  </span>
+);
 
 InputField.defaultProps = {
+  value: '',
   type: 'text',
   label: '',
   placeholder: '',
 };
 
 InputField.propTypes = {
+  value: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
