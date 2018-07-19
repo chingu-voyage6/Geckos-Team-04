@@ -102,7 +102,7 @@ const SectionWrapper = styled.div`
 
 const Guarantee = styled(Link)`
   display: flex;
-  width: 200px;
+  width: 215px;
   text-decoration: none;
 `;
 
