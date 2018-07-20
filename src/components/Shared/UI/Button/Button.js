@@ -14,6 +14,7 @@ const DefaultButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   :focus {
     text-decoration: underline;
     background-color: #007fad;
@@ -43,7 +44,7 @@ const SearchButton = ({ click, children }) => (
 
 SearchButton.propTypes = {
   click: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
 };
 
 // DefaultButton.defaultProps = {

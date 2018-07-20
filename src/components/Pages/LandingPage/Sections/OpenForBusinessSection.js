@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { DefaultButton } from '../../../Shared/UI/Button/Button';
 import Section from '../../../Layout/Section/Section';
 
@@ -30,8 +29,6 @@ const SectionHalf = styled.div`
     display: flex;
   }
 `;
-
-const StyledSectionHalf = SectionHalf.extend``;
 
 const StyledImage = styled.img`
   transform: scale(1.2);

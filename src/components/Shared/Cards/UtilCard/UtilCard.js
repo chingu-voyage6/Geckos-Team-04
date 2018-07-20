@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { HomeIcon, PricingIcon, EventIcon, CarretIcon } from '../../Icon/Icon';
+import { CarretIcon } from '../../Icon/Icon';
 
 // const UtilsCardBody = ServiceCardBody.extend`
 //   text-align: center;
