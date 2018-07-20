@@ -1,12 +1,10 @@
-import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
 
 const ServiceSchema = new mongoose.Schema({
-  name: {
-    type: Number,
-    default: 0,
-  },
+  name: String,
   image: String,
-  category: { type: Schema.Types.ObjectId, ref: 'Category' },
+  url: String,
+  category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
 });
 
-export default mongoose.model('Service', ServiceSchema);
+module.exports = mongoose.model('Service', ServiceSchema);
