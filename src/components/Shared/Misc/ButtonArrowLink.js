@@ -10,7 +10,7 @@ const StyledButton = styled.div`
   align-items: center;
   padding: 12px 12px 12px 20px;
   background-color: '#fff';
-
+  font-weight: ${({ fontWeight }) => fontWeight || '700'};
   ${props => {
     const { hasBorderTop, hasBorderBottom, hasBorderLeft, hasBorderRight } = props;
 
@@ -27,14 +27,6 @@ const StyledButton = styled.div`
       return 'border-right: 1px solid #e9eced';
     }
   }};
-`;
-
-const Title = styled(Link)`
-  color: #2f3033;
-  font-size: 16px;
-  letter-spacing: 0.02em;
-  font-weight: ${props => props.fontWeight};
-  text-decoration: none;
 
   > span.isActive {
     color: #009fd9;
@@ -44,6 +36,11 @@ const Title = styled(Link)`
       color: #009fd9;
     }
   }
+`;
+
+const Title = styled(Link)`
+  text-decoration: none;
+  color: #2f3033;
 `;
 
 const Button = props => {
@@ -58,17 +55,18 @@ const Button = props => {
   } = props;
 
   return (
-    <StyledButton
-      hasBorderTop={hasBorderTop}
-      hasBorderBottom={hasBorderBottom}
-      hasBorderLeft={hasBorderLeft}
-      hasBorderRight={hasBorderRight}
-    >
-      <Title to={to} fontWeight={fontWeight}>
+    <Title to={to}>
+      <StyledButton
+        hasBorderTop={hasBorderTop}
+        hasBorderBottom={hasBorderBottom}
+        hasBorderLeft={hasBorderLeft}
+        hasBorderRight={hasBorderRight}
+        fontWeight={fontWeight}
+      >
         {children}
-      </Title>
-      <Arrow color="currentColor" size="28" />
-    </StyledButton>
+        <Arrow color="currentColor" size="28" />
+      </StyledButton>
+    </Title>
   );
 };
 
