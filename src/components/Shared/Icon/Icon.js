@@ -27,7 +27,8 @@
   - LogoRoundIcon, LogoFullIcon
 ---------------------------------------
   UI elements icons:
-  - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass in SearchBar), SearchIconButton(magnifying glass on button)
+  - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass in SearchBar), SearchIconButton(magnifying glass on button),
+    CloseIcon,
 
 ##############    TEMPLATE     ############
 export const  = props => {
@@ -73,6 +74,13 @@ Icon.propTypes = {
 };
 
 export default Icon;
+
+export const CloseIcon = props => {
+  const path =
+    'M 15.414 14 l 5.293 -5.293 a 0.999 0.999 0 1 0 -1.414 -1.414 L 14 12.586 L 8.707 7.293 a 0.999 0.999 0 1 0 -1.414 1.414 L 12.586 14 l -5.293 5.293 a 0.997 0.997 0 0 0 0 1.414 a 0.997 0.997 0 0 0 1.414 0 L 14 15.414 l 5.293 5.293 a 0.997 0.997 0 0 0 1.414 0 a 0.999 0.999 0 0 0 0 -1.414 L 15.414 14 Z';
+
+  return <Icon path={path} {...props} />;
+};
 
 export const ThreeDotsLarge = props => (
   <svg viewBox="0 0 48 48" width="48" height="48" fill="currentColor">
