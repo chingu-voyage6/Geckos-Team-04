@@ -13,7 +13,7 @@ injectGlobal`
     font-family: Mark,Avenir,Helvetica,Arial,sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    -webkit-font-smoothing: anti-aliased;
+    -webkit-font-smoothing: antialiased;
   }
 `;
 
