@@ -9,6 +9,10 @@ const StyledForm = styled.div`
   padding: 0 60px 0 60px;
 `;
 
+const StyledFieldset = styled.fieldset`
+  border: 0;
+`;
+
 const FormHeader = styled.div`
   width: 50%;
   display: inline-block;
@@ -47,6 +51,12 @@ class ProfileForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    if (this.props.userID) {
+      // make a call to api to get user data
+    }
+  }
+
   handleChange(event) {
     const { target } = event;
     const { name } = target;
@@ -63,7 +73,7 @@ class ProfileForm extends Component {
     return (
       <StyledForm>
         <form>
-          <fieldset>
+          <StyledFieldset>
             <FormHeader>
               <InputField
                 type="text"
@@ -97,18 +107,19 @@ class ProfileForm extends Component {
                 value={phone}
                 onChange={this.handleChange}
               />
-              <SelectDropdown label="Time zone">
-                <option value={this.state.timezone}>{this.state.timezone}</option>
-                <option value="Test">Test</option>
-              </SelectDropdown>
+              {/* <SelectDropdown label="Time zone">
+                <option value={timezone}>{this.state.timezone}</option>
+              </SelectDropdown> */}
             </FormFooter>
-          </fieldset>
-          <ButtonRow>
-            <Button color="#676d73" background="#fff" border="2px solid #d3d4d5">
-              Cancel
-            </Button>
-            <Button type="submit" onClick={this.handleSubmit}>Save</Button>
-          </ButtonRow>
+            <ButtonRow>
+              <Button color="#676d73" background="#fff" border="2px solid #d3d4d5">
+                Cancel
+              </Button>
+              <Button type="submit" onClick={this.handleSubmit}>
+                Save
+              </Button>
+            </ButtonRow>
+          </StyledFieldset>
         </form>
       </StyledForm>
     );

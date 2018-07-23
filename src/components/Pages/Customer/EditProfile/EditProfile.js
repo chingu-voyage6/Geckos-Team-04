@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../../../Layout/Header/Header';
 import Section from '../../../Layout/Section/Section';
+import AccountLink from './AccountLink';
 import ProfileForm from './ProfileForm';
 // import CopyRight from '../../Layout/Footer/CopyRight';
 
@@ -31,13 +32,13 @@ const Title = styled.h3`
 //   return arr;
 // })();
 
-const EditProfile = () => (
+const EditProfile = props => (
   <Wrapper>
     <Header />
     <Section isGray hasBorder>
-      <div>Account</div>
+      <AccountLink />
       <Title>Edit personal information</Title>
-      <ProfileForm />
+      <ProfileForm {...props} />
     </Section>
   </Wrapper>
 );

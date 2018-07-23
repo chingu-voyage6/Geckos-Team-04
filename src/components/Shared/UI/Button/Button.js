@@ -14,7 +14,7 @@ const DefaultButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  /* border: none; */
   :focus {
     text-decoration: underline;
     background-color: #007fad;
