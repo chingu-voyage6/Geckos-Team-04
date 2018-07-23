@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 
 import { DefaultButton } from '../../../Shared/UI/Button/Button';
@@ -66,7 +67,7 @@ const SearchWrappper = styled.div`
   display: flex;
 `;
 
-const nearMeHero = () => (
+const nearMeHero = ({ goHandler }) => (
   <StyledSection>
     <Content>
       <TitleWrapper>House Cleaners near you</TitleWrapper>
@@ -74,11 +75,15 @@ const nearMeHero = () => (
         <ModalTitle>Where do you need the house cleaner?</ModalTitle>
         <SearchWrappper>
           <SearchInput type="text" placeholder="Enter your zip code" />
-          <DefaultButton>Go</DefaultButton>
+          <DefaultButton onClick={goHandler}>Go</DefaultButton>
         </SearchWrappper>
       </HeroModal>
     </Content>
   </StyledSection>
 );
+
+nearMeHero.propTypes = {
+  goHandler: PropTypes.func.isRequired,
+};
 
 export default nearMeHero;
