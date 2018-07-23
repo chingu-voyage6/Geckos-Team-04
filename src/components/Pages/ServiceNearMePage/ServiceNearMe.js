@@ -5,6 +5,7 @@ import NearMeHero from './Sections/NearMeHero';
 import HowTTWorksSection from '../ExplorePage/Sections/HowTTWorksSection';
 import OtherServices from './Sections/OtherServices';
 import CategoryBar from '../../Shared/CategoryBar/CategoryBar';
+import Modal from './DialogueModal/Modal';
 import {
   HouseIconSmall,
   ConfettiIconSmall,
@@ -74,13 +75,43 @@ const StyledCategoryBar = styled(CategoryBar)`
 `;
 
 class ServiceNearMe extends React.Component {
+  state = {
+    showModal: false,
+    showCancelRequest: false,
+  };
+
+  showModalHandler = () => {
+    this.setState({ showModal: true });
+  };
+
+  closeModalHandler = () => {
+    this.setState({ showModal: false, showCancelRequest: false });
+  };
+
+  showCancelRequestHandler = () => {
+    this.setState({ showCancelRequest: true });
+  };
+
+  continueRequestHandler = () => {
+    this.setState({ showCancelRequest: false });
+  };
+
   render() {
+    const { showModal, showCancelRequest } = this.state;
     return (
       <Layout>
+        {showModal ? (
+          <Modal
+            showCloseRequest={showCancelRequest}
+            closeModal={this.closeModalHandler}
+            continueRequest={this.continueRequestHandler}
+            showCancelRequest={this.showCancelRequestHandler}
+          />
+        ) : null}
         <BarWrapper>
           <StyledCategoryBar categories={iconData} />
         </BarWrapper>
-        <NearMeHero />
+        <NearMeHero goHandler={this.showModalHandler} />
         <HowTTWorksSection />
         <OtherServices />
       </Layout>
