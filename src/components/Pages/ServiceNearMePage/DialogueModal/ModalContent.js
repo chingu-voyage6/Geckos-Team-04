@@ -35,13 +35,11 @@ const ContentWrapper = styled.div`
 const TransitionWrapper = styled.div`
   position: absolute;
   top: 0;
-  /* width: calc(100% - 32px); */
-  /* will-change: transform, opacity;
-  transform: translateX(0%);
+  width: calc(100% - 32px);
+  will-change: transform, opacity;
+
   transform-style: preserve-3d;
-   */
-  transform: translateZ(0);
-  backface-visibility: hidden;
+
   opacity: 1;
   transform: translateX(0px);
   &.modal-appear {
@@ -49,12 +47,16 @@ const TransitionWrapper = styled.div`
   }
   &.modal-appear-active {
     animation: ${fadeIn} 1s linear;
+    opacity: 1;
+    transform: translateX(0px);
   }
   &.modal-enter {
     transform: translateX(50px);
   }
   &.modal-enter-active {
     animation: ${fadeIn} 1s linear;
+    opacity: 1;
+    transform: translateX(0px);
   }
 
   &.modal-enter-done {
@@ -63,7 +65,8 @@ const TransitionWrapper = styled.div`
   }
 
   &.modal-exit {
-    opacity: 1;
+    opacity: 0;
+    transition: opacity 10ms;
   }
   &.modal-exit-active {
     opacity: 0;
@@ -71,89 +74,88 @@ const TransitionWrapper = styled.div`
 `;
 
 class ModalContent extends React.Component {
-  state = {
-    check: false,
+  renderSwitch = (param, options, updateValue, question, professionalsToFind, answers) => {
+    switch (param) {
+      case 'single':
+        return (
+          <CSSTransition
+            classNames="modal"
+            in
+            mountOnEnter
+            key={question}
+            unmountOnExit
+            timeout={{
+              enter: 1000,
+              exit: 10,
+            }}
+          >
+            <TransitionWrapper className="modal">
+              <ModalContentStyledWrappers key={question} question={question}>
+                <SingleChoiceGroup
+                  answers={answers}
+                  options={options}
+                  updateValue={updateValue}
+                  question={question}
+                />
+              </ModalContentStyledWrappers>
+            </TransitionWrapper>
+          </CSSTransition>
+        );
+      case 'multi':
+        return (
+          <CSSTransition
+            classNames="modal"
+            in
+            mountOnEnter
+            unmountOnExit
+            key={question}
+            timeout={{
+              enter: 1000,
+              exit: 10,
+            }}
+          >
+            <TransitionWrapper className="modal">
+              <ModalContentStyledWrappers question={question}>
+                <MultiChoiceGroup
+                  answers={answers}
+                  options={options}
+                  updateValue={updateValue}
+                  question={question}
+                />
+              </ModalContentStyledWrappers>
+            </TransitionWrapper>
+          </CSSTransition>
+        );
+      case 'intro':
+        return (
+          <CSSTransition
+            classNames="modal"
+            in
+            appear
+            key={professionalsToFind}
+            unmountOnExit
+            timeout={{
+              enter: 1000,
+              exit: 10,
+            }}
+          >
+            <TransitionWrapper className="modal">
+              <IntroModal className="modal" professionalsToFind={professionalsToFind} />
+            </TransitionWrapper>
+          </CSSTransition>
+        );
+
+      default:
+        return null;
+    }
   };
 
   render() {
-    const { check } = this.state;
     const { type, options, updateValue, question, professionalsToFind, answers } = this.props;
     return (
       <ContentWrapper>
         <TransitionGroup component={null}>
-          {(() => {
-            switch (type) {
-              case 'single':
-                return (
-                  <CSSTransition
-                    classNames="modal"
-                    in
-                    key={question}
-                    unmountOnExit
-                    timeout={{
-                      enter: 1000,
-                      exit: 10,
-                    }}
-                  >
-                    <TransitionWrapper className="modal">
-                      <ModalContentStyledWrappers key={question} question={question}>
-                        <SingleChoiceGroup
-                          answers={answers}
-                          options={options}
-                          updateValue={updateValue}
-                          question={question}
-                        />
-                      </ModalContentStyledWrappers>
-                    </TransitionWrapper>
-                  </CSSTransition>
-                );
-              case 'multi':
-                return (
-                  <CSSTransition
-                    classNames="modal"
-                    in
-                    unmountOnExit
-                    key={question}
-                    timeout={{
-                      enter: 1000,
-                      exit: 10,
-                    }}
-                  >
-                    <TransitionWrapper className="modal">
-                      <ModalContentStyledWrappers question={question}>
-                        <MultiChoiceGroup
-                          answers={answers}
-                          options={options}
-                          updateValue={updateValue}
-                          question={question}
-                        />
-                      </ModalContentStyledWrappers>
-                    </TransitionWrapper>
-                  </CSSTransition>
-                );
-              case 'intro':
-                return (
-                  <CSSTransition
-                    classNames="modal"
-                    in
-                    appear
-                    key={professionalsToFind}
-                    unmountOnExit
-                    timeout={{
-                      enter: 1000,
-                      exit: 10,
-                    }}
-                  >
-                    <TransitionWrapper className="modal">
-                      <IntroModal className="modal" professionalsToFind={professionalsToFind} />
-                    </TransitionWrapper>
-                  </CSSTransition>
-                );
-
-              default:
-                return null;
-            }
-          })()}
+          {this.renderSwitch(type, options, updateValue, question, professionalsToFind, answers)}
         </TransitionGroup>
       </ContentWrapper>
     );
