@@ -46,7 +46,7 @@ const ButtonBlue = DefaultButton.extend`
   width: auto;
 `;
 
-const ModalFooter = ({ option, nextSlide, previousSlide, isBlue }) => (
+const ModalFooter = ({ option, nextSlide, previousSlide, submitAnswers, isBlue }) => (
   <FooterBody isBlue={isBlue}>
     {(() => {
       switch (option) {
@@ -63,6 +63,13 @@ const ModalFooter = ({ option, nextSlide, previousSlide, isBlue }) => (
             <Fragment>
               <ButtonGray onClick={previousSlide}>Back</ButtonGray>
               <ButtonBlue onClick={nextSlide}>Next</ButtonBlue>
+            </Fragment>
+          );
+        case 'submit':
+          return (
+            <Fragment>
+              <ButtonGray onClick={previousSlide}>Back</ButtonGray>
+              <ButtonBlue onClick={submitAnswers}>Submit</ButtonBlue>
             </Fragment>
           );
         case 'next':
