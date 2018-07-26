@@ -24,7 +24,7 @@ const ModalBody = styled.div`
 class Modal extends React.Component {
   state = {
     currentSlide: 0,
-    currentType: questionaire[1].type,
+    currentType: questionaire[0].type || null,
     questionaire,
     answers: {
       'How many bedrooms are in your home?': '1 bedroom',
@@ -59,6 +59,11 @@ class Modal extends React.Component {
         ...updatedAnswers,
       },
     });
+  };
+
+  submitAnswers = () => {
+    const { answers } = this.state;
+    console.table(answers);
   };
 
   nextSlide = () => {
@@ -99,6 +104,7 @@ class Modal extends React.Component {
           <ModalFooter
             nextSlide={this.nextSlide}
             previousSlide={this.previousSlide}
+            submitAnswers={this.submitAnswers}
             option={nextButtons}
             isBlue={type === 'intro'}
           />
