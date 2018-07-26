@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const compress = require('compression');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const cors = require('cors');
 
 const routes = require('./routes');
@@ -25,9 +24,6 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/api/v1/', routes);
 
