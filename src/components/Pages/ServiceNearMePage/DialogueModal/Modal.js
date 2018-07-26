@@ -62,11 +62,17 @@ class Modal extends React.Component {
   };
 
   nextSlide = () => {
-    this.setState(prevState => ({ currentSlide: prevState.currentSlide + 1 }));
+    this.setState(prevState => ({
+      currentSlide: prevState.currentSlide + 1,
+      currentType: questionaire[prevState.currentSlide + 1].type,
+    }));
   };
 
   previousSlide = () => {
-    this.setState(prevState => ({ currentSlide: prevState.currentSlide - 1 }));
+    this.setState(prevState => ({
+      currentSlide: prevState.currentSlide - 1,
+      currentType: questionaire[prevState.currentSlide - 1].type,
+    }));
   };
 
   render() {
