@@ -140,26 +140,45 @@ class Modal extends React.Component {
     console.table(answers);
   };
 
+  nextSlide = e => {
+    e.preventDefault();
+    const { currentSlide, currentType, validation, answers } = this.state;
+    const { validation: typeOfSlideValidation } = questionaire[currentSlide];
+
+    if (currentType === 'intro' || typeOfSlideValidation === '') {
+      this.setState(prevState => ({
+        currentSlide: prevState.currentSlide + 1,
+        currentType: questionaire[prevState.currentSlide + 1].type,
+      }));
+      return;
+    }
+    const currentQuestion = questionaire[currentSlide].question;
+
+    let { isValid } = validation[currentQuestion];
+
+    if (['name', 'email', 'zipcode'].includes(typeOfSlideValidation)) {
       isValid = this.validateTextInputs(answers[currentQuestion], typeOfSlideValidation);
+    }
+
+    if (isValid) {
     this.setState(prevState => ({
       currentSlide: prevState.currentSlide + 1,
       currentType: questionaire[prevState.currentSlide + 1].type,
+        displayError: false,
     }));
+    } else {
+      this.setState({ displayError: true });
+    }
   };
 
-  previousSlide = () => {
+  previousSlide = e => {
+    e.preventDefault();
     this.setState(prevState => ({
       currentSlide: prevState.currentSlide - 1,
       currentType: questionaire[prevState.currentSlide - 1].type,
+      displayError: false,
     }));
   };
-
-  validateZipCode = zipCode => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipCode);
-
-  validateEmail = email =>
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
-
-  validateName = name => name.trim().length >= 5;
 
   render() {
     const { closeModal, showCloseRequest, continueRequest, showCancelRequest } = this.props;
