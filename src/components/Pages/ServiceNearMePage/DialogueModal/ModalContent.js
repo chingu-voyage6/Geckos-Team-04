@@ -6,6 +6,7 @@ import MultiChoiceGroup from './FormOptions/MultiChoiceGroup';
 import SingleChoiceGroup from './FormOptions/SingleChoiceGroup';
 import IntroModal from './IntroModal';
 import ModalContentStyledWrappers from './ModalContentStyledWrappers';
+import TextInputTypesModal from './TextInputTypesModal';
 
 const fadeIn = keyframes`
   0% {
@@ -33,15 +34,14 @@ const ContentWrapper = styled.div`
   overflow-y: auto;
 `;
 const TransitionWrapper = styled.div`
+  /* will-change: transform, opacity; */
   position: absolute;
   top: 0;
   width: calc(100% - 32px);
-  will-change: transform, opacity;
-
-  transform-style: preserve-3d;
 
   opacity: 1;
   transform: translateX(0px);
+
   &.modal-appear {
     transform: translateX(50px);
   }
@@ -74,76 +74,89 @@ const TransitionWrapper = styled.div`
 `;
 
 class ModalContent extends React.Component {
-  renderSwitch = (param, options, updateValue, question, professionalsToFind, answers) => {
-    switch (param) {
-      case 'single':
-        return (
-          <CSSTransition
-            classNames="modal"
-            in
+  render() {
+    const {
+      type,
+      options,
+      updateValue,
+      question,
+      professionalsToFind,
+      answers,
+      updateTextFieldValue,
+    } = this.props;
+    return (
+      <ContentWrapper>
+        <TransitionGroup component={null}>
+          {(() => {
+            switch (type) {
+              case 'single':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
                     appear
-            key={question}
-            unmountOnExit
-            timeout={{
-              enter: 1000,
-              exit: 10,
-            }}
-          >
-            <TransitionWrapper className="modal">
-              <ModalContentStyledWrappers key={question} question={question}>
-                <SingleChoiceGroup
-                  answers={answers}
-                  options={options}
-                  updateValue={updateValue}
-                  question={question}
-                />
-              </ModalContentStyledWrappers>
-            </TransitionWrapper>
-          </CSSTransition>
-        );
-      case 'multi':
-        return (
-          <CSSTransition
-            classNames="modal"
-            in
+                    key={question}
+                    unmountOnExit
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <ModalContentStyledWrappers key={question} question={question}>
+                        <SingleChoiceGroup
+                          answers={answers}
+                          options={options}
+                          updateValue={updateValue}
+                          question={question}
+                        />
+                      </ModalContentStyledWrappers>
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
+              case 'multi':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
                     appear
-            unmountOnExit
-            key={question}
-            timeout={{
-              enter: 1000,
-              exit: 10,
-            }}
-          >
-            <TransitionWrapper className="modal">
-              <ModalContentStyledWrappers question={question}>
-                <MultiChoiceGroup
-                  answers={answers}
-                  options={options}
-                  updateValue={updateValue}
-                  question={question}
-                />
-              </ModalContentStyledWrappers>
-            </TransitionWrapper>
-          </CSSTransition>
-        );
-      case 'intro':
-        return (
-          <CSSTransition
-            classNames="modal"
-            in
-            appear
-            key={professionalsToFind}
-            unmountOnExit
-            timeout={{
-              enter: 1000,
-              exit: 10,
-            }}
-          >
-            <TransitionWrapper className="modal">
-              <IntroModal className="modal" professionalsToFind={professionalsToFind} />
-            </TransitionWrapper>
-          </CSSTransition>
-        );
+                    unmountOnExit
+                    key={question}
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <ModalContentStyledWrappers question={question}>
+                        <MultiChoiceGroup
+                          answers={answers}
+                          options={options}
+                          updateValue={updateValue}
+                          question={question}
+                        />
+                      </ModalContentStyledWrappers>
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
+              case 'intro':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
+                    appear
+                    key={professionalsToFind}
+                    unmountOnExit
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <IntroModal className="modal" professionalsToFind={professionalsToFind} />
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
               case 'zipCode':
                 return (
                   <CSSTransition
@@ -248,9 +261,9 @@ class ModalContent extends React.Component {
                     </TransitionWrapper>
                   </CSSTransition>
                 );
-      default:
-        return null;
-    }
+              default:
+                return null;
+            }
           })()}
         </TransitionGroup>
       </ContentWrapper>
@@ -262,6 +275,7 @@ ModalContent.propTypes = {
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   updateValue: PropTypes.func.isRequired,
+  updateTextFieldValue: PropTypes.func.isRequired,
   question: PropTypes.string.isRequired,
   professionalsToFind: PropTypes.string.isRequired,
   answers: PropTypes.oneOfType([PropTypes.array, undefined, PropTypes.string]).isRequired,
