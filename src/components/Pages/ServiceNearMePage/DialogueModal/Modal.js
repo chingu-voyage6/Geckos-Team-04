@@ -193,6 +193,7 @@ class Modal extends React.Component {
     } = questionaire[currentSlide];
     return (
       <BackDrop>
+        <form>
         <ModalBody isBlue={type === 'intro'}>
           {showCloseRequest ? (
             <CancelRequest cancelRequest={closeModal} continueRequest={continueRequest} />
@@ -205,16 +206,21 @@ class Modal extends React.Component {
             options={options}
             updateValue={this.updateValueHandler}
             professionalsToFind={professionalsToFind}
+              updateTextFieldValue={this.updateTextFieldValueHandler}
           />
             {displayError ? <ErrorPrompt validationMessage={validationMessage} /> : null}
           <ModalFooter
+              validationMessage={validationMessage}
+              displayError={displayError}
             nextSlide={this.nextSlide}
             previousSlide={this.previousSlide}
             submitAnswers={this.submitAnswers}
             option={nextButtons}
+              answers={answers[question]}
             isBlue={type === 'intro'}
           />
         </ModalBody>
+        </form>
       </BackDrop>
     );
   }
