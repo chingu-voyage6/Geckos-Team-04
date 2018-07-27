@@ -51,6 +51,7 @@ class Modal extends React.Component {
   updateErrorDisplay = (input, validationType) => {
     let promptDisplayed;
 
+  validateTextInputs = (input, validationType) => {
     switch (validationType) {
       case 'zipcode':
         return this.validateZipCode(input);
@@ -66,8 +67,13 @@ class Modal extends React.Component {
     }
   };
 
-    const { answers, currentType } = this.state;
-    const updatedAnswers = { ...answers };
+  validateZipCode = zipCode => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipCode);
+
+  validateEmail = email =>
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+
+  validateName = name => name.trim().length >= 5;
+
     if (currentType !== 'multi') {
       updatedAnswers[question] = answer;
     } else {
@@ -92,7 +98,7 @@ class Modal extends React.Component {
     console.table(answers);
   };
 
-  nextSlide = () => {
+      isValid = this.validateTextInputs(answers[currentQuestion], typeOfSlideValidation);
     this.setState(prevState => ({
       currentSlide: prevState.currentSlide + 1,
       currentType: questionaire[prevState.currentSlide + 1].type,
