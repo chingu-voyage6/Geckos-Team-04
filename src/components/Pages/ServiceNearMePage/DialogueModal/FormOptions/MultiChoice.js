@@ -63,7 +63,7 @@ const multi = ({ option, updateValue, answers, question, checked }) => (
     <Option
       checkedStyle={checked}
       htmlFor={`optionId${option}`}
-      onClick={e => updateValue([question, option], e)}
+      onClick={() => updateValue([question, option])}
     >
       <span>{checked ? selected : null}</span>
       <span>{option}</span>
