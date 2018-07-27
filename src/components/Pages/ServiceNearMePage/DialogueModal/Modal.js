@@ -91,6 +91,13 @@ class Modal extends React.Component {
     }));
   };
 
+  validateZipCode = zipCode => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipCode);
+
+  validateEmail = email =>
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+
+  validateName = name => name.trim().length >= 5;
+
   render() {
     const { closeModal, showCloseRequest, continueRequest, showCancelRequest } = this.props;
     const { currentSlide, answers } = this.state;
