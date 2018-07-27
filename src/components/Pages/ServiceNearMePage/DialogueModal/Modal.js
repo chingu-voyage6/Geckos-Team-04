@@ -43,13 +43,43 @@ class Modal extends React.Component {
     });
   }
 
-        'Laundry',
-      ],
+  updateTextFieldValueHandler = (question, e) => {
+    const newInputValue = e.target.value;
+
+    const { answers, displayError, currentSlide, validation } = this.state;
+    const { validation: typeOfSlideValidation } = questionaire[currentSlide];
+
+    const isInputValid = this.validateTextInputs(newInputValue, typeOfSlideValidation);
+
+    answers[question] = newInputValue;
+
+    if (displayError && isInputValid) {
+      const questionAnswerValid = {
+        [question]: {
+          isValid: true,
     },
   };
+      this.setState({
+        displayError: false,
+        validation: { ...validation, ...questionAnswerValid },
+        answers,
+      });
+    } else {
+      const questionAnswerValid = {
+        [question]: {
+          isValid: false,
+        },
+      };
+      this.setState({
+        answers,
+        validation: { ...validation, ...questionAnswerValid },
+      });
+    }
 
-  updateErrorDisplay = (input, validationType) => {
-    let promptDisplayed;
+    this.setState({
+      answers,
+    });
+  };
 
   validateTextInputs = (input, validationType) => {
     switch (validationType) {
