@@ -100,10 +100,15 @@ class Modal extends React.Component {
 
   render() {
     const { closeModal, showCloseRequest, continueRequest, showCancelRequest } = this.props;
-    const { currentSlide, answers } = this.state;
-    const { type, question, options, professionalsToFind, nextButtons } = questionaire[
-      currentSlide
-    ];
+    const { currentSlide, answers, displayError } = this.state;
+    const {
+      type,
+      question,
+      options,
+      professionalsToFind,
+      nextButtons,
+      validationMessage,
+    } = questionaire[currentSlide];
     return (
       <BackDrop>
         <ModalBody isBlue={type === 'intro'}>
