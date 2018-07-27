@@ -26,6 +26,11 @@ class Modal extends React.Component {
   state = {
     currentSlide: 0,
     currentType: questionaire[0].type || null,
+    answers: {},
+    validation: null,
+    displayError: false,
+  };
+
   componentDidMount() {
     const validation = {};
     const answerKeys = questionaire
@@ -57,8 +62,8 @@ class Modal extends React.Component {
       const questionAnswerValid = {
         [question]: {
           isValid: true,
-    },
-  };
+        },
+      };
       this.setState({
         displayError: false,
         validation: { ...validation, ...questionAnswerValid },
@@ -161,11 +166,11 @@ class Modal extends React.Component {
     }
 
     if (isValid) {
-    this.setState(prevState => ({
-      currentSlide: prevState.currentSlide + 1,
-      currentType: questionaire[prevState.currentSlide + 1].type,
+      this.setState(prevState => ({
+        currentSlide: prevState.currentSlide + 1,
+        currentType: questionaire[prevState.currentSlide + 1].type,
         displayError: false,
-    }));
+      }));
     } else {
       this.setState({ displayError: true });
     }
@@ -194,32 +199,32 @@ class Modal extends React.Component {
     return (
       <BackDrop>
         <form>
-        <ModalBody isBlue={type === 'intro'}>
-          {showCloseRequest ? (
-            <CancelRequest cancelRequest={closeModal} continueRequest={continueRequest} />
-          ) : null}
-          <ModalHeader isBlue={type === 'intro'} showCancelRequest={showCancelRequest} />
-          <ModalContent
-            answers={answers[question]}
-            type={type}
-            question={question}
-            options={options}
-            updateValue={this.updateValueHandler}
-            professionalsToFind={professionalsToFind}
+          <ModalBody isBlue={type === 'intro'}>
+            {showCloseRequest ? (
+              <CancelRequest cancelRequest={closeModal} continueRequest={continueRequest} />
+            ) : null}
+            <ModalHeader isBlue={type === 'intro'} showCancelRequest={showCancelRequest} />
+            <ModalContent
+              answers={answers[question]}
+              type={type}
+              question={question}
+              options={options}
+              updateValue={this.updateValueHandler}
+              professionalsToFind={professionalsToFind}
               updateTextFieldValue={this.updateTextFieldValueHandler}
-          />
+            />
             {displayError ? <ErrorPrompt validationMessage={validationMessage} /> : null}
-          <ModalFooter
+            <ModalFooter
               validationMessage={validationMessage}
               displayError={displayError}
-            nextSlide={this.nextSlide}
-            previousSlide={this.previousSlide}
-            submitAnswers={this.submitAnswers}
-            option={nextButtons}
+              nextSlide={this.nextSlide}
+              previousSlide={this.previousSlide}
+              submitAnswers={this.submitAnswers}
+              option={nextButtons}
               answers={answers[question]}
-            isBlue={type === 'intro'}
-          />
-        </ModalBody>
+              isBlue={type === 'intro'}
+            />
+          </ModalBody>
         </form>
       </BackDrop>
     );
