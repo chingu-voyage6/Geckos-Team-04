@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { BackDrop } from './Backdrop';
+import { Backdrop } from './Backdrop';
 
 import CancelRequest from './CancelRequest';
 import ErrorPrompt from './ErrorPrompt';
@@ -20,6 +20,7 @@ const ModalBody = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
+  z-index: 1100;
 `;
 
 class Modal extends React.Component {
@@ -197,12 +198,9 @@ class Modal extends React.Component {
       validationMessage,
     } = questionaire[currentSlide];
     return (
-      <BackDrop>
+      <Fragment>
         <form>
           <ModalBody isBlue={type === 'intro'}>
-            {showCloseRequest ? (
-              <CancelRequest cancelRequest={closeModal} continueRequest={continueRequest} />
-            ) : null}
             <ModalHeader isBlue={type === 'intro'} showCancelRequest={showCancelRequest} />
             <ModalContent
               answers={answers[question]}
@@ -224,9 +222,17 @@ class Modal extends React.Component {
               answers={answers[question]}
               isBlue={type === 'intro'}
             />
+            {showCloseRequest ? (
+              <CancelRequest
+                percent={15}
+                cancelRequest={closeModal}
+                continueRequest={continueRequest}
+              />
+            ) : null}
           </ModalBody>
         </form>
-      </BackDrop>
+        <Backdrop />
+      </Fragment>
     );
   }
 }
