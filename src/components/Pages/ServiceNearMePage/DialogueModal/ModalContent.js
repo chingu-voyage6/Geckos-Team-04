@@ -144,18 +144,114 @@ class ModalContent extends React.Component {
             </TransitionWrapper>
           </CSSTransition>
         );
-
+              case 'zipCode':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
+                    appear
+                    unmountOnExit
+                    key={question}
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <ModalContentStyledWrappers question={question}>
+                        <TextInputTypesModal
+                          inputType="zipCode"
+                          value={answers}
+                          updateValue={updateValue}
+                          question={question}
+                          updateTextFieldValue={updateTextFieldValue}
+                        />
+                      </ModalContentStyledWrappers>
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
+              case 'name':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
+                    appear
+                    unmountOnExit
+                    key={question}
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <ModalContentStyledWrappers question={question}>
+                        <TextInputTypesModal
+                          inputType="name"
+                          value={answers}
+                          updateValue={updateValue}
+                          question={question}
+                          updateTextFieldValue={updateTextFieldValue}
+                        />
+                      </ModalContentStyledWrappers>
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
+              case 'email':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
+                    appear
+                    unmountOnExit
+                    key={question}
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <ModalContentStyledWrappers question={question}>
+                        <TextInputTypesModal
+                          inputType="email"
+                          value={answers}
+                          updateValue={updateValue}
+                          question={question}
+                          updateTextFieldValue={updateTextFieldValue}
+                        />
+                      </ModalContentStyledWrappers>
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
+              case 'textarea':
+                return (
+                  <CSSTransition
+                    classNames="modal"
+                    in
+                    appear
+                    unmountOnExit
+                    key={question}
+                    timeout={{
+                      enter: 1000,
+                      exit: 10,
+                    }}
+                  >
+                    <TransitionWrapper className="modal">
+                      <ModalContentStyledWrappers question={question}>
+                        <TextInputTypesModal
+                          inputType="textarea"
+                          value={answers}
+                          updateValue={updateValue}
+                          question={question}
+                          updateTextFieldValue={updateTextFieldValue}
+                        />
+                      </ModalContentStyledWrappers>
+                    </TransitionWrapper>
+                  </CSSTransition>
+                );
       default:
         return null;
     }
-  };
-
-  render() {
-    const { type, options, updateValue, question, professionalsToFind, answers } = this.props;
-    return (
-      <ContentWrapper>
-        <TransitionGroup component={null}>
-          {this.renderSwitch(type, options, updateValue, question, professionalsToFind, answers)}
+          })()}
         </TransitionGroup>
       </ContentWrapper>
     );
