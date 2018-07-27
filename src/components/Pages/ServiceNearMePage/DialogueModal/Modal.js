@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { BackDrop } from './Backdrop';
 
 import CancelRequest from './CancelRequest';
+import ErrorPrompt from './ErrorPrompt';
 import { questionaire } from './questionaire-data';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
@@ -101,6 +102,7 @@ class Modal extends React.Component {
             updateValue={this.updateValueHandler}
             professionalsToFind={professionalsToFind}
           />
+            {displayError ? <ErrorPrompt validationMessage={validationMessage} /> : null}
           <ModalFooter
             nextSlide={this.nextSlide}
             previousSlide={this.previousSlide}
