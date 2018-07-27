@@ -53,18 +53,18 @@ class Modal extends React.Component {
 
     switch (validationType) {
       case 'zipcode':
-        promptDisplayed = this.validateZipCode(input);
-        break;
+        return this.validateZipCode(input);
+
       case 'name':
-        promptDisplayed = this.validateName(input);
-        break;
+        return this.validateName(input);
+
       case 'email':
-        promptDisplayed = this.validateEmail(input);
-        break;
+        return this.validateEmail(input);
+
       default:
-        promptDisplayed = false;
-        break;
+        return false;
     }
+  };
 
     const { answers, currentType } = this.state;
     const updatedAnswers = { ...answers };
