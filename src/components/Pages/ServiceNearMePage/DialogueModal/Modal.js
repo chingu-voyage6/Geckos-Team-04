@@ -74,22 +74,34 @@ class Modal extends React.Component {
 
   validateName = name => name.trim().length >= 5;
 
+  updateValueHandler = ([question, answer]) => {
+    const { answers, currentType, validation } = this.state;
+    const updatedAnswers = answers ? { ...answers } : {};
+
     if (currentType !== 'multi') {
       updatedAnswers[question] = answer;
     } else {
-      const answerList = [...updatedAnswers[question]];
+      const answerList = updatedAnswers[question] ? [...updatedAnswers[question]] : [];
 
       if (answerList.includes(answer)) {
         updatedAnswers[question] = answerList.filter(a => a !== answer);
       } else {
-        updatedAnswers[question].push(answer);
+        updatedAnswers[question] = [...answerList, answer];
       }
     }
+    const updatedValidation = {
+      [question]: {
+        isValid: true,
+        wasTouched: true,
+      },
+    };
 
     this.setState({
       answers: {
         ...updatedAnswers,
       },
+      validation: { ...validation, ...updatedValidation },
+      displayError: false,
     });
   };
 
