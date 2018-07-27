@@ -9,6 +9,7 @@ import LoginPage from './Pages/Login';
 import ChooseAccountPage from './Pages/ChooseAccount';
 import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
 import CustomerProfile from './Pages/Customer/Profile';
+import AccountSettings from './Pages/Customer/Information';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
         <Route exact path="/choose-account" component={ChooseAccountPage} />
         <Route path="/more-services" component={MoreServicesPage} />
         <Route exact path="/customer/profile" component={CustomerProfile} />
+        <Route exact path="/profile/information" component={AccountSettings} />
       </Fragment>
     );
   }
