@@ -48,8 +48,23 @@ class Modal extends React.Component {
     },
   };
 
-  updateValueHandler = ([question, answer], e) => {
-    console.log(question, answer);
+  updateErrorDisplay = (input, validationType) => {
+    let promptDisplayed;
+
+    switch (validationType) {
+      case 'zipcode':
+        promptDisplayed = this.validateZipCode(input);
+        break;
+      case 'name':
+        promptDisplayed = this.validateName(input);
+        break;
+      case 'email':
+        promptDisplayed = this.validateEmail(input);
+        break;
+      default:
+        promptDisplayed = false;
+        break;
+    }
 
     const { answers, currentType } = this.state;
     const updatedAnswers = { ...answers };
