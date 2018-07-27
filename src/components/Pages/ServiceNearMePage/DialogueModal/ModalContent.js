@@ -81,7 +81,7 @@ class ModalContent extends React.Component {
           <CSSTransition
             classNames="modal"
             in
-            mountOnEnter
+                    appear
             key={question}
             unmountOnExit
             timeout={{
@@ -106,7 +106,7 @@ class ModalContent extends React.Component {
           <CSSTransition
             classNames="modal"
             in
-            mountOnEnter
+                    appear
             unmountOnExit
             key={question}
             timeout={{
