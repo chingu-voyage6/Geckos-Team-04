@@ -26,12 +26,22 @@ class Modal extends React.Component {
   state = {
     currentSlide: 0,
     currentType: questionaire[0].type || null,
-    questionaire,
-    answers: {
-      'How many bedrooms are in your home?': '1 bedroom',
-      'Which additional services do you need, if any?': [
-        'Fridge cleaning',
-        'Oven cleaning',
+  componentDidMount() {
+    const validation = {};
+    const answerKeys = questionaire
+      .filter(q => Object.prototype.hasOwnProperty.call(q, 'question'))
+      .reduce((acc, curr) => {
+        acc[curr.question] = null;
+        validation[curr.question] = {
+          isValid: false,
+        };
+        return acc;
+      }, {});
+    this.setState({
+      answers: answerKeys,
+      validation,
+    });
+  }
 
         'Laundry',
       ],
