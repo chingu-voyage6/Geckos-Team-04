@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Layout from '../Layout/Layout';
+import { create } from '../client/api-user';
 
 const LoginHolder = styled.div`
   margin: 0 auto 0 auto;
@@ -212,58 +213,99 @@ const GoogleLogin = styled.div`
     }
   }
 `;
-const Form = () => (
-  <LoginHolder>
-    <h1>Welcome back</h1>
-    <form method="POST">
-      <label htmlFor="email">Email address</label>
-      <input type="text" id="email" />
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" />
-      <LoginElement>
-        <div>
-          <input type="checkbox" /> Remember me
-        </div>
-        <a href="/..">Forgot password?</a>
-      </LoginElement>
-      <button type="submit">Log in</button>
-      <LoginSeperator>
-        <span>OR</span>
-      </LoginSeperator>
-      <FacebookLogin>
-        <button type="submit">
-          <span>
-            <img
-              src="http://res.cloudinary.com/dc9kfp5gt/image/upload/q_100/v1531129281/facebook-logo_1_txzgqp.png"
-              alt="facebook-icon"
-            />
-            Log In with Facebook
-          </span>
-        </button>
-      </FacebookLogin>
-      <GoogleLogin>
-        <button type="submit">
-          <span>
-            <img
-              src="https://static.thumbtackstatic.com/_assets/images/release/pages/login/images/google-logo_48.5111919da69066528795b0426c31b885.svg"
-              alt="google-icon"
-            />
-            Log In with Google
-          </span>
-        </button>
-      </GoogleLogin>
-      <p>
-        By clicking Log In, Log In with Facebook or Log In with Google, you agree to the{' '}
-        <a href="/..">Terms of Use</a> and <a href="/..">Privacy Policy</a>
-      </p>
-    </form>
-  </LoginHolder>
-);
 
-const Login = () => (
-  <Layout footerIsVisible={false} defaultCopyright={false}>
-    <Form />
-  </Layout>
-);
+class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      open: false,
+      error: '',
+    };
+  }
+
+  handleChange = name => event => {
+    this.setState({[name]: event.target.value})
+  }
+
+  clickSubmit = () => {
+    const user = {
+      email: this.state.email || undefined,
+      password: this.state.password || undefined,
+    };
+
+    create(user).then(data => {
+      if (data.error) { this.setState({ error: data.error }) }
+      else { this.setState({ error: '', open: true }) }
+    })
+  }
+
+  render() {
+    return (
+      <Layout footerIsVisible={false} defaultCopyright={false}>
+        <LoginHolder>
+          <h1>Welcome back</h1>
+          <form method="POST" >
+            <label htmlFor="email">Email address</label>
+            <input
+              type="text"
+              value={this.state.email}
+              id="email"
+              onChange={ this.handleChange('email') }
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              value={this.state.password}
+              id="password"
+              onChange={ this.handleChange('password') }
+            />
+            <LoginElement>
+              <div>
+                <input type="checkbox" /> Remember me
+              </div>
+              <a href="/..">Forgot password?</a>
+            </LoginElement>
+            <button
+              type="submit"
+              onClick={this.clickSubmit}
+            >Log in</button>
+            <LoginSeperator>
+              <span>OR</span>
+            </LoginSeperator>
+            <FacebookLogin>
+              <button type="submit">
+                <span>
+                  <img
+                    src="http://res.cloudinary.com/dc9kfp5gt/image/upload/q_100/v1531129281/facebook-logo_1_txzgqp.png"
+                    alt="facebook-icon"
+                  />
+                  Log In with Facebook
+                </span>
+              </button>
+            </FacebookLogin>
+            <GoogleLogin>
+              <button type="submit">
+                <span>
+                  <img
+                    src="https://static.thumbtackstatic.com/_assets/images/release/pages/login/images/google-logo_48.5111919da69066528795b0426c31b885.svg"
+                    alt="google-icon"
+                  />
+                  Log In with Google
+                </span>
+              </button>
+            </GoogleLogin>
+            <p>
+              By clicking Log In, Log In with Facebook or Log In with Google, you agree to the{' '}
+              <a href="/..">Terms of Use</a> and <a href="/..">Privacy Policy</a>
+            </p>
+          </form>
+        </LoginHolder>
+      </Layout>
+    );
+  }
+}
 
 export default Login;

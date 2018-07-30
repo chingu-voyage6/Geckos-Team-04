@@ -35,11 +35,11 @@ const Profile = props => (
     <StyledSection>
       <ProfileCard {...props} />
       <Footer>
-        <ListGroup hasBoxShadow isRounded>
+        <ListGroup>
           <ButtonArrowLink to="/profile/information">Account Settings</ButtonArrowLink>
           <ButtonArrowLink to="/profile/notifications">Notification Settings</ButtonArrowLink>
         </ListGroup>
-        <ListGroup hasBoxShadow isRounded>
+        <ListGroup>
           <ButtonArrowLink to="/logout">Logout</ButtonArrowLink>
         </ListGroup>
       </Footer>
