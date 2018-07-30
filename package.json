@@ -5,9 +5,15 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
+    "moment-timezone": "^0.5.21",
     "mongoose": "5.0.0",
     "mongoose-fakery": "^0.1.7",
     "prop-types": "^15.6.2",
@@ -35,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.1",
     "eslint-plugin-react": "7.9.1",
+    "nodemon": "^1.18.3",
     "prettier": "^1.13.5"
   }
 }
