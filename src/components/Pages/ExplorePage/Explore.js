@@ -13,7 +13,7 @@ const explore = () => (
       <div>Lots and Lots of carousels</div>
     </Section>
     <AllServiceSection />
-    <HowTTWorksSection />
+    <HowTTWorksSection hasBorder />
   </Layout>
 );
 

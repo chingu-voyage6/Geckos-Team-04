@@ -41,6 +41,11 @@ const SearchInput = styled.input`
     color: #8a8a8a;
     opacity: 1;
   }
+
+  :focus {
+    outline: none;
+    border: 1px solid #009fd9;
+  }
 `;
 const HeroTile = styled.div`
   font-size: 28px;

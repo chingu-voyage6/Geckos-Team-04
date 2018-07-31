@@ -20,15 +20,10 @@ const DefaultButton = styled.button`
   }
 `;
 
-const defaultButton = ({ title, click }) => (
-  <DefaultButton onCLick={click} type="button">
-    {title}
-  </DefaultButton>
-);
+const defaultButton = ({ title }) => <DefaultButton type="button">{title}</DefaultButton>;
 
 defaultButton.propTypes = {
   title: PropTypes.string.isRequired,
-  click: PropTypes.func.isRequired,
 };
 
 const SearchBarButtonStyled = DefaultButton.extend`
