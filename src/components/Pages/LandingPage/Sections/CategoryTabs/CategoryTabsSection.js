@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { ServiceHeader } from '../../../../Shared/Cards/ServiceCard/ServiceCard';
 import { CarouselTempLocation } from '../../../../Shared/CarouselTemp/CarouselTemp';
 import Section from '../../../../Layout/Section/Section';
