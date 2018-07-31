@@ -7,21 +7,36 @@ import { PureServiceCard } from '../../../Shared/Cards/ServiceCard/ServiceCard';
 
 const SectionTitle = styled.div`
   text-align: center;
-  font-size: 40px;
+  font-size: 28px;
   margin-bottom: 60px;
+  font-weight: bold;
+
+  @media (min-width: 701px) {
+    font-size: 40px;
+  }
 `;
 const CardWrapper = styled(Link)`
   display: block;
-  width: 33.33%;
-  padding: 10px;
+  width: 100%;
+  padding: 10px 0;
   text-decoration: none;
+  > div {
+    margin: 0 !important;
+  }
+
+  @media (min-width: 701px) {
+    width: 33.33%;
+    padding: 10px;
+  }
 `;
 const CardSubsection = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 const categoryPopular = ({ services, sectionTitle }) => (
-  <Section isGray>
+
+  <Section isNarrow isGray>
+
     <SectionTitle>
       {sectionTitle === 'Lessons' ? 'Popular Services' : `Popular ${sectionTitle} Services`}
     </SectionTitle>

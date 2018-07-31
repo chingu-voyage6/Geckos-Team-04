@@ -5,7 +5,9 @@ import CategoryHero from './Sections/CategoryHero';
 import CategoryPopular from './Sections/CategoryPopular';
 import catData from './categoriesData/index';
 import CategoryServices from './Sections/CategoryServices';
+
 import PillBar from './Sections/PillBar';
+
 
 // https://source.unsplash.com/random
 class CategoryPage extends React.Component {

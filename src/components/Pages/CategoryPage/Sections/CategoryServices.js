@@ -11,10 +11,23 @@ const SectionTitle = styled.div`
 `;
 
 const ServicesList = styled.ul`
-  column-count: 3;
-  column-width: 33.33%;
-  padding: 0;
+
+  column-count: 1;
+  column-width: 100%;
+
   width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  @media (min-width: 701px) {
+    column-count: 2;
+    column-width: 50%;
+  }
+
+  @media (min-width: 1026px) {
+    column-count: 3;
+    column-width: 33.33%;
+  }
+
 `;
 
 const SubCategorieWrapper = styled.div`
@@ -60,7 +73,7 @@ SubCategorie.propTypes = {
 };
 
 const categoryServices = ({ subcategories, sectionTitle }) => (
-  <Section hasBorder>
+  <Section isNarrow hasBorder>
     <SectionTitle>
       {sectionTitle === 'Lessons' ? 'More Services' : `More ${sectionTitle} Services`}
     </SectionTitle>

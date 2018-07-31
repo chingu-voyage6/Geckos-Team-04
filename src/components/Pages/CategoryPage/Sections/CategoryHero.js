@@ -18,6 +18,22 @@ const HeroContainer = styled(Section)`
     justify-content: center;
     align-items: center;
     min-height: 380px;
+    padding: 16px;
+  }
+`;
+
+const StyledSearchButton = styled(SearchButton)`
+  border-radius: 4px;
+  flex-grow: 1;
+  width: 100%;
+  padding: 16px 60px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  @media (min-width: 701px) {
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 0;
+    width: auto;
+    flex-grow: 0;
   }
 `;
 
@@ -26,17 +42,31 @@ const SearchInput = styled.input`
   border: solid 1px #d3d4d5;
   flex-grow: 1;
 
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
   border-radius: 4px 0 0 4px;
 
   ::placeholder {
     color: #8a8a8a;
     opacity: 1;
   }
+
+  @media (min-width: 701px) {
+    border-radius: 4px 0 0 4px;
+    margin-bottom: 0;
+    width: auto;
+  }
 `;
 const Content = styled.div`
   color: #fff;
   text-align: center;
-  max-width: 66.66%;
+  max-width: 100%;
+
+  @media (min-width: 1026px) {
+    max-width: 66.66%;
+  }
 `;
 const TitleWrapper = styled.div`
   font-size: 40px;
@@ -44,11 +74,19 @@ const TitleWrapper = styled.div`
 `;
 const SloganWrapper = styled.div`
   font-size: 20px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin-bottom: 1.5rem;
 `;
 const SearchWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  @media (min-width: 701px) {
+    flex-wrap: nowrap;
+  }
+`;
+
+const CategoryHero = ({ imgUrl, title, slogan }) => (
+  <HeroContainer isNarrow imgUrl={imgUrl}>
 `;
 
 const CategoryHero = ({ imgUrl, title, slogan }) => (
@@ -58,7 +96,7 @@ const CategoryHero = ({ imgUrl, title, slogan }) => (
       <SloganWrapper>{slogan}</SloganWrapper>
       <SearchWrapper>
         <SearchInput placeholder="What service do you need?" />
-        <SearchButton>Get Started</SearchButton>
+        <StyledSearchButton click={() => {}}>Get Started</StyledSearchButton>
       </SearchWrapper>
     </Content>
   </HeroContainer>
