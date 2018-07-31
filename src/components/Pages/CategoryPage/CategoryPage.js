@@ -5,6 +5,10 @@ import CategoryHero from './Sections/CategoryHero';
 import CategoryPopular from './Sections/CategoryPopular';
 import catData from './categoriesData/index';
 import CategoryServices from './Sections/CategoryServices';
+
+import PillBar from './Sections/PillBar';
+
+
 // https://source.unsplash.com/random
 class CategoryPage extends React.Component {
   constructor(props) {
@@ -20,6 +24,7 @@ class CategoryPage extends React.Component {
     return (
       <Layout>
         <CategoryHero imgUrl={heroImgUrl} title={pageTitle} slogan={pageSlogan} />
+        <PillBar />
         <CategoryPopular services={popularServices} sectionTitle={pageTitle} />
         <CategoryServices subcategories={subcategories} sectionTitle={pageTitle} />
       </Layout>

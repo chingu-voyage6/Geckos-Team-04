@@ -28,7 +28,6 @@ const defaultButton = ({ title, className, click }) => (
 
 defaultButton.propTypes = {
   title: PropTypes.string.isRequired,
-  click: PropTypes.func.isRequired,
 };
 
 const SearchBarButtonStyled = DefaultButton.extend`

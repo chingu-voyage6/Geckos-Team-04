@@ -11,6 +11,7 @@ const SectionTitle = styled.div`
 `;
 
 const ServicesList = styled.ul`
+
   column-count: 1;
   column-width: 100%;
 
@@ -26,6 +27,7 @@ const ServicesList = styled.ul`
     column-count: 3;
     column-width: 33.33%;
   }
+
 `;
 
 const SubCategorieWrapper = styled.div`

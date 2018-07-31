@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
 
@@ -40,10 +41,12 @@ const SearchInput = styled.input`
   padding: 15px;
   border: solid 1px #d3d4d5;
   flex-grow: 1;
+
   width: 100%;
   border-radius: 4px;
   margin-bottom: 20px;
   font-size: 16px;
+  border-radius: 4px 0 0 4px;
 
   ::placeholder {
     color: #8a8a8a;
@@ -84,6 +87,10 @@ const SearchWrapper = styled.div`
 
 const CategoryHero = ({ imgUrl, title, slogan }) => (
   <HeroContainer isNarrow imgUrl={imgUrl}>
+`;
+
+const CategoryHero = ({ imgUrl, title, slogan }) => (
+  <HeroContainer imgUrl={imgUrl}>
     <Content>
       <TitleWrapper>{title}</TitleWrapper>
       <SloganWrapper>{slogan}</SloganWrapper>
@@ -94,5 +101,11 @@ const CategoryHero = ({ imgUrl, title, slogan }) => (
     </Content>
   </HeroContainer>
 );
+
+CategoryHero.propTypes = {
+  imgUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  slogan: PropTypes.string.isRequired,
+};
 
 export default CategoryHero;
