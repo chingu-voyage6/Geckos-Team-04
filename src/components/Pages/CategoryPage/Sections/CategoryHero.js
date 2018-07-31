@@ -46,7 +46,7 @@ const SearchInput = styled.input`
   border-radius: 4px;
   margin-bottom: 20px;
   font-size: 16px;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px;
 
   ::placeholder {
     color: #8a8a8a;
@@ -87,10 +87,6 @@ const SearchWrapper = styled.div`
 
 const CategoryHero = ({ imgUrl, title, slogan }) => (
   <HeroContainer isNarrow imgUrl={imgUrl}>
-`;
-
-const CategoryHero = ({ imgUrl, title, slogan }) => (
-  <HeroContainer imgUrl={imgUrl}>
     <Content>
       <TitleWrapper>{title}</TitleWrapper>
       <SloganWrapper>{slogan}</SloganWrapper>
