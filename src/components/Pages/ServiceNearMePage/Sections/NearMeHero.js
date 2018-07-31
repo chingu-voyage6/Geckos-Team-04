@@ -30,52 +30,90 @@ const Content = styled.div`
   width: 100%;
 `;
 const TitleWrapper = styled.div`
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
   color: #fff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  @media (min-width: 701px) {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const HeroModal = styled.div`
-  background: rgba(255, 255, 255, 0.9);
-  padding: 52px 48px;
-  width: 50%;
+  background: #fff;
+  padding: 28px 24px;
+  width: 100%;
   margin: auto;
+  @media (min-width: 701px) {
+    width: 66.6%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 52px 48px;
+  }
+  @media (min-width: 1026px) {
+    width: 50%;
+  }
 `;
 const ModalTitle = styled.div`
   color: #000;
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 2rem;
+
+  @media (min-width: 701px) {
+    font-size: 24px;
+  }
 `;
 
 const SearchInput = styled.input`
   padding: 15px;
   border: solid 1px #d3d4d5;
-  flex-grow: 1;
-
+  flex-grow: 0;
+  width: 100%;
+  display: block;
   border-radius: 4px 0 0 4px;
 
   ::placeholder {
     color: #8a8a8a;
     opacity: 1;
   }
+
+  @media (min-width: 701px) {
+    flex-grow: 1;
+    width: auto;
+  }
 `;
 
 const SearchWrappper = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: 701px) {
+    flex-wrap: nowrap;
+  }
+`;
+
+const GoButton = DefaultButton.extend`
+  display: block;
+  width: 100%;
+
+  @media (min-width: 701px) {
+    width: auto;
+  }
 `;
 
 const nearMeHero = ({ goHandler }) => (
-  <StyledSection>
+  <StyledSection isNarrow>
     <Content>
       <TitleWrapper>House Cleaners near you</TitleWrapper>
       <HeroModal>
         <ModalTitle>Where do you need the house cleaner?</ModalTitle>
         <SearchWrappper>
           <SearchInput type="text" placeholder="Enter your zip code" />
-          <DefaultButton onClick={goHandler}>Go</DefaultButton>
+          <GoButton onClick={goHandler}>Go</GoButton>
         </SearchWrappper>
       </HeroModal>
     </Content>

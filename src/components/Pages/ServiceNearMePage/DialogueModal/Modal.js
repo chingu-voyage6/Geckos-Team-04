@@ -14,13 +14,22 @@ const ModalBody = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: calc(100vh - 20px);
   background: ${({ isBlue }) => (isBlue ? '#009fd9' : '#fafafa')};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
+  width: 100%;
   z-index: 1100;
+  min-width: 100%;
+  @media (min-width: 601px) {
+    min-width: 600px;
+    width: 600px;
+  }
+
+  @media (min-width: 701px) {
+    height: 70vh;
+  }
 `;
 
 class Modal extends React.Component {
@@ -31,6 +40,12 @@ class Modal extends React.Component {
     validation: null,
     displayError: false,
   };
+
+  componentWillMount() {
+    window.onscroll = function() {
+      window.scrollTo(0, 0);
+    };
+  }
 
   componentDidMount() {
     const validation = {};
@@ -47,6 +62,10 @@ class Modal extends React.Component {
       answers: answerKeys,
       validation,
     });
+  }
+
+  componentWillUnmount() {
+    window.onscroll = null;
   }
 
   updateTextFieldValueHandler = (question, e) => {

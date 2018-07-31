@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Section from '../../../Layout/Section/Section';
 import { DefaultButton } from '../../../Shared/UI/Button/Button';
 
@@ -27,6 +28,7 @@ const QnAContent = [
 ];
 const StyledSection = styled(Section)`
   text-align: center;
+
   > div {
     padding-bottom: 30px;
   }
@@ -38,19 +40,37 @@ const SectionTitle = styled.div`
 `;
 const SectionText = styled.div``;
 
-const StyledButton = styled(DefaultButton)`
-  margin: 36px auto;
-  padding: 17px 30px;
-  font-size: 16px;
-`;
 const ContentWrapper = styled.div`
-  width: 66.66%;
+  width: 100%;
   margin: auto;
+
+  @media (min-width: 701px) {
+    width: 66.66%;
+  }
 `;
 
 const QnATitle = styled.div`
   font-size: 30px;
   font-weight: bold;
+`;
+
+const ButtonLink = styled(Link)`
+  margin: 36px auto;
+  font-size: 14px;
+  text-decoration: none;
+  width: auto;
+  color: #fff;
+  white-space: nowrap;
+  background-color: #009fd9;
+  font-weight: bold;
+  padding: 14px 24px;
+  border-radius: 0.25rem !important; // required to override normalize from footer!
+  display: inline-block;
+  letter-spacing: 1px;
+  :focus {
+    text-decoration: underline;
+    background-color: #007fad;
+  }
 `;
 
 const QuestionCardBody = styled.div`
@@ -97,11 +117,12 @@ const OtherServices = () => (
   <StyledSection padding={false}>
     <SectionTitle>Unfortunately, we could not find any House Cleaners in your area.</SectionTitle>
     <ContentWrapper>
-      <SectionText>
+      <SectionText style={{ color: '#676d73' }}>
         Thumbtack currently has over 200,000 professionals completing projects for customers across
         categories including home, events, lessons, wellness, and more.
       </SectionText>
-      <StyledButton>Explore other services</StyledButton>
+      <ButtonLink to="/">Explore other services</ButtonLink>
+
       <QnATitle>Q & A</QnATitle>
       <SectionText>Answers to commonly asked questions from the experts on Thumbtack.</SectionText>
       {QnAContent.map(({ question, answer }, i) => (
