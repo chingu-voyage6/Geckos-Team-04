@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { StyledServiceCard } from '../ServiceCard/ServiceCard';
+import { DefaultButton } from '../../UI/Button/Button';
 
 const Card = styled(StyledServiceCard)`
   padding: 24px;
@@ -40,20 +41,6 @@ const Avatar = styled.img`
   margin-bottom: 10px;
 `;
 
-const Button = styled.button`
-  width: 140px;
-  display: inline-block;
-  background-color: #009fd9;
-  color: #fff;
-  font-size: 14px;
-  line-height: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-radius: 4px;
-  padding: 12px 22px;
-  border: 2px solid transparent;
-`;
-
 const InfoBox = styled.div`
   display: flex;
   justify-content: center;
@@ -80,7 +67,7 @@ const ProfileCard = props => {
   return (
     <Card width="290px" boxShadow={boxShadow}>
       <Avatar src={avatar} />
-      <Button>Upload Photo</Button>
+      <DefaultButton>Upload Photo</DefaultButton>
       <Title>{name}</Title>
       <MutedText>{email}</MutedText>
       <InfoBox>

@@ -23,8 +23,8 @@
   Card icons:
   - LocationIcon, PricingIcon
 ---------------------------------------
-  Logos:
-  - LogoRoundIcon, LogoFullIcon
+  Logos & Social Media:
+  - LogoRoundIcon, LogoFullIcon, Twitter, Facebook, Pinterest, Google, Instagram
 ---------------------------------------
   UI elements icons:
   - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass in SearchBar), SearchIconButton(magnifying glass on button),
@@ -92,6 +92,35 @@ export const ThreeDotsLarge = props => (
 export const CakeIconSmall = props => {
   const path =
     'M 4 15 h 10 v -3 H 4 v 3 Z m 1 -5 h 8 V 7 H 5 v 3 Z m 2 -5 h 4 V 3 H 7 v 2 Z m 9 10 v -4 a 1 1 0 0 0 -1 -1 V 6 a 1 1 0 0 0 -1 -1 h -1 V 2 a 1 1 0 0 0 -1 -1 H 6 a 1 1 0 0 0 -1 1 v 3 H 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 1 0 0 2 h 14 a 1 1 0 1 0 0 -2 Z';
+    return <Icon path={path} {...props} />;
+  };
+export const Twitter = props => {
+  const path =
+    'M19.8 6.6L21 4.2l-1.8 1.2-.4.2c-.7-.8-1.8-1.4-2.9-1.4-2.2 0-3.9 1.4-3.9 3.6 0 .3 0 .9.1 1.1L12 9S4.2 7.8 3.6 4.8c0 0-1.8 3 1.2 5.4 0 0-1.2.6-1.8 0 0 0 0 1.8 3 3.6 0 0-1.2.6-1.8 0 0 0 2.4 2.4 3.6 2.4 0 0 0 1.8-5.4 1.8 0 0 6.8 4.5 13.2-.6 3.2-2.6 4-5.9 4.1-8.4.1-.3.1-.6.1-.9v-.3L21.6 6l-1.8.6z';
+
+  return <Icon path={path} {...props} />;
+};
+export const Facebook = props => {
+  const path =
+    'M13.1 9.6l-.1-2c0-.9.2-1.6 1.6-1.6h2.1V3.2c-.3 0-.9-.2-2.1-.2-2.5 0-4.5 1.7-4.5 4.5l.1 2.1h-3v3h3V21h3v-8.4h3l.6-3h-3.7z';
+
+  return <Icon path={path} {...props} />;
+};
+export const Pinterest = props => {
+  const path =
+    'M 10.317 15.311 c -0.52 2.72 -1.152 5.327 -3.03 6.689 c -0.578 -4.11 0.852 -7.197 1.516 -10.475 c -1.132 -1.905 0.136 -5.74 2.523 -4.795 c 2.938 1.162 -2.544 7.084 1.136 7.825 c 3.843 0.771 5.412 -6.668 3.03 -9.087 c -3.443 -3.493 -10.022 -0.08 -9.213 4.922 c 0.197 1.222 1.46 1.593 0.504 3.281 c -2.203 -0.489 -2.86 -2.227 -2.776 -4.543 c 0.137 -3.792 3.407 -6.447 6.689 -6.815 c 4.149 -0.465 8.044 1.523 8.58 5.427 c 0.606 4.405 -1.871 9.177 -6.31 8.834 c -1.202 -0.094 -1.706 -0.69 -2.65 -1.263 Z';
+
+  return <Icon path={path} {...props} />;
+};
+export const Google = props => {
+  const path =
+    'M 8 10.9 v 2.4 h 4 c -0.2 1 -1.2 3 -4 3 c -2.4 0 -4.3 -2 -4.3 -4.4 S 5.6 7.5 8 7.5 c 1.4 0 2.3 0.6 2.8 1.1 l 1.9 -1.8 C 11.5 5.7 9.9 5 8 5 c -3.9 0 -7 3.1 -7 7 s 3.1 7 7 7 c 4 0 6.7 -2.8 6.7 -6.8 c 0 -0.5 0 -0.8 -0.1 -1.2 L 8 10.9 Z M 23 10.9 h -2 v -2 h -2 v 2 h -2 v 2 h 2 v 2 h 2 v -2 h 2';
+
+  return <Icon path={path} {...props} />;
+};
+export const Instagram = props => {
+  const path =
+    'M 17 2 H 7 C 4.2 2 2 4.2 2 7 v 10 c 0 2.8 2.2 5 5 5 h 10 c 2.8 0 5 -2.2 5 -5 V 7 c 0 -2.8 -1.8 -5 -5 -5 Z m -2 3 h 3 v 3 h -3 V 5 Z m -3 3 c 2.2 0 4 1.8 4 4 s -1.8 4 -4 4 s -4 -1.8 -4 -4 s 2.2 -4 4 -4 Z m 8 9 c 0 1.7 -1.3 3 -3 3 H 7 c -1.7 0 -3 -1.3 -3 -3 v -5 h 2 c 0 3.3 2.7 6 6 6 s 6 -2.7 6 -6 h 2 v 5 Z';
 
   return <Icon path={path} {...props} />;
 };
