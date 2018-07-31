@@ -18,12 +18,16 @@ const ButtonWhite = DefaultButton.extend`
   background-color: #ffffff;
   color: black;
   min-width: 50%;
-
+  flex-grow: 1;
   width: auto;
   :focus {
     background-color: #ffffff;
     color: black;
     text-decoration: underline;
+  }
+
+  @media (min-width: 701px) {
+    flex-grow: 0;
   }
 `;
 
@@ -34,16 +38,24 @@ const ButtonGray = DefaultButton.extend`
   margin-right: 20px;
   min-width: 25%;
   width: auto;
-
+  flex-grow: 1;
   :focus {
     border-color: #2f3033;
     background: #fff;
+  }
+  @media (min-width: 701px) {
+    flex-grow: 0;
   }
 `;
 
 const ButtonBlue = DefaultButton.extend`
   min-width: 25%;
   width: auto;
+  flex-grow: 1;
+  border: 2px solid #009fd9;
+  @media (min-width: 701px) {
+    flex-grow: 0;
+  }
 `;
 
 const ModalFooter = ({ option, answers, nextSlide, previousSlide, submitAnswers, isBlue }) => (
