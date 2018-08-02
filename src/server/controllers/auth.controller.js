@@ -36,10 +36,6 @@ const singin = (req, res) => {
         expire: now.toUTCString(),
       });
 
-      res.cookie('uid', user._id, {
-        expire: now.toUTCString(),
-      });
-
       return res.json({
         token,
         user: { _id: user._id, name: user.name, email: user.email },
