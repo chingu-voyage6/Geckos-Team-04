@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../Layout/Layout';
-import { create } from '../client/api-user';
+import { singin } from '../auth/api-auth';
+import { authenticate } from '../auth/auth-helper';
+import config from '../config';
 
 const LoginHolder = styled.div`
   margin: 0 auto 0 auto;
@@ -221,46 +224,81 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      open: false,
-      error: '',
+      redirectToReferrer: false,
+      formErrorMessage: '',
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = name => event => {
-    this.setState({[name]: event.target.value})
-  }
+  handleSubmit = event => {
+    event.preventDefault();
 
-  clickSubmit = () => {
+    const { email, password } = this.state;
     const user = {
-      email: this.state.email || undefined,
-      password: this.state.password || undefined,
+      email,
+      password,
     };
+    singin(config.apiUrl, user).then(token => {
+      if (token.error) {
+        this.setState({ formErrorMessage: token.error });
+      } else {
+        authenticate(token, () => {
+          this.setState({
+            redirectToReferrer: true,
+          });
+        });
+      }
+    });
+  };
 
-    create(user).then(data => {
-      if (data.error) { this.setState({ error: data.error }) }
-      else { this.setState({ error: '', open: true }) }
-    })
-  }
+  handleInputChange = event => {
+    const { target } = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+
+    this.setState({ [name]: value });
+  };
 
   render() {
+    const { formErrorMessage, redirectToReferrer, email, password } = this.state;
+
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
+    let renderErrorMessage;
+
+    if (formErrorMessage) {
+      renderErrorMessage = (
+        <span>
+          <p>{formErrorMessage}</p>
+        </span>
+      );
+    }
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
     return (
       <Layout footerIsVisible={false} defaultCopyright={false}>
         <LoginHolder>
           <h1>Welcome back</h1>
-          <form method="POST" >
+          <form onSubmit={this.handleSubmit}>
             <label htmlFor="email">Email address</label>
             <input
               type="text"
-              value={this.state.email}
               id="email"
-              onChange={ this.handleChange('email') }
+              name="email"
+              value={email}
+              onChange={this.handleInputChange}
             />
             <label htmlFor="password">Password</label>
             <input
-              type="password"
-              value={this.state.password}
               id="password"
-              onChange={ this.handleChange('password') }
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleInputChange}
             />
             <LoginElement>
               <div>
@@ -268,10 +306,8 @@ class Login extends Component {
               </div>
               <a href="/..">Forgot password?</a>
             </LoginElement>
-            <button
-              type="submit"
-              onClick={this.clickSubmit}
-            >Log in</button>
+            {renderErrorMessage}
+            <button type="submit">Login</button>
             <LoginSeperator>
               <span>OR</span>
             </LoginSeperator>

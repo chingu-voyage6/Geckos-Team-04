@@ -1,6 +1,6 @@
 // todo
 
-const getErrorMessage = err => err;
+const getErrorMessage = err => err.toString();
 
 module.exports = {
   getErrorMessage

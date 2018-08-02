@@ -36,9 +36,14 @@ const singin = (req, res) => {
         expire: now.toUTCString(),
       });
 
+      res.cookie('uid', user._id, {
+        expire: now.toUTCString(),
+      });
+
       return res.json({
         token,
         user: { _id: user._id, name: user.name, email: user.email },
+        message: 'Success',
       });
     }
   );
@@ -46,6 +51,7 @@ const singin = (req, res) => {
 
 const singout = (req, res) => {
   res.clearCookie('t');
+  res.clearCookie('uid');
   return res.status('200').json({ message: 'Signed out' });
 };
 

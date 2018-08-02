@@ -1,5 +1,5 @@
-const singin = user => {
-  return fetch('/auth/signin/', {
+const singin = (url, user) => {
+  return fetch(`${url}/auth/singin/`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -12,8 +12,8 @@ const singin = user => {
     .catch(err => console.log(err));
 };
 
-const signout = () => {
-  return fetch('/auth/sigout/', {
+const signout = url => {
+  return fetch(`${url}/auth/sigout/`, {
     method: 'GET',
   })
     .then(response => response.json())

@@ -18,35 +18,34 @@ const LinkStyled = styled.li`
     font-weight: 700;
   }
   :hover {
-      background-color: #fafafa;
-      > a {
-        color: #009fd9;
-      }
+    background-color: #fafafa;
+    > a {
+      color: #009fd9;
+    }
   }
-   @media (min-width: 700px) {
-     
-        list-style: none;
-        margin: 0 12px;
-        height: 100%;
-        display: ${({ title }) => (title === 'Home' ? 'none' : 'flex')};
-        padding: 0;
-        align-items: center;
-        border-bottom: 0 solid #e9eced;
-        width: auto;
-        cursor: pointer;
-        > a {
-          text-decoration: none;
-          color: #676d73;
-          font-size: 14px;
-          font-weight: normal;
-        }
-        :hover {
-        box-shadow: inset 0 -3px 0 #d3d4d5;
-        background: transparent;
-        > a {
-          color: #2f3033;
-        }    
-   }
+  @media (min-width: 700px) {
+    list-style: none;
+    margin: 0 12px;
+    height: 100%;
+    display: ${({ title }) => (title === 'Home' ? 'none' : 'flex')};
+    padding: 0;
+    align-items: center;
+    border-bottom: 0 solid #e9eced;
+    width: auto;
+    cursor: pointer;
+    > a {
+      text-decoration: none;
+      color: #676d73;
+      font-size: 13px;
+      font-weight: normal;
+    }
+    :hover {
+      box-shadow: inset 0 -3px 0 #d3d4d5;
+      background: transparent;
+      > a {
+        color: #2f3033;
+      }
+    }
 `;
 
 export default class NavLink extends React.Component {

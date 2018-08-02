@@ -1,5 +1,5 @@
-const create = user => {
-  return fetch('/users', {
+const create = (url, user) => {
+  return fetch(`${url}/user`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -11,8 +11,8 @@ const create = user => {
     .catch(err => console.log(err));
 };
 
-const read = (params, credentials) => {
-  fetch(`/users/${params.userId}`, {
+const read = (url, params, credentials) => {
+  return fetch(`${url}/user/${params.userId}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -24,8 +24,8 @@ const read = (params, credentials) => {
     .catch(err => console.log(err));
 };
 
-const update = (user, params, credentials) => {
-  return fetch(`/users/${params.userId}`, {
+const update = (url, user, params, credentials) => {
+  return fetch(`${url}/user/${params.userId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -38,8 +38,8 @@ const update = (user, params, credentials) => {
     .catch(err => console.log(err));
 };
 
-const remove = (params, credentials) => {
-  return fetch(`/users/${params.userId}`, {
+const remove = (url, params, credentials) => {
+  return fetch(`${url}/user/${params.userId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',

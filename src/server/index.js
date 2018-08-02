@@ -12,6 +12,13 @@ const app = express();
 
 const config = require('./config');
 
+const authOptions = {
+  origin: true,
+  methods: ['POST', 'PUT', 'DELETE', 'GET'],
+  credentials: true,
+  maxAge: 3600,
+};
+
 app.set('secret', config.secret);
 app.set('dbUrl', config.db[app.settings.env]);
 mongoose.connect(app.get('dbUrl'));
@@ -19,11 +26,10 @@ mongoose.connect(app.get('dbUrl'));
 app.use(bodyParser.json());
 // app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
-app.use(cors());
+app.use(cors(authOptions));
 
 app.use('/api/v1/', routes);
 
