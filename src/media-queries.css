@@ -1,3 +1,13 @@
+/* Min-width */
+
+@media (min-width: 482px) {}
+
+@media (min-width: 701px) {}
+
+@media (min-width: 1011px) {}
+
+@media (min-width: 1026px) {}
+
 /* Max-width */
 
 @media (max-width: 1025px) {}
@@ -15,13 +25,3 @@
 @media (max-width: 750px) and (min-width: 702px) {}
 
 @media (max-width: 1025px) and (min-width: 701px) {}
-
-/* Min-width */
-
-@media (min-width: 482px) {}
-
-@media (min-width: 701px) {}
-
-@media (min-width: 1011px) {}
-
-@media (min-width: 1026px) {}

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Section from '../../../Layout/Section/Section';
 import { CategoryCard } from '../../../Shared/Cards/UtilCard/UtilCard';
 
@@ -124,6 +125,18 @@ GetIcon.propTypes = {
   tag: PropTypes.element.isRequired,
 };
 
+const CenterLink = styled(Link)`
+  display: none;
+  text-decoration: none;
+  color: #009fd9;
+  text-align: center;
+  margin-top: 50px;
+
+  @media (min-width: 482px) {
+    display: block;
+  }
+`;
+
 const allServicesSection = () => (
   <Section isNarrow isGray hasBorder>
     <SectionTitle>
@@ -136,6 +149,7 @@ const allServicesSection = () => (
         </CategoryCard>
       ))}
     </CardSubsection>
+    <CenterLink to="/more-services">See more services</CenterLink>
   </Section>
 );
 
