@@ -11,6 +11,8 @@ import RegisterPage from './Pages/Register';
 import ChooseAccountPage from './Pages/ChooseAccount';
 import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
 import CustomerProfile from './Pages/Customer/Profile';
+import CategoryPage from './Pages/CategoryPage/CategoryPage';
+import ServiceNearMe from './Pages/ServiceNearMePage/ServiceNearMe';
 import AccountSettings from './Pages/Customer/Information';
 
 class App extends Component {
@@ -27,6 +29,10 @@ class App extends Component {
         <Route path="/more-services" component={MoreServicesPage} />
         <PrivateRoute path="/customer/profile" component={CustomerProfile} />
         <PrivateRoute path="/profile/information" component={AccountSettings} />
+        <Route path="/home-improvement" component={CategoryPage} />
+        <Route path="/wellness" component={CategoryPage} />
+        <Route path="/events" component={CategoryPage} />
+        <Route path="/:service/near-me" component={ServiceNearMe} />
       </Fragment>
     );
   }

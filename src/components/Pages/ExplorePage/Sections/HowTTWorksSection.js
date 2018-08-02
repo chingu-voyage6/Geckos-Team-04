@@ -70,8 +70,14 @@ const HowTTWorksStep = ({ imgUrl, title, text }) => (
   </StyledStep>
 );
 
-const howTTWorksSection = () => (
-  <Section hasBorder>
+HowTTWorksStep.propTypes = {
+  imgUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+const howTTWorksSection = ({ hasBorder }) => (
+  <Section hasBorder={hasBorder}>
     <SectionTitle>
       <h3>How Thumbtack works</h3>
     </SectionTitle>
@@ -80,11 +86,12 @@ const howTTWorksSection = () => (
     </HowTTWorksSteps>
   </Section>
 );
+howTTWorksSection.propTypes = {
+  hasBorder: PropTypes.bool,
+};
 
-HowTTWorksStep.propTypes = {
-  imgUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+howTTWorksSection.defaultProps = {
+  hasBorder: false,
 };
 
 export default howTTWorksSection;
