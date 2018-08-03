@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Section from '../../../Layout/Section/Section';
 import { DefaultButton } from '../../../Shared/UI/Button/Button';
-import { CarouselTempPricing } from '../../../Shared/CarouselTemp/CarouselTemp';
+import Carousel from '../../../Shared/Carousel/carousel';
 
 const SectionText = styled.div`
   color: #676d73;
@@ -34,7 +34,7 @@ const costEstimateSection = () => (
         </p>
       </SectionText>
     </SectionTextWrapper>
-    <CarouselTempPricing />
+    <Carousel />
     <DefaultButton>See all cost guides</DefaultButton>
   </Section>
 );

@@ -27,7 +27,7 @@
   - LogoRoundIcon, LogoFullIcon, Twitter, Facebook, Pinterest, Google, Instagram
 ---------------------------------------
   UI elements icons:
-  - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass in SearchBar), SearchIconButton(magnifying glass on button),
+  - ChevronIcon(MobileMenu toggle), CarretIcon(carousels), SearchIcon(magnifying glass in SearchBar), SearchIconButton(magnifying glass on button), CaretSmall
     CloseIcon,
 
 ##############    TEMPLATE     ############
@@ -82,7 +82,14 @@ export const CloseIcon = props => {
   return <Icon path={path} {...props} />;
 };
 
-export const ThreeDotsLarge = props => (
+export const CaretSmall = props => {
+  const path =
+    'M6.764 14.646L13 9 6.725 3.311a1 1 0 0 0-1.482 1.342L10 9l-4.699 4.285c-.187.2-.301.435-.301.715a1 1 0 0 0 1 1c.306 0 .537-.151.764-.354z';
+
+  return <Icon path={path} {...props} />;
+};
+
+export const ThreeDotsLarge = () => (
   <svg viewBox="0 0 48 48" width="48" height="48" fill="currentColor">
     <circle cx="24" cy="24" r="4.5" />
     <circle cx="9" cy="24" r="4.5" />
@@ -92,8 +99,8 @@ export const ThreeDotsLarge = props => (
 export const CakeIconSmall = props => {
   const path =
     'M 4 15 h 10 v -3 H 4 v 3 Z m 1 -5 h 8 V 7 H 5 v 3 Z m 2 -5 h 4 V 3 H 7 v 2 Z m 9 10 v -4 a 1 1 0 0 0 -1 -1 V 6 a 1 1 0 0 0 -1 -1 h -1 V 2 a 1 1 0 0 0 -1 -1 H 6 a 1 1 0 0 0 -1 1 v 3 H 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 0 0 -1 1 v 4 a 1 1 0 1 0 0 2 h 14 a 1 1 0 1 0 0 -2 Z';
-    return <Icon path={path} {...props} />;
-  };
+  return <Icon path={path} {...props} />;
+};
 export const Twitter = props => {
   const path =
     'M19.8 6.6L21 4.2l-1.8 1.2-.4.2c-.7-.8-1.8-1.4-2.9-1.4-2.2 0-3.9 1.4-3.9 3.6 0 .3 0 .9.1 1.1L12 9S4.2 7.8 3.6 4.8c0 0-1.8 3 1.2 5.4 0 0-1.2.6-1.8 0 0 0 0 1.8 3 3.6 0 0-1.2.6-1.8 0 0 0 2.4 2.4 3.6 2.4 0 0 0 1.8-5.4 1.8 0 0 6.8 4.5 13.2-.6 3.2-2.6 4-5.9 4.1-8.4.1-.3.1-.6.1-.9v-.3L21.6 6l-1.8.6z';

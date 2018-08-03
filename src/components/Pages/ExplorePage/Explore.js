@@ -5,13 +5,12 @@ import Section from '../../Layout/Section/Section';
 import HowTTWorksSection from './Sections/HowTTWorksSection';
 import AllServiceSection from './Sections/AllServicesSection';
 import ExploreHeroSection from './Sections/ExploreHeroSection';
+import CarouselSection from './Sections/CarouselSection';
 
 const explore = () => (
   <Layout>
     <ExploreHeroSection />
-    <Section hasBorder>
-      <div>Lots and Lots of carousels</div>
-    </Section>
+    <CarouselSection />
     <AllServiceSection />
     <HowTTWorksSection hasBorder />
   </Layout>
