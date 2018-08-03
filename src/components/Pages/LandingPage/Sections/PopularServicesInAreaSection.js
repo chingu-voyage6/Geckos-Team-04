@@ -18,7 +18,7 @@ const StyledSection = styled(Section)`
 
 const PopularServicesInAreaSection = () => (
   <StyledSection isGray hasBorder>
-    <h3>Popular services in Your Area.</h3>
+    <h3>Popular services in Your Area. </h3>
     <Carousel />
   </StyledSection>
 );
