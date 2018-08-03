@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Section from '../../../Layout/Section/Section';
 
-import { CarouselTempLocation } from '../../../Shared/CarouselTemp/CarouselTemp';
+import Carousel from '../../../Shared/Carousel/Carousel';
 
 const StyledSection = styled(Section)`
   > div {
@@ -18,8 +18,8 @@ const StyledSection = styled(Section)`
 
 const PopularServicesInAreaSection = () => (
   <StyledSection isGray hasBorder>
-    <h3>Popular services in Your Area.</h3>
-    <CarouselTempLocation />
+    <h3>Popular services in Your Area. </h3>
+    <Carousel />
   </StyledSection>
 );
 
