@@ -28,9 +28,9 @@ class App extends Component {
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/choose-account" component={ChooseAccountPage} />
         <Route path="/more-services" component={MoreServicesPage} />
-        <PrivateRoute path="/profile/account_edit" component={EditProfile} />
         <PrivateRoute path="/customer/profile" component={CustomerProfile} />
         <PrivateRoute path="/profile/information" component={AccountSettings} />
+        <PrivateRoute path="/profile/account_edit" component={EditProfile} />
         <Route path="/home-improvement" component={CategoryPage} />
         <Route path="/wellness" component={CategoryPage} />
         <Route path="/events" component={CategoryPage} />
