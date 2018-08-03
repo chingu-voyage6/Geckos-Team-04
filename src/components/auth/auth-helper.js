@@ -1,4 +1,5 @@
 import { signout } from './api-auth';
+import config from '../config';
 
 const authenticate = (jwt, done) => {
   if (typeof window !== 'undefined') {
@@ -22,7 +23,7 @@ const logout = done => {
     sessionStorage.removeItem('jwt');
   }
   done();
-  signout().then(() => {
+  signout(config.apiUrl).then(() => {
     document.cookie = 't=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   });
 };

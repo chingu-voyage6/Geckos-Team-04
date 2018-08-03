@@ -13,7 +13,7 @@ const singin = (url, user) => {
 };
 
 const signout = url => {
-  return fetch(`${url}/auth/sigout/`, {
+  return fetch(`${url}/auth/signout/`, {
     method: 'GET',
   })
     .then(response => response.json())
