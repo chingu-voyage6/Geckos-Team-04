@@ -11,6 +11,7 @@ import RegisterPage from './Pages/Register';
 import ChooseAccountPage from './Pages/ChooseAccount';
 import MoreServicesPage from './Pages/MoreServicesPage/MoreServices';
 import CustomerProfile from './Pages/Customer/Profile';
+import EditProfile from './Pages/Customer/EditProfile';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
 import ServiceNearMe from './Pages/ServiceNearMePage/ServiceNearMe';
 import AccountSettings from './Pages/Customer/Information';
@@ -27,6 +28,7 @@ class App extends Component {
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/choose-account" component={ChooseAccountPage} />
         <Route path="/more-services" component={MoreServicesPage} />
+        <PrivateRoute path="/profile/account_edit" component={EditProfile} />
         <PrivateRoute path="/customer/profile" component={CustomerProfile} />
         <PrivateRoute path="/profile/information" component={AccountSettings} />
         <Route path="/home-improvement" component={CategoryPage} />
