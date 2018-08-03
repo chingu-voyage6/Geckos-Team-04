@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Section from '../../../Layout/Section/Section';
 
-import Carousel from '../../../Shared/Carousel/carousel';
+import Carousel from '../../../Shared/Carousel/Carousel';
 
 const StyledSection = styled(Section)`
   > div {
