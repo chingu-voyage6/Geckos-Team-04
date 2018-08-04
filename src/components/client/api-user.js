@@ -1,5 +1,9 @@
-const create = (url, user) => {
-  return fetch(`${url}/user`, {
+import config from '../config';
+
+const API_URL = config.apiUrl;
+
+const create = user => {
+  return fetch(`${API_URL}/user`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -11,8 +15,8 @@ const create = (url, user) => {
     .catch(err => console.log(err));
 };
 
-const read = (url, params, credentials) => {
-  return fetch(`${url}/user/${params.userId}`, {
+const read = (params, credentials) => {
+  return fetch(`${API_URL}/user/${params.userId}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -24,8 +28,8 @@ const read = (url, params, credentials) => {
     .catch(err => console.log(err));
 };
 
-const update = (url, user, params, credentials) => {
-  return fetch(`${url}/user/${params.userId}`, {
+const update = (user, params, credentials) => {
+  return fetch(`${API_URL}/user/${params.userId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -38,8 +42,8 @@ const update = (url, user, params, credentials) => {
     .catch(err => console.log(err));
 };
 
-const remove = (url, params, credentials) => {
-  return fetch(`${url}/user/${params.userId}`, {
+const remove = (params, credentials) => {
+  return fetch(`${API_URL}/user/${params.userId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',

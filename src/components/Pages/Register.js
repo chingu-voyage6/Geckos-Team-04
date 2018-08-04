@@ -131,7 +131,7 @@ class FormRegister extends Component {
       password,
     };
 
-    create(config.apiUrl, user).then(data => {
+    create(user).then(data => {
       if (data.error) {
         this.setState({ formErrorMessage: data.error });
       } else {
@@ -140,7 +140,7 @@ class FormRegister extends Component {
           email: user.email,
           password: user.password,
         };
-        singin(config.apiUrl, credentials).then(res => {
+        singin(credentials).then(res => {
           if (res.error) {
             this.setState({ formErrorMessage: res.error });
           } else {

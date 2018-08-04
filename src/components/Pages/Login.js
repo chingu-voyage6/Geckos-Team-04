@@ -240,7 +240,7 @@ class Login extends Component {
       email,
       password,
     };
-    singin(config.apiUrl, user).then(token => {
+    singin(user).then(token => {
       if (token.error) {
         this.setState({ formErrorMessage: token.error });
       } else {
