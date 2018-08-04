@@ -140,7 +140,9 @@ class Header extends React.Component {
       renderLinks = navLinksPrivate.map(({ to, title }) => (
         <NavLink close={this.openDropdownHandler} key={title} to={to} title={title} />
       ));
-      renderLinks.push(<Dropdown firstName={jwt.user.name.first} lastName={jwt.user.name.last} />);
+      renderLinks.push(
+        <Dropdown key="dropdown" firstName={jwt.user.name.first} lastName={jwt.user.name.last} />
+      );
     } else {
       renderLinks = navLinks.map(({ to, title }) => (
         <NavLink close={this.openDropdownHandler} key={title} to={to} title={title} />
