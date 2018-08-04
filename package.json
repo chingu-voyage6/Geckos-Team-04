@@ -45,8 +45,5 @@
     "mock-local-storage": "^1.0.5",
     "nodemon": "^1.18.3",
     "prettier": "^1.13.5"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "mock-local-storage"
   }
 }
