@@ -2,46 +2,59 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// SVG component imports
-import Home from '../SVG/Home';
-import Weddings from '../SVG/Weddings';
-import Events from '../SVG/Events';
-import Wellness from '../SVG/Wellness';
-import Lessons from '../SVG/Lessons';
-import More from '../SVG/More';
+import {
+  HouseIcon,
+  CakeIcon,
+  ConfettiIcon,
+  FlowerIcon,
+  AppleIcon,
+  ThreeDotsIcon,
+} from '../Icon/Icon';
 
 const pillContent = [
   {
-    component: <Home />,
+    component: HouseIcon,
     title: 'Home',
     linkTo: '/home-improvement',
+    color: '#5968e2',
   },
   {
-    component: <Weddings />,
+    component: CakeIcon,
     title: 'Weddings',
     linkTo: '/weddings',
+    color: '#febe14',
   },
   {
-    component: <Events />,
+    component: ConfettiIcon,
     title: 'Events',
     linkTo: '/events',
+    color: '#a97ff0',
   },
   {
-    component: <Wellness />,
+    component: FlowerIcon,
     title: 'Wellness',
     linkTo: '/wellness',
+    color: '#2db783',
   },
   {
-    component: <Lessons />,
+    component: AppleIcon,
     title: 'Lessons',
     linkTo: '/lessons',
+    color: '#ff5a5f',
   },
   {
-    component: <More />,
+    component: ThreeDotsIcon,
     title: 'More',
     linkTo: '/more-services',
+    color: '#2f3033',
   },
 ];
+
+const GetIcon = ({ icon, color }) => {
+  const Component = icon;
+
+  return <Component style={{ color }} size="28" />;
+};
 
 const PillWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(47, 48, 51, 0.2);
@@ -91,10 +104,13 @@ const PillStyled = styled(Link)`
 
 const navPillBar = () => (
   <PillWrapper>
-    {pillContent.map(({ component, title, linkTo }) => (
+    {pillContent.map(({ component, color, title, linkTo }) => (
       <PillStyled key={title} to={linkTo}>
         <div>
-          {component}
+          <div style={{ color }}>
+            <GetIcon icon={component} />
+          </div>
+
           <span>{title}</span>
         </div>
       </PillStyled>
