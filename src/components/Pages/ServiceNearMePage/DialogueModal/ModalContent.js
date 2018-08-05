@@ -278,7 +278,7 @@ ModalContent.propTypes = {
   updateTextFieldValue: PropTypes.func.isRequired,
   question: PropTypes.string.isRequired,
   professionalsToFind: PropTypes.string.isRequired,
-  answers: PropTypes.oneOfType([PropTypes.array, undefined, PropTypes.string]).isRequired,
+  answers: PropTypes.any.isRequired,
 };
 
 export default ModalContent;
