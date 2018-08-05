@@ -14,10 +14,10 @@ const StyledSelect = styled.select`
   border: 1px solid #d3d4d5;
   height: 52px;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 14px;
   padding-left: 14px;
   padding-right: 54px;
-  outline: none;
+  /* outline: none; */
   cursor: pointer;
   vertical-align: middle;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg fill='%232f3033' xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' data-thumbprint-id='navigation-caret-down--small'%3E%3Cpath d='M14.646 6.764L9 13 3.311 6.725a1 1 0 0 1 1.342-1.482L9 10l4.285-4.699c.2-.187.435-.301.715-.301a1 1 0 0 1 1 1c0 .306-.151.537-.354.764z'/%3E%3C/svg%3E");
@@ -34,17 +34,10 @@ const StyledSelect = styled.select`
   }
 `;
 
-const SelectDropdown = ({ label, children }) => (
+const SelectDropdown = ({ label, children, ...props }) => (
   <span>
     <StyledLabel>{label}</StyledLabel>
-    <StyledSelect>
-      {/* {children.map((child, index) => (
-        <option key={index} value={child}>
-          {child}
-        </option>
-      ))} */}
-      {children}
-    </StyledSelect>
+    <StyledSelect {...props}>{children}</StyledSelect>
   </span>
 );
 

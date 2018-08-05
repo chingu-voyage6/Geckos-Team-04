@@ -4,7 +4,7 @@
 // const eastern = moment.tz(current, 'US/Eastern');
 // console.log(eastern.format('h:ma'));
 
-const Timezones = {
+export default {
   Eastern: 'US/Eastern',
   Central: 'US/Central',
   Mountain: 'US/Mountain',
@@ -14,5 +14,3 @@ const Timezones = {
   Alaska: 'US/Alaska',
   Hawaii: 'US/Hawaii',
 };
-
-export default Timezones;

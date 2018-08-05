@@ -6,7 +6,6 @@ import ProfileCard from '../../Shared/Cards/ProfileCard';
 import { ListGroup, ButtonArrowLink } from '../../Shared/Misc';
 import { isAuthenticated } from '../../auth/auth-helper';
 import { read } from '../../client/api-user';
-import config from '../../config';
 
 const StyledSection = styled.section`
   display: flex;
@@ -55,10 +54,12 @@ export default class Profile extends Component {
 
   componentDidMount = () => {
     const jwt = isAuthenticated();
-    read(config.apiUrl, { userId: jwt.user._id }, { t: jwt.token }).then(data => {
-      if (data.error) this.setState({ redirectToSignin: true });
-      else this.setState({ profile: data.message });
-    });
+    if (jwt) {
+      read({ userId: jwt.user._id }, { t: jwt.token }).then(data => {
+        if (data.error) this.setState({ redirectToSignin: true });
+        else this.setState({ profile: data.message });
+      });
+    }
   };
 
   render() {

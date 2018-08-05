@@ -37,7 +37,12 @@ const UserSchema = new Schema({
   updated: Date,
   timezone: {
     type: String,
-    default: 'America/New_York',
+    default: 'US/Eastern',
+  },
+  phone: {
+    type: String,
+    maxlength: 80,
+    trim: true,
   },
   // active: Boolean,
   // accessToken: String,

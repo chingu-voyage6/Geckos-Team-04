@@ -1,11 +1,12 @@
-// import moment from 'moment-timezone';
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 import Header from '../../../Layout/Header/Header';
 import Section from '../../../Layout/Section/Section';
 import AccountLink from './AccountLink';
 import ProfileForm from './ProfileForm';
-// import CopyRight from '../../Layout/Footer/CopyRight';
+import { isAuthenticated } from '../../../auth/auth-helper';
+import { read } from '../../../client/api-user';
 
 const Wrapper = styled.div`
   display: block;
@@ -19,28 +20,50 @@ const Title = styled.h3`
   font-weight: 700;
 `;
 
-// const TimezoneList = (() => {
-//   /* 
-//     Returns a list of timezones with time attached to that timezone
-//     e.g. Eastern (currently 7:00am)
-//   */
-//   const arr = [];
-//   const curTime = Date.now();
-//   Object.keys(Timezones).forEach(timezone =>
-//     arr.push(`${timezone} (currently ${moment.tz(curTime, Timezones[timezone]).format('h:ma')})`)
-//   );
-//   return arr;
-// })();
+export default class EditProfile extends Component {
+  constructor(props) {
+    super(props);
 
-const EditProfile = props => (
-  <Wrapper>
-    <Header />
-    <Section isGray hasBorder>
-      <AccountLink />
-      <Title>Edit personal information</Title>
-      <ProfileForm {...props} />
-    </Section>
-  </Wrapper>
-);
+    this.state = {
+      profile: {
+        phone: '',
+        name: {
+          first: '',
+          last: '',
+        },
+        email: '',
+        timezone: '',
+      },
+      redirectToSignin: false,
+    };
+  }
 
-export default EditProfile;
+  componentWillMount = () => {
+    const jwt = isAuthenticated();
+    if (jwt) {
+      read({ userId: jwt.user._id }, { t: jwt.token }).then(data => {
+        if (data.error) this.setState({ redirectToSignin: true });
+        else this.setState({ profile: data.message });
+      });
+    }
+  };
+
+  render() {
+    const { redirectToSignin, profile } = this.state;
+
+    if (redirectToSignin) {
+      return <Redirect to="/login" />;
+    }
+
+    return (
+      <Wrapper>
+        <Header />
+        <Section isGray hasBorder>
+          <AccountLink />
+          <Title>Edit personal information</Title>
+          {profile.email && <ProfileForm {...profile} />}
+        </Section>
+      </Wrapper>
+    );
+  }
+}

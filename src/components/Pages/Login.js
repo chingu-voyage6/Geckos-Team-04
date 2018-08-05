@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Layout from '../Layout/Layout';
 import { singin } from '../auth/api-auth';
 import { authenticate } from '../auth/auth-helper';
-import config from '../config';
 
 const LoginHolder = styled.div`
   margin: 0 auto 0 auto;
