@@ -190,7 +190,7 @@ const chooseAccount = () => (
               <h4>I want to grow my business</h4>
               <p>Respond to customer requests and get hired</p>
             </div>
-            <a href="/join-pro">Join As a Pro</a>
+            <a href="/join-pro#todo">Join As a Pro</a>
           </LeftBox>
           <CenterOr>or</CenterOr>
           <RightBox>
@@ -198,7 +198,7 @@ const chooseAccount = () => (
               <h4>I want to hire professionals</h4>
               <p>Get introduced to the right pros for your projects</p>
             </div>
-            <a href="/hire">Sign Up To Hire</a>
+            <a href="/register">Sign Up To Hire</a>
           </RightBox>
         </InnerWrapper>
       </ChooseAccountWrapper>

@@ -93,4 +93,11 @@ ProfileCard.propTypes = {
   reviews: PropTypes.number,
 };
 
+// ToDo fetched data from backend
+ProfileCard.defaultProps = {
+  avatar: 'https://via.placeholder.com/124x124',
+  projects: 0,
+  reviews: 0,
+};
+
 export default ProfileCard;

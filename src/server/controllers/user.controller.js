@@ -17,7 +17,7 @@ const create = (req, res, next) => {
 
   newUser
     .save()
-    .then(result => {
+    .then(() => {
       res.status(200).json({
         message: `Successfully added!`,
       });

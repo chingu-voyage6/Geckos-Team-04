@@ -1,5 +1,9 @@
+import config from '../config';
+
+const API_URL = config.apiUrl;
+
 const create = user => {
-  return fetch('/users', {
+  return fetch(`${API_URL}/user`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -12,7 +16,7 @@ const create = user => {
 };
 
 const read = (params, credentials) => {
-  fetch(`/users/${params.userId}`, {
+  return fetch(`${API_URL}/user/${params.userId}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -25,7 +29,7 @@ const read = (params, credentials) => {
 };
 
 const update = (user, params, credentials) => {
-  return fetch(`/users/${params.userId}`, {
+  return fetch(`${API_URL}/user/${params.userId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -39,7 +43,7 @@ const update = (user, params, credentials) => {
 };
 
 const remove = (params, credentials) => {
-  return fetch(`/users/${params.userId}`, {
+  return fetch(`${API_URL}/user/${params.userId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',

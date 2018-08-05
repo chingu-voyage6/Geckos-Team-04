@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../../Layout/Layout';
 import ProfileCard from '../../Shared/Cards/ProfileCard';
 import { ListGroup, ButtonArrowLink } from '../../Shared/Misc';
+import { isAuthenticated } from '../../auth/auth-helper';
+import { read } from '../../client/api-user';
 
 const StyledSection = styled.section`
   display: flex;
@@ -30,29 +33,63 @@ const Footer = styled.div`
   }
 `;
 
-const Profile = props => (
-  <Layout>
-    <StyledSection>
-      <ProfileCard {...props} />
-      <Footer>
-        <ListGroup hasBoxShadow isRounded>
-          <ButtonArrowLink to="/profile/information">Account Settings</ButtonArrowLink>
-          <ButtonArrowLink to="/profile/notifications">Notification Settings</ButtonArrowLink>
-        </ListGroup>
-        <ListGroup hasBoxShadow isRounded>
-          <ButtonArrowLink to="/logout">Logout</ButtonArrowLink>
-        </ListGroup>
-      </Footer>
-    </StyledSection>
-  </Layout>
-);
+export default class Profile extends Component {
+  constructor(props) {
+    super(props);
 
-Profile.defaultProps = {
-  name: 'John Doe',
-  avatar: 'https://via.placeholder.com/124x124',
-  email: 'john.doe@example.com',
-  projects: 1,
-  reviews: 0,
-};
+    this.state = {
+      profile: {
+        avatar: '',
+        name: {
+          first: '',
+          last: '',
+        },
+        email: '',
+        reviews: 0,
+        projects: 0,
+      },
+      redirectToSignin: false,
+    };
+  }
 
-export default Profile;
+  componentDidMount = () => {
+    const jwt = isAuthenticated();
+    if (jwt) {
+      read({ userId: jwt.user._id }, { t: jwt.token }).then(data => {
+        if (data.error) this.setState({ redirectToSignin: true });
+        else this.setState({ profile: data.message });
+      });
+    }
+  };
+
+  render() {
+    const { profile, redirectToSignin } = this.state;
+    profile.fullName = `${profile.name.first} ${profile.name.last}`;
+
+    if (redirectToSignin) {
+      return <Redirect to="/login" />;
+    }
+    return (
+      <Layout>
+        <StyledSection>
+          <ProfileCard
+            avatar={profile.avatar}
+            name={profile.fullName}
+            email={profile.email}
+            reviews={profile.reviews}
+            projects={profile.projects}
+          />
+          <Footer>
+            <ListGroup hasBoxShadow isRounded>
+              <ButtonArrowLink to="/profile/information">Account Settings</ButtonArrowLink>
+              <ButtonArrowLink to="/profile/notifications">Notification Settings</ButtonArrowLink>
+            </ListGroup>
+            <ListGroup hasBoxShadow isRounded>
+              <ButtonArrowLink to="/logout">Logout</ButtonArrowLink>
+            </ListGroup>
+          </Footer>
+        </StyledSection>
+      </Layout>
+    );
+  }
+}

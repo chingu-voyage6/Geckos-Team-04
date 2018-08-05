@@ -5,6 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
 import App from '../components/App';
 
+global.window = {};
+import 'mock-local-storage' // eslint-disable-line
+window.sessionStorage = global.sessionStorage;
+
 injectGlobal`
   body {
     margin: 0;

@@ -39,6 +39,7 @@ const singin = (req, res) => {
       return res.json({
         token,
         user: { _id: user._id, name: user.name, email: user.email },
+        message: 'Success',
       });
     }
   );
@@ -46,6 +47,7 @@ const singin = (req, res) => {
 
 const singout = (req, res) => {
   res.clearCookie('t');
+  res.clearCookie('uid');
   return res.status('200').json({ message: 'Signed out' });
 };
 

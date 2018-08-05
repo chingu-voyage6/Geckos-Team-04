@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../Layout/Layout';
+import { singin } from '../auth/api-auth';
+import { authenticate } from '../auth/auth-helper';
 
 const LoginHolder = styled.div`
   margin: 0 auto 0 auto;
@@ -212,58 +215,132 @@ const GoogleLogin = styled.div`
     }
   }
 `;
-const Form = () => (
-  <LoginHolder>
-    <h1>Welcome back</h1>
-    <form method="POST">
-      <label htmlFor="email">Email address</label>
-      <input type="text" id="email" />
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" />
-      <LoginElement>
-        <div>
-          <input type="checkbox" /> Remember me
-        </div>
-        <a href="/..">Forgot password?</a>
-      </LoginElement>
-      <button type="submit">Log in</button>
-      <LoginSeperator>
-        <span>OR</span>
-      </LoginSeperator>
-      <FacebookLogin>
-        <button type="submit">
-          <span>
-            <img
-              src="http://res.cloudinary.com/dc9kfp5gt/image/upload/q_100/v1531129281/facebook-logo_1_txzgqp.png"
-              alt="facebook-icon"
-            />
-            Log In with Facebook
-          </span>
-        </button>
-      </FacebookLogin>
-      <GoogleLogin>
-        <button type="submit">
-          <span>
-            <img
-              src="https://static.thumbtackstatic.com/_assets/images/release/pages/login/images/google-logo_48.5111919da69066528795b0426c31b885.svg"
-              alt="google-icon"
-            />
-            Log In with Google
-          </span>
-        </button>
-      </GoogleLogin>
-      <p>
-        By clicking Log In, Log In with Facebook or Log In with Google, you agree to the{' '}
-        <a href="/..">Terms of Use</a> and <a href="/..">Privacy Policy</a>
-      </p>
-    </form>
-  </LoginHolder>
-);
 
-const Login = () => (
-  <Layout footerIsVisible={false} defaultCopyright={false}>
-    <Form />
-  </Layout>
-);
+class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      redirectToReferrer: false,
+      formErrorMessage: '',
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const { email, password } = this.state;
+    const user = {
+      email,
+      password,
+    };
+    singin(user).then(token => {
+      if (token.error) {
+        this.setState({ formErrorMessage: token.error });
+      } else {
+        authenticate(token, () => {
+          this.setState({
+            redirectToReferrer: true,
+          });
+        });
+      }
+    });
+  };
+
+  handleInputChange = event => {
+    const { target } = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+
+    this.setState({ [name]: value });
+  };
+
+  render() {
+    const { formErrorMessage, redirectToReferrer, email, password } = this.state;
+
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
+    let renderErrorMessage;
+
+    if (formErrorMessage) {
+      renderErrorMessage = (
+        <span>
+          <p>{formErrorMessage}</p>
+        </span>
+      );
+    }
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+    return (
+      <Layout footerIsVisible={false} defaultCopyright={false}>
+        <LoginHolder>
+          <h1>Welcome back</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="email">Email address</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              onChange={this.handleInputChange}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleInputChange}
+            />
+            <LoginElement>
+              <div>
+                <input type="checkbox" /> Remember me
+              </div>
+              <a href="/..">Forgot password?</a>
+            </LoginElement>
+            {renderErrorMessage}
+            <button type="submit">Login</button>
+            <LoginSeperator>
+              <span>OR</span>
+            </LoginSeperator>
+            <FacebookLogin>
+              <button type="submit">
+                <span>
+                  <img
+                    src="http://res.cloudinary.com/dc9kfp5gt/image/upload/q_100/v1531129281/facebook-logo_1_txzgqp.png"
+                    alt="facebook-icon"
+                  />
+                  Log In with Facebook
+                </span>
+              </button>
+            </FacebookLogin>
+            <GoogleLogin>
+              <button type="submit">
+                <span>
+                  <img
+                    src="https://static.thumbtackstatic.com/_assets/images/release/pages/login/images/google-logo_48.5111919da69066528795b0426c31b885.svg"
+                    alt="google-icon"
+                  />
+                  Log In with Google
+                </span>
+              </button>
+            </GoogleLogin>
+            <p>
+              By clicking Log In, Log In with Facebook or Log In with Google, you agree to the{' '}
+              <a href="/..">Terms of Use</a> and <a href="/..">Privacy Policy</a>
+            </p>
+          </form>
+        </LoginHolder>
+      </Layout>
+    );
+  }
+}
 
 export default Login;

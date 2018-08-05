@@ -1,5 +1,9 @@
+import config from '../config';
+
+const API_URL = config.apiUrl;
+
 const singin = user => {
-  return fetch('/auth/signin/', {
+  return fetch(`${API_URL}/auth/singin/`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -13,7 +17,7 @@ const singin = user => {
 };
 
 const signout = () => {
-  return fetch('/auth/sigout/', {
+  return fetch(`${API_URL}/auth/signout/`, {
     method: 'GET',
   })
     .then(response => response.json())
