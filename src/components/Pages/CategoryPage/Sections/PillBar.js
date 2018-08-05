@@ -175,7 +175,7 @@ const GetIcon = ({ tag, size }) => {
 };
 GetIcon.propTypes = {
   size: PropTypes.string.isRequired,
-  tag: PropTypes.element.isRequired,
+  tag: PropTypes.func.isRequired,
 };
 
 const IconWrapper = styled.div`
@@ -212,7 +212,7 @@ const NavigationItem = ({ to, icon, categoryTitle }) => (
 NavigationItem.propTypes = {
   to: PropTypes.string.isRequired,
   categoryTitle: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired,
+  icon: PropTypes.func.isRequired,
 };
 
 const MobileTitle = styled.div`
@@ -244,8 +244,8 @@ const PillBar = () => (
     <MobileTitle>All Services</MobileTitle>
     <NavigationList>
       {iconData.map(({ icon, to, categoryTitle }) => (
-        <li>
-          <NavigationItem to={to} icon={icon} categoryTitle={categoryTitle} key={categoryTitle} />
+        <li key={categoryTitle}>
+          <NavigationItem to={to} icon={icon} categoryTitle={categoryTitle} />
         </li>
       ))}
     </NavigationList>
