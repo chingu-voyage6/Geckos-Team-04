@@ -34,9 +34,7 @@ const CardSubsection = styled.div`
   flex-wrap: wrap;
 `;
 const categoryPopular = ({ services, sectionTitle }) => (
-
   <Section isNarrow isGray>
-
     <SectionTitle>
       {sectionTitle === 'Lessons' ? 'Popular Services' : `Popular ${sectionTitle} Services`}
     </SectionTitle>
