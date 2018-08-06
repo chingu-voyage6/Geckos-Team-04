@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
 import CategoryBar from '../../../Shared/CategoryBar/CategoryBar';
-
+import Search from '../../../Shared/Search/Search';
 import {
   SearchIconButton,
   HouseIconSmall,
@@ -66,9 +66,13 @@ const iconData = [
 const StyledSection = styled(Section)`
   padding-top: 40px;
   padding-bottom: 0;
-
+  z-index: 50;
+  overflow: visible;
   @media (min-width: 482px) {
     padding-bottom: 40px;
+  }
+  > div {
+    overflow-y: visible;
   }
 `;
 
@@ -77,18 +81,7 @@ const SearchWrappper = styled.div`
   display: flex;
   margin-bottom: 2.2rem;
 `;
-const SearchInput = styled.input`
-  padding: 15px;
-  border: solid 1px #d3d4d5;
-  flex-grow: 1;
 
-  border-radius: 4px 0 0 4px;
-
-  ::placeholder {
-    color: #8a8a8a;
-    opacity: 1;
-  }
-`;
 export const SearchGlass = styled.span`
   display: inline;
   height: ${({ size }) => size}px;
@@ -144,7 +137,7 @@ const exploreHeroSection = () => (
       <h1>Hire skilled pros for over 1,000 services.</h1>
     </SectionTitle>
     <SearchWrappper>
-      <SearchInput type="text" placeholder="What service are you looking for?" />
+      <Search />
       <SearchButton click={() => {}}>
         <SearchGlass size="18">
           <SearchIconButton size="18" />

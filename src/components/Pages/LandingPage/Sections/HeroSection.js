@@ -3,14 +3,16 @@ import styled from 'styled-components';
 import Section from '../../../Layout/Section/Section';
 import { SearchButton } from '../../../Shared/UI/Button/Button';
 import { PlayIcon, SearchIconButton } from '../../../Shared/Icon/Icon';
+import Search from '../../../Shared/Search/Search';
 
 const StyledSection = styled(Section)`
+  overflow: visible !important;
   > div {
     min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
+    overflow-y: visible !important;
     @media (min-width: 701px) {
       min-height: 600px;
     }
@@ -30,23 +32,7 @@ const SearchWrappper = styled.div`
   display: flex;
   margin-bottom: 2.2rem;
 `;
-const SearchInput = styled.input`
-  padding: 15px;
-  border: solid 1px #d3d4d5;
-  flex-grow: 1;
-  box-shadow: 0 0 5px 0 rgba(47, 48, 51, 0.2);
-  border-radius: 4px 0 0 4px;
 
-  ::placeholder {
-    color: #8a8a8a;
-    opacity: 1;
-  }
-
-  :focus {
-    outline: none;
-    border: 1px solid #009fd9;
-  }
-`;
 const HeroTile = styled.div`
   font-size: 28px;
   font-weight: bold;
@@ -76,6 +62,9 @@ export const SearchGlass = styled.span`
     display: none;
   }
 `;
+const StyledSerachButton = styled(SearchButton)`
+  border-radius: 0 4px 4px 0;
+`;
 
 const SpanBtnLabel = styled.span`
   display: none;
@@ -89,13 +78,13 @@ const heroSection = () => (
     <HeroContentWrapper>
       <HeroTile>Find local professionals for pretty much anything.</HeroTile>
       <SearchWrappper>
-        <SearchInput type="text" placeholder="Who do you need to hire?" />
-        <SearchButton click={() => {}}>
+        <Search />
+        <StyledSerachButton click={() => {}}>
           <SearchGlass size="18">
             <SearchIconButton size="18" />
           </SearchGlass>
           <SpanBtnLabel>Get Started</SpanBtnLabel>
-        </SearchButton>
+        </StyledSerachButton>
       </SearchWrappper>
       <VideoButton role="button">
         <PlayIcon color="#000" size="28" />
