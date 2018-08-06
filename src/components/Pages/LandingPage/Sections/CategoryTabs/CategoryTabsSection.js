@@ -6,7 +6,7 @@ import { CarouselTempLocation } from '../../../../Shared/CarouselTemp/CarouselTe
 import Section from '../../../../Layout/Section/Section';
 import { categories } from './tab-data';
 import CategoryBanner from './categoryBanner';
-import CardTitle from '../../../../Shared/Cards/CardTitle';
+// import CardTitle from '../../../../Shared/Cards/CardTitle';
 
 const Categorie = styled.div`
   font-size: 18px;

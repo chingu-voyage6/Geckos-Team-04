@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../Layout/Layout';
-import Section from '../../Layout/Section/Section';
+// import Section from '../../Layout/Section/Section';
 
 import HowTTWorksSection from './Sections/HowTTWorksSection';
 import AllServiceSection from './Sections/AllServicesSection';

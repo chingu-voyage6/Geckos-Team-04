@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { ButtonBody } from './caretButton';
-import { ServiceLocationCard, ServicePricingCard } from '../Cards/ServiceCard/ServiceCard';
+import { ServiceLocationCard } from '../Cards/ServiceCard/ServiceCard';
 import { CarouselItemWrapper } from './carouselItem';
 import { CaretSmall as Caret } from '../Icon/Icon';
 

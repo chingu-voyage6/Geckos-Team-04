@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Section from '../../../Layout/Section/Section';
-import { DefaultButton } from '../../../Shared/UI/Button/Button';
+// import { DefaultButton } from '../../../Shared/UI/Button/Button';
 
 const QnAContent = [
   {

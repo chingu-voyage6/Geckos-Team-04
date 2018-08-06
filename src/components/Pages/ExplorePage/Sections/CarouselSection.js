@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+// import { Link } from 'react-router-dom';
 import Section from '../../../Layout/Section/Section';
 import InfiniteCarousel from '../../../Shared/Carousel/carouselInfinite';
 
