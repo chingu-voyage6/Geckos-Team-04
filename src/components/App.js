@@ -4,6 +4,7 @@ import PrivateRoute from './auth/PrivateRoute';
 
 import LandingPage from './Pages/LandingPage/Landing';
 import ExplorePage from './Pages/ExplorePage/Explore';
+import MessagePage from './Pages/MessagePage';
 import PrivacyPage from './Pages/Policy/Privacy';
 import TermsPage from './Pages/Policy/Terms';
 import LoginPage from './Pages/Login';
@@ -34,6 +35,7 @@ class App extends Component {
         <Route path="/events" component={CategoryPage} />
         <Route path="/:service/near-me" component={ServiceNearMe} />
 
+        <PrivateRoute path="/customer/inbox" component={MessagePage} />
         <PrivateRoute path="/customer/profile" component={CustomerProfile} />
         <PrivateRoute path="/profile/information" component={AccountSettings} />
         <PrivateRoute path="/profile/account_edit" component={EditProfile} />
