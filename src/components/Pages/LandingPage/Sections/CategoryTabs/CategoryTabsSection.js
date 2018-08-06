@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { ServiceHeader } from '../../../../Shared/Cards/ServiceCard/ServiceCard';
 import { CarouselTempLocation } from '../../../../Shared/CarouselTemp/CarouselTemp';
 import Section from '../../../../Layout/Section/Section';
-
-const categories = ['Home', 'Weddings', 'Events', 'Wellness', 'Lessons', 'Pets', 'More'];
+import { categories } from './tab-data';
+import CategoryBanner from './categoryBanner';
+// import CardTitle from '../../../../Shared/Cards/CardTitle';
 
 const Categorie = styled.div`
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: bold;
-  margin-right: 2rem;
+  margin-right: 16px;
   padding-bottom: 0.5rem;
   cursor: pointer;
   box-shadow: ${({ isActive }) => (isActive ? 'inset 0 -2px 0 #009fd9;' : 'none')};
@@ -26,25 +28,43 @@ const CategoryBar = styled.div`
   display: flex;
 `;
 
-const CategoryBanner = styled.div`
-  margin-bottom: 0.5rem;
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+  :hover {
+    color: #009fd9;
+  }
 `;
 
 export default class CategoryTabsSection extends React.Component {
   state = {
     activeTab: 'Home',
+    categoryTabs: [],
   };
+
+  componentDidMount() {
+    const tabs = categories.map(({ title }) => title);
+
+    this.setState({ categoryTabs: tabs });
+  }
 
   updateActiveTab = tab => {
     this.setState({ activeTab: tab });
   };
 
   render() {
-    const { activeTab } = this.state;
+    const { activeTab, categoryTabs } = this.state;
+
+    const { imageUrl, icon, link, text } = categories.filter(({ title }) => title === activeTab)[0];
     return (
       <Section isGray hasBorder>
         <CategoryBar>
-          {categories.map(cat => (
+          {categoryTabs.map(cat => (
             <Categorie
               isActive={cat === activeTab}
               onClick={() => this.updateActiveTab(cat)}
@@ -53,8 +73,9 @@ export default class CategoryTabsSection extends React.Component {
               {cat}
             </Categorie>
           ))}
+          <StyledLink to="/more-services">More</StyledLink>
         </CategoryBar>
-        <CategoryBanner>
+        <CategoryBanner imageUrl={imageUrl} to={link} icon={icon} title={activeTab} text={text}>
           <ServiceHeader image="https://source.unsplash.com/collection/1791908/250x350" />
         </CategoryBanner>
 

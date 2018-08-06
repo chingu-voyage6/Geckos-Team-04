@@ -1,219 +1,200 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce';
+import React from 'react';
+import styled from 'styled-components';
+// import { Link } from 'react-router-dom';
+import { ButtonBody } from './caretButton';
+import { ServiceLocationCard } from '../Cards/ServiceCard/ServiceCard';
+import { CarouselItemWrapper } from './carouselItem';
+import { CaretSmall as Caret } from '../Icon/Icon';
 
-export default class Carousel extends Component {
-  static propTypes = {
-    title: PropTypes.string,
-    resizeDebounce: PropTypes.number,
-    duration: PropTypes.number,
-    easing: PropTypes.string,
-    slidesToShow: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number
-    ]),
-    slidesToScroll: PropTypes.number,
-    loop: PropTypes.bool,
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.node
-    ]),
-    hideNextButton: PropTypes.bool,
-    hidePrevButton: PropTypes.bool,
-  };
+const CarouselBody = styled.div`
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+`;
 
-  events = [
-    'onTouchStart',
-    'onTouchEnd',
-    'onTouchMove',
-    // 'onMouseDown',
-    // 'onMouseUp',
-    // 'onMouseLeave',
-    // 'onMouseMove',
-  ];
+const ItemWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  position: relative;
+  left: calc(${({ currentPosition }) => -currentPosition} * 100%);
+  transition: all 0.3s;
 
-  constructor(props) {
-    super(props);
-    this.config = Object.assign(
-      {},
-      {
-        startIndex: 0,
-        duration: 200,
-        easing: 'ease-out',
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        loop: false,
-        resizeDebounce: 250,
-      },
-      props
-    );
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: 482px) {
+    overflow-y: visible;
+  }
+`;
+const ButtonWrapper = styled.div`
+  width: 100%;
+`;
+const CarouselWrapper = styled.div`
+  position: relative;
+`;
+const CaretWrapper = styled.div`
+  height: 18px;
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const CaretButtonLeft = ButtonBody.extend`
+  left: -40px;
+  width: 35px;
+  height: 35px;
+  top: 35%;
+  padding: 0;
+  padding-left: 5px;
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  transform: rotate(180deg) translateY(-50%);
+  @media (min-width: 482px) {
+    left: -20px;
+  }
 
+  @media (min-width: 1011px) {
+    left: -40px;
+  }
+`;
+const CaretButtonRight = ButtonBody.extend`
+  transform: translateY(50%);
+  top: 35%;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  @media (min-width: 482px) {
+    right: -20px;
+  }
+
+  @media (min-width: 1011px) {
+    right: -40px;
+  }
+`;
+
+const prop = {
+  service: {
+    name: 'House cleaning',
+    pros: Math.round(Math.random() * 1000),
+    image: 'https://source.unsplash.com/collection/1791908/250x350',
+  },
+  // image: 'http://thecatapi.com/api/images/get?format=src&size=full',
+  // image: 'http://thecatapi.com/api/images/get',
+  width: '100%',
+};
+
+class Carousel extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      hideNextButton: false,
-      hidePrevButton: false,
+      position: 0,
+      itemCount: 1,
+      buttonVisibility: {
+        left: false,
+        right: true,
+      },
+      items: [
+        { title: '0', color: '#a9b2d0' },
+        { title: '1', color: '#56a81e' },
+        { title: '2', color: '#cf155d' },
+        { title: '3', color: '#78c469' },
+        { title: '4', color: '#8dbdd3' },
+        { title: '5', color: '#4c9253' },
+      ],
     };
-
-    this.events.forEach(handler => {
-      this[handler] = this[handler].bind(this);
-    });
+    this.updateItemCount = this.updateItemCount.bind(this);
   }
 
   componentDidMount() {
-    this.config.selector = this.selector;
-    this.currentSlide = this.config.startIndex;
-
-    this.init();
-
-    this.onResize = debounce(() => {
-      this.resize();
-      this.slideToCurrent();
-      // onresize follow slidesToShow value
-      this.config.slidesToScroll = this.slidesToShow;
-    }, this.config.resizeDebounce);
-
-    window.addEventListener('resize', this.onResize);
-  }
-
-  componentDidUpdate() {
-    this.init();
+    this.updateItemCount();
+    window.addEventListener('resize', this.updateItemCount);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('resize', this.updateItemCount);
   }
 
-  setStyle(target, styles) {
-    Object.keys(styles).forEach(attribute => {
-      target.style[attribute] = styles[attribute];
-    });
-  }
-
-  setSelectorWidth() {
-    this.selectorWidth = this.selector.getBoundingClientRect().width;
-  }
-
-  setInnerElements() {
-    this.innerElements = [].slice.call(this.sliderFrame.children);
-  }
-
-  resolveSlidesNumber() {
-    const { slidesToShow } = this.config;
-    if (typeof slidesToShow === 'number') {
-      this.slidesToShow = slidesToShow;
-    } else if (typeof slidesToShow === 'object') {
-      this.slidesToShow = 1;
-      Object.keys(slidesToShow).forEach(viewport => {
-        if (window.innerWidth > viewport) {
-          this.slidesToShow = slidesToShow[viewport];
-        }
-      });
+  updateItemCount = () => {
+    console.log('resized');
+    const { position, itemCount } = this.state;
+    if (itemCount === 3 && position === 2) {
+      this.setState({ position: 1 });
     }
-  }
-
-  resize() {
-    this.resolveSlidesNumber();
-    this.selectorWidth = this.selector.getBoundingClientRect().width;
-
-    this.setStyle(this.sliderFrame, {
-      width: `${(this.selectorWidth / this.slidesToShow) * this.innerElements.length}px`,
-    });
-
-    for (let i = 0; i < this.innerElements.length; i++) {
-      this.setStyle(this.innerElements[i], {
-        width: `${100 / this.innerElements.length}%`,
-        float: 'left',
-      });
+    if (itemCount === 2 && position === 1) {
+      this.setState({ position: 2 });
     }
-  }
+    if (window.innerWidth <= 1010) this.setState({ itemCount: 2 });
+    if (window.innerWidth >= 1011) this.setState({ itemCount: 3 });
+  };
 
-  slideToCurrent() {
-    this.sliderFrame.style.transform = `translate3d(-${Math.round(
-      this.currentSlide * (this.selectorWidth / this.slidesToShow)
-    )}px, 0, 0)`;
-  }
+  moveForward = () => {
+    const { position } = this.state;
+    this.setState({ position: position + 1 }, () => this.updateButtonVisibility());
+  };
 
-  init() {
-    this.setSelectorWidth();
-    this.setInnerElements();
-    this.resolveSlidesNumber();
-    // set width & transition to the outer div of elements
-    const widthItem = this.selectorWidth / this.slidesToShow;
-    const itemsToBuild = this.config.loop
-      ? this.innerElements.length + this.slidesToShow * 2
-      : this.innerElements.length;
-    this.sliderFrame.style.width = `${widthItem * itemsToBuild}px`;
-    this.enableTransition();
-    // set width to each slide based on a number of slides
-    // and if loop is enabled or not
-    for (let i = 0; i < this.innerElements.length; i++) {
-      this.setStyle(this.innerElements[i], {
-        width: `${100 / itemsToBuild}%`,
-        float: 'left',
-      });
-    }
+  moveBackward = () => {
+    const { position } = this.state;
+    this.setState({ position: position - 1 }, () => this.updateButtonVisibility());
+  };
 
-    this.slideToCurrent();
-  }
-
-  disableTransition() {
-    this.sliderFrame.style.webkitTransition = `all 0ms ${this.config.easing}`;
-    this.sliderFrame.style.transition = `all 0ms ${this.config.easing}`;
-  }
-
-  enableTransition() {
-    this.sliderFrame.style.webkitTransition = `all ${this.config.duration}ms ${this.config.easing}`;
-    this.sliderFrame.style.transition = `all ${this.config.duration}ms ${this.config.easing}`;
-  }
-
-  next(slidesToScroll = 1) {
-    if (this.currentSlide === this.innerElements.length - this.slidesToShow && this.config.loop) {
-      this.disableTransition();
-      this.currentSlide = 0;
+  updateButtonVisibility = () => {
+    const { itemCount, position } = this.state;
+    if (itemCount === 2) {
+      switch (position) {
+        case 0:
+          this.setState({ buttonVisibility: { left: false, right: true } });
+          break;
+        case 1:
+          this.setState({ buttonVisibility: { left: true, right: true } });
+          break;
+        default:
+          this.setState({ buttonVisibility: { left: true, right: false } });
+      }
     } else {
-      this.currentSlide = Math.min(
-        this.currentSlide + slidesToScroll,
-        this.innerElements.length - this.slidesToShow
-      );
+      switch (position) {
+        case 0:
+          this.setState({ buttonVisibility: { left: false, right: true } });
+          break;
+        default:
+          this.setState({ buttonVisibility: { left: true, right: false } });
+      }
     }
-
-    this.slideToCurrent();
-  }
-
-  prev(slidesToScroll = 1) {
-    if (this.currentSlide === 0 && this.config.loop) {
-      this.currentSlide = this.innerElements.length - this.slidesToShow;
-    } else {
-      this.currentSlide = Math.max(this.currentSlide - slidesToScroll, 0);
-    }
-
-    this.slideToCurrent();
-  }
-
-  onTouchStart(e) {};
-  onTouchEnd(e) {};
-  onTouchMove(e) {};
+  };
 
   render() {
-    const { hideNextButton, hidePrevButton } = this.state;
+    const {
+      position,
+      buttonVisibility: { left, right },
+      items,
+    } = this.state;
     return (
-      <div
-        ref={selector => (this.selector = selector)}
-        style={{ overflow: 'hidden' }}
-        {...this.events.reduce(
-          (props, event) => Object.assign({}, props, { [event]: this[event] }),
-          {}
-        )}
-      >
-        <div ref={sliderFrame => (this.sliderFrame = sliderFrame)}>
-          {React.Children.map(this.props.children, (child, index) =>
-            React.cloneElement(child, {
-              key: index,
-            })
-          )}
-        </div>
-        {!hideNextButton ? <button onClick={() => this.next(this.config.slidesToScroll)}>Next</button> : null}
-        {!hidePrevButton ? <button onClick={() => this.prev(this.config.slidesToScroll)}>Prev</button> : null}
-      </div>
+      <CarouselWrapper>
+        <CarouselBody>
+          <ItemWrapper currentPosition={position}>
+            {items.map(item => (
+              <CarouselItemWrapper key={item.title}>
+                <ServiceLocationCard {...prop} />
+              </CarouselItemWrapper>
+            ))}
+          </ItemWrapper>
+        </CarouselBody>
+        <ButtonWrapper>
+          <CaretButtonLeft visible={left} onClick={() => this.moveBackward()}>
+            <CaretWrapper>
+              <Caret size="18" />
+            </CaretWrapper>
+          </CaretButtonLeft>
+          <CaretButtonRight visible={right} onClick={() => this.moveForward()}>
+            <CaretWrapper>
+              <Caret size="18" />
+            </CaretWrapper>
+          </CaretButtonRight>
+        </ButtonWrapper>
+      </CarouselWrapper>
     );
   }
 }
+
+export default Carousel;

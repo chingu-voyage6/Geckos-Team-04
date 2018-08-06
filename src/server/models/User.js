@@ -1,45 +1,95 @@
-import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
+// const moment = require('moment-timezone');
+const crypto = require('crypto');
 
-const isEmail = email => {
-  const re = '/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/';
-  return re.test(email);
-};
-
-const emailSchema = new Schema({
-  address: {
-    type: String,
-    lowercase: true,
-    required: true,
-    unique: true,
-    validate: [isEmail, 'Please fill a valid email address'],
-  },
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
-});
+const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   group: { type: Schema.Types.ObjectId, ref: 'Group' },
-  username: {
-    type: String,
-    unique: true,
-  },
   name: {
-    first: String,
-    last: String,
+    first: {
+      type: String,
+      trim: true,
+      required: 'First Name is required',
+    },
+    last: {
+      type: String,
+      trim: true,
+      required: 'Last Name is required',
+    },
   },
-  email: emailSchema,
-  password: {
+  email: {
     type: String,
-    required: true,
+    trim: true,
+    unique: 'Email already exists',
+    match: [/.+@.+\..+/, 'Please fill a valid email address'],
+    required: 'Email is required',
   },
-  active: Boolean,
-  accessToken: String,
+  hashed_password: {
+    type: String,
+    required: 'Password is required',
+  },
+  salt: String,
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+  updated: Date,
+  timezone: {
+    type: String,
+    default: 'US/Eastern',
+  },
+  phone: {
+    type: String,
+    maxlength: 80,
+    trim: true,
+  },
+  // active: Boolean,
+  // accessToken: String,
 });
 
 UserSchema.virtual('fullName').get(function() {
   return `${this.name.first} ${this.name.last}`;
 });
 
-export default mongoose.model('User', UserSchema);
+UserSchema.virtual('password')
+  .set(function(password) {
+    this._password = password;
+    this.salt = this.makeSalt();
+    this.hashed_password = this.encryptPassword(password);
+  })
+  .get(function() {
+    return this._password;
+  });
+
+UserSchema.methods = {
+  authenticate(plainText) {
+    return this.encryptPassword(plainText) === this.hashed_password;
+  },
+  encryptPassword(password) {
+    if (!password) return '';
+    try {
+      return crypto
+        .createHmac('sha256', this.salt)
+        .update(password)
+        .digest('hex');
+    } catch (err) {
+      return '';
+    }
+  },
+  makeSalt() {
+    const buf = crypto.randomBytes(16);
+    return buf.toString('hex');
+  },
+};
+
+UserSchema.path('hashed_password').validate(function() {
+  if (this._password && this._password.length < 6) {
+    this.invalidate('password', 'Password must be at least 6 characters.');
+  }
+  if (this.isNew && !this._password) {
+    this.invalidate('password', 'Password is required');
+  }
+}, null);
+
+module.exports = mongoose.model('User', UserSchema);

@@ -7,8 +7,7 @@ import PopularServicesInAreaSection from './Sections/PopularServicesInAreaSectio
 import CategorieTabsSection from './Sections/CategoryTabs/CategoryTabsSection';
 import CostEstimateSection from './Sections/CostEstimateSection';
 import OpenForBusinessSection from './Sections/OpenForBusinessSection';
-
-import AboutThumbtack from './Sections/AboutThumbtackSection';
+import AboutThumbtack from './Sections/AboutTTSection/AboutThumbtackSection';
 
 const NavPillContainer = styled.div`
   height: 0;

@@ -2,37 +2,90 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Arrow } from '../../Shared/Icon/Icon';
+import { Arrow } from '../Icon/Icon';
 
-const Wrapper = styled.div`
+const StyledButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 12px 12px 20px;
-  background-color: ${props => props.color || '#fff'};
+  background-color: '#fff';
+  font-weight: ${({ fontWeight }) => fontWeight || '700'};
+  ${props => {
+    const { hasBorderTop, hasBorderBottom, hasBorderLeft, hasBorderRight } = props;
+
+    if (hasBorderTop) {
+      return 'border-top: 1px solid #e9eced';
+    }
+    if (hasBorderBottom) {
+      return 'border-bottom: 1px solid #e9eced';
+    }
+    if (hasBorderLeft) {
+      return 'border-left: 1px solid #e9eced';
+    }
+    if (hasBorderRight) {
+      return 'border-right: 1px solid #e9eced';
+    }
+  }};
+
+  > span.isActive {
+    color: #009fd9;
+  }
+  :hover {
+    > span {
+      color: #009fd9;
+    }
+  }
 `;
 
 const Title = styled(Link)`
-  color: #2f3033;
-  font-size: 16px;
-  font-weight: 700;
   text-decoration: none;
+  color: #2f3033;
 `;
 
 const Button = props => {
-  const { children, to } = props;
+  const {
+    children,
+    to,
+    fontWeight,
+    hasBorderTop,
+    hasBorderBottom,
+    hasBorderLeft,
+    hasBorderRight,
+  } = props;
+
   return (
-    <Wrapper>
-      <Title to={to}>{children}</Title>
-      <Arrow color="currentColor" size="28" />
-    </Wrapper>
+    <Title to={to}>
+      <StyledButton
+        hasBorderTop={hasBorderTop}
+        hasBorderBottom={hasBorderBottom}
+        hasBorderLeft={hasBorderLeft}
+        hasBorderRight={hasBorderRight}
+        fontWeight={fontWeight}
+      >
+        {children}
+        <Arrow color="currentColor" size="28" />
+      </StyledButton>
+    </Title>
   );
 };
 
+Button.defaultProps = {
+  hasBorderTop: false,
+  hasBorderBottom: false,
+  hasBorderLeft: false,
+  hasBorderRight: false,
+  fontWeight: '700',
+};
+
 Button.propTypes = {
-  color: PropTypes.string,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]), // eslint-disable-line react/require-default-props
   to: PropTypes.string.isRequired,
+  hasBorderTop: PropTypes.bool,
+  hasBorderBottom: PropTypes.bool,
+  hasBorderLeft: PropTypes.bool,
+  hasBorderRight: PropTypes.bool,
+  fontWeight: PropTypes.string,
 };
 
 export default Button;

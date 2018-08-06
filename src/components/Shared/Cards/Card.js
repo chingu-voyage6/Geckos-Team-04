@@ -11,7 +11,6 @@ const StyledCard = styled.div`
   flex-flow: column;
   background-color: inherit;
   border-radius: 0.25rem;
-  margin: 0.5rem;
   user-select: none;
   transition: 0.25s;
 

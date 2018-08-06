@@ -1,78 +1,16 @@
+/* eslint react/prop-types: 0 */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CarretIcon } from '../../Icon/Icon';
 
-// const UtilsCardBody = ServiceCardBody.extend`
-//   text-align: center;
-//   margin: auto;
-//   padding-top: 35px;
-// `;
-
-// const UtilsCardTitle = CardTitle.extend`
-//   margin-top: 16px;
-//   font-size: 16px;
-//   display: block;
-//   color: inherit;
-// `;
-
-const UtilsAnchor = styled.a`
-  background-color: #ffffff;
-  color: #2f3033;
-  display: block;
-  line-height: 1;
-  width: 142px;
-  text-decoration: none;
-  cursor: pointer;
-  box-sizing: border-box;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px 0 rgba(47, 48, 51, 0.25);
-    color: #009fd9;
-    fill: #009fd9;
-  }
-
-  @media only screen and (min-width: 480px) {
-    height: 142px;
-    -webkit-box-shadow: 0 2px 6px 0 rgba(47, 48, 51, 0.1);
-    box-shadow: 0 2px 6px 0 rgba(47, 48, 51, 0.1);
-    border-radius: 4px;
-    padding-top: 34px;
-    -webkit-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-  }
-`;
-
-// const UtilsCard = props => {
-//   const {
-//     utility: { name, categoryName },
-//     children,
-//   } = props;
-
-//   return (
-//     // <StyledLink to={}>
-//     <UtilsAnchor href={`/more-services#category-group-${categoryName}`}>
-//       <UtilsCardBody>
-//         {children}
-//         <UtilsCardTitle>{name}</UtilsCardTitle>
-//       </UtilsCardBody>
-//     </UtilsAnchor>
-//     // </StyledLink>
-//   );
-// };
-
-// UtilsCard.propTypes = {
-//   utility: PropTypes.object.isRequired,
-//   children: PropTypes.arrayOf(PropTypes.element).isRequired,
-// };
 const CardWrapper = styled.div`
   width: 100%;
   padding: 0;
   margin-bottom: -1px;
 
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 482px) {
     width: 33.33%;
     padding: 8px;
     margin: 0;
@@ -102,7 +40,7 @@ const CardBody = styled(Link)`
     color: #009fd9;
     transition: all 0.1s ease-in-out;
   }
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 482px) {
     flex-direction: column;
     height: 142px;
     justify-content: center;
@@ -119,7 +57,7 @@ const CardBody = styled(Link)`
 
 const UtilCard = props => {
   const {
-    utility: { name, categoryName },
+    utility: { categoryName },
     children,
   } = props;
 
@@ -130,7 +68,7 @@ const CardIconWrapper = styled.div`
   transform: scale(0.7);
   margin-left: -5px;
 
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 482px) {
     margin: 0;
     transform: scale(1);
   }
@@ -148,7 +86,7 @@ const CarrotWrapper = styled.div`
     top: -50%;
   }
 
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 482px) {
     display: none;
   }
 `;
@@ -158,7 +96,7 @@ const CardTitle = styled.div`
   font-size: 1rem;
   margin-left: 0.5rem;
 
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 482px) {
     margin-left: 0;
     margin-top: 0.5rem;
   }

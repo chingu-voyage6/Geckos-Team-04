@@ -6,6 +6,8 @@ import MobileMenuToggle from './MobileMenuToggle';
 import LogoFull from '../../Shared/SVG/LogoFull';
 import NavLink from './NavLink';
 import SearchBar from '../../Shared/SearchBar/SearchBar';
+import { isAuthenticated } from '../../auth/auth-helper';
+import Dropdown from './Profile/Dropdown';
 
 const HeaderStyled = styled.header`
   margin-bottom: 60px;
@@ -14,29 +16,28 @@ const HeaderStyled = styled.header`
     margin-bottom: 0;
   }
 `;
-const Navigation = styled.nav`
-  border-bottom: 1px solid #eee;
-  display: flex;
 
+const Navigation = styled.nav`
+  display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #eee;
   > ul {
     display: flex;
     flex-direction: column;
     position: absolute;
     transition: transform 0.3s linear;
-    ${({ isClosed }) =>
-      isClosed ? 'transform: translateY(-100vh);' : 'transform: translateY(60px);'} padding: 0;
+    transform: ${({ isClosed }) => (isClosed ? ' translateY(-100vh)' : 'translateY(60px)')};
+    padding: 0;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background: #fff;
-    z-index: 900;
+    z-index: 999;
   }
   @media (min-width: 700px) {
-    border-bottom: 1px solid #eee;
-    height: 60px;
     display: flex;
     justify-content: space-between;
-
+    height: 60px;
+    border-bottom: 1px solid #eee;
     > ul {
       position: relative;
       transform: none;
@@ -72,7 +73,7 @@ const MobileNav = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 999;
   background: #fff;
   @media (min-width: 700px) {
     display: none;
@@ -102,10 +103,29 @@ const navLinks = [
   },
 ];
 
+const navLinksPrivate = [
+  {
+    to: '/explore',
+    title: 'Explore',
+  },
+  {
+    to: '/profile/requests',
+    title: 'Projects',
+  },
+  {
+    to: '/customer/inbox',
+    title: 'Messages',
+  },
+];
+
 class Header extends React.Component {
-  state = {
-    isClosed: true,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isClosed: true,
+    };
+  }
 
   openDropdownHandler = () => {
     this.setState(previousState => ({ isClosed: !previousState.isClosed }));
@@ -114,6 +134,21 @@ class Header extends React.Component {
   render() {
     const { isClosed } = this.state;
     const { search } = this.props;
+    const jwt = isAuthenticated();
+    let renderLinks;
+    if (jwt) {
+      renderLinks = navLinksPrivate.map(({ to, title }) => (
+        <NavLink close={this.openDropdownHandler} key={title} to={to} title={title} />
+      ));
+      renderLinks.push(
+        <Dropdown key="dropdown" firstName={jwt.user.name.first} lastName={jwt.user.name.last} />
+      );
+    } else {
+      renderLinks = navLinks.map(({ to, title }) => (
+        <NavLink close={this.openDropdownHandler} key={title} to={to} title={title} />
+      ));
+    }
+
     return (
       <HeaderStyled>
         <MobileNav onClick={this.openDropdownHandler}>
@@ -124,11 +159,7 @@ class Header extends React.Component {
             <LogoFull />
           </LogoFullStyledLink>
           {search ? <SearchBar /> : null}
-          <ul>
-            {navLinks.map(({ to, title }) => (
-              <NavLink close={this.openDropdownHandler} key={title} to={to} title={title} />
-            ))}
-          </ul>
+          <ul>{renderLinks}</ul>
         </Navigation>
       </HeaderStyled>
     );
