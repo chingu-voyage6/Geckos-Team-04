@@ -12,8 +12,8 @@
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
-    "mongoose": "5.0.0",
     "moment-timezone": "^0.5.21",
+    "mongoose": "5.0.0",
     "mongoose-fakery": "^0.1.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -25,11 +25,12 @@
     "styled-components": "^3.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-dev": "react-scripts start",
     "build": "react-scripts build",
+    "postinstall": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "serve": "node ./src/server"
+    "start": "node ./src/server"
   },
   "devDependencies": {
     "eslint": "4.19.1",
