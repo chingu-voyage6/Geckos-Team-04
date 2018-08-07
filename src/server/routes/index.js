@@ -1,5 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
 
 const services = require('./service');
 const messages = require('./message');
@@ -11,6 +15,13 @@ const app = express.Router();
 
 // Serve static content using express
 app.use(express.static(`${__dirname} + /public`));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(cookieParser);
+app.use(cors());
+app.use(passport.initialize());
 
 // Sanity check
 app.get('/', (req, res) => {

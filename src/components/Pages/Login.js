@@ -312,29 +312,33 @@ class Login extends Component {
             </LoginSeperator>
             <FacebookLogin>
               <button type="submit">
-                <span>
-                  <img
-                    src="http://res.cloudinary.com/dc9kfp5gt/image/upload/q_100/v1531129281/facebook-logo_1_txzgqp.png"
-                    alt="facebook-icon"
-                  />
-                  Log In with Facebook
-                </span>
+                <a href="/auth/facebook">
+                  <span>
+                    <img
+                      src="http://res.cloudinary.com/dc9kfp5gt/image/upload/q_100/v1531129281/facebook-logo_1_txzgqp.png"
+                      alt="facebook-icon"
+                    />
+                    Log In with Facebook
+                  </span>
+                </a>
               </button>
             </FacebookLogin>
             <GoogleLogin>
               <button type="submit">
-                <span>
-                  <img
-                    src="https://static.thumbtackstatic.com/_assets/images/release/pages/login/images/google-logo_48.5111919da69066528795b0426c31b885.svg"
-                    alt="google-icon"
-                  />
-                  Log In with Google
-                </span>
+                <a href="/auth/google">
+                  <span>
+                    <img
+                      src="https://static.thumbtackstatic.com/_assets/images/release/pages/login/images/google-logo_48.5111919da69066528795b0426c31b885.svg"
+                      alt="google-icon"
+                    />
+                    Log In with Google
+                  </span>
+                </a>
               </button>
             </GoogleLogin>
             <p>
               By clicking Log In, Log In with Facebook or Log In with Google, you agree to the{' '}
-              <a href="/..">Terms of Use</a> and <a href="/..">Privacy Policy</a>
+              <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>
             </p>
           </form>
         </LoginHolder>

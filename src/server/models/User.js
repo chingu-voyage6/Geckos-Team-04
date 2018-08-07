@@ -1,29 +1,19 @@
 const mongoose = require('mongoose');
-// const moment = require('moment-timezone');
 const crypto = require('crypto');
 
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
-  group: { type: Schema.Types.ObjectId, ref: 'Group' },
-  name: {
-    first: {
-      type: String,
-      trim: true,
-      required: 'First Name is required',
-    },
-    last: {
-      type: String,
-      trim: true,
-      required: 'Last Name is required',
-    },
-  },
-  email: {
+const UserSchema = new mongoose.Schema({
+  username: {
     type: String,
     trim: true,
     unique: 'Email already exists',
     match: [/.+@.+\..+/, 'Please fill a valid email address'],
     required: 'Email is required',
+  },
+  name: {
+    first: String,
+    last: String,
   },
   hashed_password: {
     type: String,
@@ -44,8 +34,11 @@ const UserSchema = new Schema({
     maxlength: 80,
     trim: true,
   },
-  // active: Boolean,
-  // accessToken: String,
+  provider: {
+    type: String,
+    default: 'local',
+  },
+  providerId: String,
 });
 
 UserSchema.virtual('fullName').get(function() {

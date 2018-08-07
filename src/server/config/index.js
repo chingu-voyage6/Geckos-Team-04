@@ -6,4 +6,15 @@ module.exports = {
     test: 'mongodb://localhost:27017/thumbtack-test',
   },
   secret: process.env.SECRET_KEY || 'secret',
+  BASEURL: process.env.BASEURL || 'http://localhost:3000',
+  oauth: {
+    google: {
+      GOOGLE_APP_ID: process.env.FACEBOOK_APP_ID,
+      GOOGLE_APP_SECRET: process.env.FACEBOOK_APP_SECRET,
+    },
+    facebook: {
+      FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+      FACEBOOK_APP_SECRET: process.env.FACEBOOK_APP_SECRET,
+    },
+  },
 };
