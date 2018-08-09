@@ -9,11 +9,12 @@ const DefaultButton = styled.button`
   font-size: 14px;
   font-weight: bold;
   padding: 12px 20px;
-  border-radius: 0.25rem !important; /* required to override normalize from footer! */
+  border-radius: 0.25rem;
   border: ${({ border }) => border || '2px solid transparent'};
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   :focus {
     text-decoration: underline;
     background-color: #007fad;

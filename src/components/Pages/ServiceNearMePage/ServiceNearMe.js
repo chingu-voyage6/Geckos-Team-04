@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import NearMeHero from './Sections/NearMeHero';
 import HowTTWorksSection from '../ExplorePage/Sections/HowTTWorksSection';
@@ -14,6 +15,7 @@ import {
   AppleIconSmall,
   ThreeDotsIconSmall,
 } from '../../Shared/Icon/Icon';
+import { pageData } from './page-data';
 
 const iconData = [
   {
@@ -74,11 +76,34 @@ const StyledCategoryBar = styled(CategoryBar)`
   }
 `;
 
+const implementedServices = [
+  'house-cleaning',
+  'handyman',
+  'personal-training',
+  'local-moving',
+  'dog-training',
+];
 class ServiceNearMe extends React.Component {
   state = {
     showModal: false,
     showCancelRequest: false,
+    heroInfo: {},
   };
+
+  componentDidMount() {
+    const {
+      history,
+      match: {
+        params: { service },
+      },
+    } = this.props;
+
+    if (!implementedServices.includes(service)) {
+      history.push('/service-not-found');
+    } else {
+      this.setState({ heroInfo: pageData[service] });
+    }
+  }
 
   showModalHandler = () => {
     this.setState({ showModal: true });
@@ -97,11 +122,16 @@ class ServiceNearMe extends React.Component {
   };
 
   render() {
-    const { showModal, showCancelRequest } = this.state;
+    const {
+      showModal,
+      showCancelRequest,
+      heroInfo: { nameSingle, namePlural, imgUrl },
+    } = this.state;
     return (
       <Layout>
         {showModal ? (
           <Modal
+            service
             showCloseRequest={showCancelRequest}
             closeModal={this.closeModalHandler}
             continueRequest={this.continueRequestHandler}
@@ -111,11 +141,16 @@ class ServiceNearMe extends React.Component {
         <BarWrapper>
           <StyledCategoryBar categories={iconData} />
         </BarWrapper>
-        <NearMeHero goHandler={this.showModalHandler} />
+        <NearMeHero
+          nameSingle={nameSingle}
+          namePlural={namePlural}
+          imgUrl={imgUrl}
+          goHandler={this.showModalHandler}
+        />
         <HowTTWorksSection />
         <OtherServices />
       </Layout>
     );
   }
 }
-export default ServiceNearMe;
+export default withRouter(ServiceNearMe);

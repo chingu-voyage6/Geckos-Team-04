@@ -8,7 +8,8 @@ const StyledSection = styled.section`
   max-width: 100%;
   padding-top: ${({ padding }) => (padding ? '60px' : '0')};
   padding-bottom: ${({ padding }) => (padding ? '60px' : '0')};
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
   padding-left: 16px;
   padding-right: 16px;
 
