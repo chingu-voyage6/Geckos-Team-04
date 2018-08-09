@@ -1,0 +1,307 @@
+house cleaning
+
+
+How many bedrooms are in your home?
+
+1-6 bedrooms
+
+How many bathrooms
+
+1-5 bathrooms
+
+What is the square footage of your home?
+
+less than 1000 sq ft
+......up to 5000 in 500 ft increments
+
+What kind of cleaning service would you like?
+
+standard, deep and move out
+
+Which additional services do you need, if any?
+
+fridge cleaning, oven cleaning, interior window cleaning, laundry
+
+Are there any cats or dogs in your house?
+
+Yes, I have a cat or dog.
+No, I don't have a cat or dog.
+
+When do you need this service?
+
+In the next few days
+Within a week
+As recommended by the pro
+
+How often would you like your house cleaned?
+
+Just once
+Every week
+Every 2 weeks
+Once a month
+
+
+--------------------------------------------------------------------------------------
+
+Personal Training,
+
+How many people will attend the training sessions?
+
+One person (individual training)
+Two people (couples training)
+
+Currently, how often do you exercise?
+
+0 times per week
+1-2 times per week
+3-4 times per week
+5-7 times per week
+
+What is your primary fitness goal?
+lose weight, get toned, build muscle, gain flexibility, boost endurance
+
+Are you preparing for a specific event?
+
+Athletic event or competition
+wedding
+vacation
+other
+
+Are there any injuries or pre-existing medical conditions that the trainer should be aware of?
+
+Asthma
+Back problems
+Joint preparing
+Other injuries or medical conditions
+
+How old is the client?
+
+Younger than 18
+18 - 22 years old
+23 - 30 years old
+31 - 40 years old
+41 - 50 years old
+51 - 60 years old
+61 - 70 years old
+71 or older
+
+Do you prefer to work with a trainer of a certain gender?
+
+I have no preference
+I would like female trainers only
+I would like male trainers only
+
+Do you have a preference for a specific training location?
+
+Trainer's gym or private studio
+Public outdoors location
+My home or apartment gym
+A location recommended by the trainer
+
+When do you need this service?
+
+In the next few days
+Within a week
+As recommended by the pro
+
+How often would you like to meet with the trainer?
+Once a week
+2-3 times a week
+4-5 times a week
+
+---------------------------------------------------------------------------------
+Handyman
+
+How would you best describe your handyman needs?
+
+I need help with one project or a few simple projects, less than 2 hours of work
+I need help with a variety of projects, approximately 2-5 hours of work
+I need help with many long-term or complex projects, approximately a full day of work
+
+What type of service do you need?
+
+Repairs
+Installation
+Maintenance
+Assembly
+Painting
+Cleaning
+
+Which areas of the home need work?
+
+Bathrooms
+Kitchen
+Living room
+Bedroom
+Basement
+Athletic
+Garage
+Deck or porch
+Closet
+
+What would you like the handyman to work on?
+
+Doors
+Windows
+Interior walls
+Exterior walls
+Gutters
+Cabinets
+Shelving
+Molding or baseboards
+Flooring
+Tiling
+Appliances
+Plumbing
+Lighting
+Hanging pictures or mirrors
+Furniture repair
+
+Please provide more details on your project.
+
+Textarea
+
+What is the type of property?
+
+Residential
+Commercial
+
+
+Where are you in your hiring process?
+
+I'm ready to hire the right handyman based on price & fit
+I'm conducting initial research
+
+When woulds you like your handyman
+
+
+
+------------------------------------------------------------------
+Dog training
+
+How many dogs would you like trained?
+1 dog
+2 dogs
+
+How old is your dog?
+
+0 - 6 months old
+0 - 12 months old
+1 - 2 years old
+2 - 10 years old
+10 years or older
+
+What is the size of your dog?
+Extra small(1 - 15 lbs)
+Small (16 - 25 lbs)
+Medium (26 - 40 lbs)
+Large (41 - 70 lbs)
+Extra large(70+ lbs)
+
+
+Are you looking for private lessons or board and train programs?
+
+Private dog training lessons
+Board and train programs at a facility
+
+
+Which of the dog training packages are you interested in?
+
+Puppy training
+Aggressive behavior modification
+General obedience training
+Therapy or service dog training
+
+If you would like the trainer to address any specific issues, please specify below.
+
+Leash pulling
+House training
+Barking
+Digging
+Biting
+Chewing
+Destructive behavior
+Crate training
+
+How would you like to meet with the dog trainer?
+
+I travel to the dog trainer
+The dog trainer travels to me
+
+When do you need this service?
+
+Weekday mornings
+Weekday afternoons
+Weekday evenings
+Saturday/Sunday
+
+-------------------------------------------------------------------
+Local Moving (under 50 miles)
+
+What are you moving?
+
+Studio
+1 bedroom home
+2 bedroom home
+3 bedroom home
+4 bedroom home
+5 bedroom home
+Just a few things
+
+What type of property are you moving from?
+
+Apartment
+Condo
+One-story house
+Two-story house
+Townhouse
+Storage unit
+Other type of property
+
+How far are you moving?
+Within the same building
+Less than 5 miles
+5 - 10 miles
+11 - 20 miles
+21 - 30 miles
+31 - 50 miles
+
+In addition to moving, do you need any of the following services?
+
+
+Packing belongings into boxes
+Furniture assembly and disassembly
+Piano moving
+Pool table moving
+Safe or security box moving
+
+Approximately how many boxes need to be moved?
+
+1 - 10 boxes
+11 - 20 boxes
+21 - 40 boxes
+41 - 100 boxes
+No boxes
+
+Will the mover need to use stairs at the location you are moving from?
+
+Yes, the mover will move items up/down stairs
+No, the mover has access to a passenger elevator
+No, the mover has access to a freight elevator
+No, the move is on the ground floor
+
+Will the mover need to use stairs at the location you are moving to?
+
+Yes, the mover will move items up/down stairs
+No, the mover has access to a passenger elevator
+No, the mover has access to a freight elevator
+No, the move is on the ground floor
+
+Where are you in your hiring process?
+
+Ready to hire the right mover
+Need some more information before hiring
+Conducting initial research
+
+
+
