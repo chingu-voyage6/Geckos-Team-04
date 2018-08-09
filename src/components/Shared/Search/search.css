@@ -37,7 +37,7 @@
   position: absolute;
   top: 49px;
   width: 100%;
-  border: 1px solid #aaa;
+  border: solid 1px #d3d4d5;
   border-top: 1px solid #009fd9;
   background-color: #fff;
   font-family: Helvetica, sans-serif;
@@ -58,9 +58,8 @@
 
 .react-autosuggest__suggestion {
   cursor: pointer;
-  padding: 10px 20px;
 }
 
 .react-autosuggest__suggestion--highlighted {
-  background-color: #ddd;
+  background-color: #fafafa;
 }
