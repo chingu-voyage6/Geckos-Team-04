@@ -17,6 +17,7 @@ import CategoryPage from './Pages/CategoryPage/CategoryPage';
 import ServiceNearMe from './Pages/ServiceNearMePage/ServiceNearMe';
 import AccountSettings from './Pages/Customer/Information';
 import Logout from './Pages/Logout';
+import ServiceNotFound from './Pages/ServiceNotFound';
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
         <Route path="/home-improvement" component={CategoryPage} />
         <Route path="/wellness" component={CategoryPage} />
         <Route path="/events" component={CategoryPage} />
+        <Route path="/service-not-found" component={ServiceNotFound} />
         <Route path="/:service/near-me" component={ServiceNearMe} />
 
         <PrivateRoute path="/customer/inbox" component={MessagePage} />

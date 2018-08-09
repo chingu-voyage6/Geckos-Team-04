@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Backdrop } from './Backdrop';
-
+import { dogTraining } from './dogTraining';
 import CancelRequest from './CancelRequest';
 import ErrorPrompt from './ErrorPrompt';
 import { questionaire } from './questionaire-data';
@@ -35,7 +35,7 @@ const ModalBody = styled.div`
 class Modal extends React.Component {
   state = {
     currentSlide: 0,
-    currentType: questionaire[0].type || null,
+    currentType: dogTraining[0].type || null,
     answers: {},
     validation: null,
     displayError: false,
@@ -49,7 +49,7 @@ class Modal extends React.Component {
 
   componentDidMount() {
     const validation = {};
-    const answerKeys = questionaire
+    const answerKeys = dogTraining
       .filter(q => Object.prototype.hasOwnProperty.call(q, 'question'))
       .reduce((acc, curr) => {
         acc[curr.question] = null;
@@ -72,7 +72,7 @@ class Modal extends React.Component {
     const newInputValue = e.target.value;
 
     const { answers, displayError, currentSlide, validation } = this.state;
-    const { validation: typeOfSlideValidation } = questionaire[currentSlide];
+    const { validation: typeOfSlideValidation } = dogTraining[currentSlide];
 
     const isInputValid = this.validateTextInputs(newInputValue, typeOfSlideValidation);
 
@@ -168,16 +168,16 @@ class Modal extends React.Component {
   nextSlide = e => {
     e.preventDefault();
     const { currentSlide, currentType, validation, answers } = this.state;
-    const { validation: typeOfSlideValidation } = questionaire[currentSlide];
+    const { validation: typeOfSlideValidation } = dogTraining[currentSlide];
 
     if (currentType === 'intro' || typeOfSlideValidation === '') {
       this.setState(prevState => ({
         currentSlide: prevState.currentSlide + 1,
-        currentType: questionaire[prevState.currentSlide + 1].type,
+        currentType: dogTraining[prevState.currentSlide + 1].type,
       }));
       return;
     }
-    const currentQuestion = questionaire[currentSlide].question;
+    const currentQuestion = dogTraining[currentSlide].question;
 
     let { isValid } = validation[currentQuestion];
 
@@ -188,7 +188,7 @@ class Modal extends React.Component {
     if (isValid) {
       this.setState(prevState => ({
         currentSlide: prevState.currentSlide + 1,
-        currentType: questionaire[prevState.currentSlide + 1].type,
+        currentType: dogTraining[prevState.currentSlide + 1].type,
         displayError: false,
       }));
     } else {
@@ -200,7 +200,7 @@ class Modal extends React.Component {
     e.preventDefault();
     this.setState(prevState => ({
       currentSlide: prevState.currentSlide - 1,
-      currentType: questionaire[prevState.currentSlide - 1].type,
+      currentType: dogTraining[prevState.currentSlide - 1].type,
       displayError: false,
     }));
   };
@@ -215,7 +215,7 @@ class Modal extends React.Component {
       professionalsToFind,
       nextButtons,
       validationMessage,
-    } = questionaire[currentSlide];
+    } = dogTraining[currentSlide];
     return (
       <Fragment>
         <form>

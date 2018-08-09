@@ -7,7 +7,7 @@ import { DefaultButton } from '../../../Shared/UI/Button/Button';
 
 const StyledSection = styled(Section)`
   background-image: linear-gradient(rgba(170, 170, 170, 0.3), rgba(170, 170, 170, 0.3)),
-    url('https://source.unsplash.com/random');
+    url(${({ imgUrl }) => imgUrl});
   min-height: calc(100vh - 60px);
   background-repeat: no-repeat;
   background-size: cover;
@@ -105,12 +105,12 @@ const GoButton = DefaultButton.extend`
   }
 `;
 
-const nearMeHero = ({ goHandler }) => (
-  <StyledSection isNarrow>
+const nearMeHero = ({ goHandler, nameSingle, namePlural, imgUrl }) => (
+  <StyledSection imgUrl={imgUrl} isNarrow>
     <Content>
-      <TitleWrapper>House Cleaners near you</TitleWrapper>
+      <TitleWrapper>{namePlural} near you</TitleWrapper>
       <HeroModal>
-        <ModalTitle>Where do you need the house cleaner?</ModalTitle>
+        <ModalTitle>Where do you need the {nameSingle}?</ModalTitle>
         <SearchWrappper>
           <SearchInput type="text" placeholder="Enter your zip code" />
           <GoButton onClick={goHandler}>Go</GoButton>
@@ -122,6 +122,9 @@ const nearMeHero = ({ goHandler }) => (
 
 nearMeHero.propTypes = {
   goHandler: PropTypes.func.isRequired,
+  nameSingle: PropTypes.string.isRequired,
+  namePlural: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
 };
 
 export default nearMeHero;
