@@ -1,30 +1,34 @@
 import React, { Fragment } from 'react';
 import Autosuggest from 'react-autosuggest';
-
+import { Link } from 'react-router-dom';
 import './search.css';
+import styled from '../../../../node_modules/styled-components';
 
-const otherServices = [
-  {
-    name: 'House Cleaning',
-    year: 1972,
-  },
-  {
-    name: 'Handyman',
-    year: 2012,
-  },
-  {
-    name: 'Personal Training',
-    year: 2012,
-  },
-  {
-    name: 'Local Moving',
-    year: 2012,
-  },
-  {
-    name: 'Dog Training',
-    year: 2012,
-  },
+import * as services from '../../Pages/MoreServicesPage/pageData/servicesData';
+
+function splitServices(service) {
+  return service.split('\n');
+}
+
+const allServices = Object.keys(services).reduce(
+  (acc, curr) => acc.concat(splitServices(services[curr])),
+  []
+);
+
+const popularServices = [
+  'House Cleaning',
+  'Handyman',
+  'Personal Training',
+  'Local Moving',
+  'Dog Training',
 ];
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  padding: 10px 20px;
+  display: block;
+`;
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -34,16 +38,28 @@ const getSuggestions = value => {
   const escapedValue = escapeRegexCharacters(value.trim());
   const regex = new RegExp(`${escapedValue}`, 'i');
 
-  return otherServices.filter(service => regex.test(service.name));
+  if (escapedValue === '') return popularServices.map(service => service);
+
+  const results = [];
+
+  for (let i = 0; i < allServices.length; i += 1) {
+    if (regex.test(allServices[i])) results.push(allServices[i]);
+    if (results.length > 4) break;
+  }
+
+  return results;
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.name;
+const getSuggestionValue = suggestion => suggestion;
+const convertToNearmeLink = name => `/${name.toLowerCase().replace(/ /, '-')}/near-me`;
 
 // Use your imagination to render suggestions.
-const renderSuggestion = suggestion => <div>{suggestion.name}</div>;
+const renderSuggestion = suggestion => (
+  <StyledLink to={convertToNearmeLink(suggestion)}>{suggestion}</StyledLink>
+);
 
 class Search extends React.Component {
   constructor() {
@@ -56,30 +72,7 @@ class Search extends React.Component {
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: '',
-      suggestions: [
-        [
-          {
-            name: 'House Cleaning',
-            link: 'house-cleaning/near-me',
-          },
-          {
-            name: 'Handyman',
-            link: 'handyman/near-me',
-          },
-          {
-            name: 'Personal Training',
-            link: 'personal-training/near-me',
-          },
-          {
-            name: 'Massage Therapy',
-            link: 'local-moving/near-me',
-          },
-          {
-            name: 'Dog Training',
-            link: 'dog-training/near-me',
-          },
-        ],
-      ],
+      suggestions: [],
     };
   }
 
