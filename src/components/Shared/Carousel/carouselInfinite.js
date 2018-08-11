@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom';
 import CarouselItem from './carouselItem';
 import { CaretButtonRight, CaretButtonLeft } from './caretButton';
 import { PureServiceCard } from '../Cards/ServiceCard/ServiceCard';
-// const randomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-// const items = [...Array(12)].reduce(
-//   (acc, _, idx) => acc.concat({ title: idx.toString(), color: randomColor() }),
-//   []
-// );
 
 const CarouselBody = styled.div`
   height: 200px;
