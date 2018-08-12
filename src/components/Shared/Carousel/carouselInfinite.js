@@ -93,7 +93,6 @@ class Carousel extends React.Component {
   }
 
   updateItemCount = () => {
-    console.log('resized');
     if (window.innerWidth < 700) this.setState({ itemCount: 2 });
     if (window.innerWidth >= 701 && window.innerWidth <= 1010) this.setState({ itemCount: 3 });
     if (window.innerWidth >= 1011) this.setState({ itemCount: 4 });

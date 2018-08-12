@@ -48,12 +48,10 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    console.log(questionnaire);
     const { whichService } = this.props;
     const validation = {};
     const { currentSlide } = this.state;
     const currentType = questionnaire[whichService][currentSlide].type;
-    console.log(currentType);
     const answerKeys = questionnaire[whichService]
       .filter(q => Object.prototype.hasOwnProperty.call(q, 'question'))
       .reduce((acc, curr) => {
@@ -168,8 +166,7 @@ class Modal extends React.Component {
   };
 
   submitAnswers = () => {
-    const { answers } = this.state;
-    console.table(answers);
+    // const { answers } = this.state;
   };
 
   nextSlide = e => {

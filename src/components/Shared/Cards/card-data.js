@@ -169,5 +169,4 @@ export const cardContent = [
     category: 'Events',
   },
 ];
-
 //   {title: '', imgUrl:'', category : ''}
