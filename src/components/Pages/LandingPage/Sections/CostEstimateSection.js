@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 import Section from '../../../Layout/Section/Section';
 import { DefaultButton } from '../../../Shared/UI/Button/Button';
 import Carousel from '../../../Shared/Carousel/Carousel';
+
+import { cardContent } from '../../../Shared/Cards/card-data';
 
 const SectionText = styled.div`
   color: #676d73;
@@ -13,6 +16,8 @@ const SectionTitle = styled.div`
   margin-bottom: 1rem;
 `;
 
+const cardItems = _.sampleSize(cardContent, 6);
+console.log(cardItems);
 const SectionTextWrapper = styled.div`
   width: 100%;
   margin-bottom: 2rem;
@@ -34,7 +39,7 @@ const costEstimateSection = () => (
         </p>
       </SectionText>
     </SectionTextWrapper>
-    <Carousel />
+    <Carousel cardContent={cardItems} cardType="pricing" />
     <DefaultButton>See all cost guides</DefaultButton>
   </Section>
 );
