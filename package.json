@@ -26,11 +26,12 @@
     "styled-components": "^3.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-dev": "react-scripts start",
     "build": "react-scripts build",
+    "postinstall": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "serve": "node ./src/server"
+    "start": "node ./src/server"
   },
   "devDependencies": {
     "eslint": "4.19.1",

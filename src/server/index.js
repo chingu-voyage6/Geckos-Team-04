@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const compress = require('compression');
@@ -30,6 +31,9 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors(authOptions));
+
+const build_dir = path.resolve(__dirname, '../../build');
+app.use(express.static(build_dir));
 
 app.use('/api/v1/', routes);
 

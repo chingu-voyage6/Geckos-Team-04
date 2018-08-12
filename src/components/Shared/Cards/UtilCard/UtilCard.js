@@ -57,7 +57,7 @@ const CardBody = styled(Link)`
 
 const UtilCard = props => {
   const {
-    utility: { name, categoryName },
+    utility: { categoryName },
     children,
   } = props;
 
