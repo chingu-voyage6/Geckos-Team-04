@@ -31,16 +31,6 @@ const CardWrapper = styled(Link)`
     width: 33.33%;
   }
 `;
-const prop = {
-  service: {
-    name: 'House cleaning',
-    pros: Math.round(Math.random() * 1000),
-    image: 'https://source.unsplash.com/collection/1791908/250x350',
-  },
-  // image: 'http://thecatapi.com/api/images/get?format=src&size=full',
-  // image: 'http://thecatapi.com/api/images/get',
-  width: '100%',
-};
 
 const CarouselTempLocation = ({ cards }) => (
   <CrouselNeeded>
@@ -51,7 +41,7 @@ const CarouselTempLocation = ({ cards }) => (
           key={service.name}
         >
           <ServiceLocationCard width="100%" service={service} />
-    </CardWrapper>
+        </CardWrapper>
       ))}
   </CrouselNeeded>
 );
