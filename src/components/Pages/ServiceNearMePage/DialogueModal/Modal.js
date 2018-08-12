@@ -2,13 +2,12 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Backdrop } from './Backdrop';
-import { dogTraining } from './dogTraining';
 import CancelRequest from './CancelRequest';
 import ErrorPrompt from './ErrorPrompt';
-// import { questionaire } from './questionaire-data';
 import ModalFooter from './ModalFooter';
 import ModalHeader from './ModalHeader';
 import ModalContent from './ModalContent';
+import { serviceQuestions as questionnaire } from './Questionnaires/index';
 
 const ModalBody = styled.div`
   position: absolute;
@@ -35,10 +34,11 @@ const ModalBody = styled.div`
 class Modal extends React.Component {
   state = {
     currentSlide: 0,
-    currentType: dogTraining[0].type || null,
+    currentType: null,
     answers: {},
     validation: null,
     displayError: false,
+    serviceQuestions: {},
   };
 
   componentWillMount() {
@@ -48,8 +48,13 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
+    console.log(questionnaire);
+    const { whichService } = this.props;
     const validation = {};
-    const answerKeys = dogTraining
+    const { currentSlide } = this.state;
+    const currentType = questionnaire[whichService][currentSlide].type;
+    console.log(currentType);
+    const answerKeys = questionnaire[whichService]
       .filter(q => Object.prototype.hasOwnProperty.call(q, 'question'))
       .reduce((acc, curr) => {
         acc[curr.question] = null;
@@ -61,6 +66,8 @@ class Modal extends React.Component {
     this.setState({
       answers: answerKeys,
       validation,
+      serviceQuestions: questionnaire[whichService],
+      currentType,
     });
   }
 
@@ -70,9 +77,9 @@ class Modal extends React.Component {
 
   updateTextFieldValueHandler = (question, e) => {
     const newInputValue = e.target.value;
-
+    const { serviceQuestions } = this.state;
     const { answers, displayError, currentSlide, validation } = this.state;
-    const { validation: typeOfSlideValidation } = dogTraining[currentSlide];
+    const { validation: typeOfSlideValidation } = serviceQuestions[currentSlide];
 
     const isInputValid = this.validateTextInputs(newInputValue, typeOfSlideValidation);
 
@@ -167,17 +174,17 @@ class Modal extends React.Component {
 
   nextSlide = e => {
     e.preventDefault();
-    const { currentSlide, currentType, validation, answers } = this.state;
-    const { validation: typeOfSlideValidation } = dogTraining[currentSlide];
+    const { currentSlide, currentType, validation, answers, serviceQuestions } = this.state;
+    const { validation: typeOfSlideValidation } = serviceQuestions[currentSlide];
 
     if (currentType === 'intro' || typeOfSlideValidation === '') {
       this.setState(prevState => ({
         currentSlide: prevState.currentSlide + 1,
-        currentType: dogTraining[prevState.currentSlide + 1].type,
+        currentType: serviceQuestions[prevState.currentSlide + 1].type,
       }));
       return;
     }
-    const currentQuestion = dogTraining[currentSlide].question;
+    const currentQuestion = serviceQuestions[currentSlide].question;
 
     let { isValid } = validation[currentQuestion];
 
@@ -188,7 +195,7 @@ class Modal extends React.Component {
     if (isValid) {
       this.setState(prevState => ({
         currentSlide: prevState.currentSlide + 1,
-        currentType: dogTraining[prevState.currentSlide + 1].type,
+        currentType: serviceQuestions[prevState.currentSlide + 1].type,
         displayError: false,
       }));
     } else {
@@ -200,22 +207,16 @@ class Modal extends React.Component {
     e.preventDefault();
     this.setState(prevState => ({
       currentSlide: prevState.currentSlide - 1,
-      currentType: dogTraining[prevState.currentSlide - 1].type,
+      currentType: prevState.serviceQuestions[prevState.currentSlide - 1].type,
       displayError: false,
     }));
   };
 
   render() {
     const { closeModal, showCloseRequest, continueRequest, showCancelRequest } = this.props;
-    const { currentSlide, answers, displayError } = this.state;
-    const {
-      type,
-      question,
-      options,
-      professionalsToFind,
-      nextButtons,
-      validationMessage,
-    } = dogTraining[currentSlide];
+    const { currentSlide, answers, displayError, serviceQuestions } = this.state;
+    const { type, question, options, professionalsToFind, nextButtons, validationMessage } =
+      serviceQuestions[currentSlide] || {};
     return (
       <Fragment>
         <form>
