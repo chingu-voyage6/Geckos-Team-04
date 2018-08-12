@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom';
 import CarouselItem from './carouselItem';
 import { CaretButtonRight, CaretButtonLeft } from './caretButton';
 import { PureServiceCard } from '../Cards/ServiceCard/ServiceCard';
-// const randomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-// const items = [...Array(12)].reduce(
-//   (acc, _, idx) => acc.concat({ title: idx.toString(), color: randomColor() }),
-//   []
-// );
 
 const CarouselBody = styled.div`
   height: 200px;
@@ -82,26 +76,15 @@ class Carousel extends React.Component {
       move: false,
       direction: '',
       itemCount: 1,
-      items: [
-        { title: '0', color: '#a9b2d0' },
-        { title: '1', color: '#56a81e' },
-        { title: '2', color: '#cf155d' },
-        { title: '3', color: '#78c469' },
-        { title: '4', color: '#8dbdd3' },
-        { title: '5', color: '#4c9253' },
-        { title: '6', color: '#9b9c22' },
-        { title: '7', color: '#d89062' },
-        { title: '8', color: '#c59daa' },
-        { title: '9', color: '#4fb272' },
-        { title: '10', color: '#1c5df4' },
-        { title: '11', color: '#8eb718' },
-      ],
+      items: [],
     };
     this.updateItemCount = this.updateItemCount.bind(this);
   }
 
   componentDidMount() {
     this.updateItemCount();
+    const { items } = this.props;
+    this.setState({ items });
     window.addEventListener('resize', this.updateItemCount);
   }
 
@@ -110,7 +93,6 @@ class Carousel extends React.Component {
   }
 
   updateItemCount = () => {
-    console.log('resized');
     if (window.innerWidth < 700) this.setState({ itemCount: 2 });
     if (window.innerWidth >= 701 && window.innerWidth <= 1010) this.setState({ itemCount: 3 });
     if (window.innerWidth >= 1011) this.setState({ itemCount: 4 });
@@ -155,13 +137,13 @@ class Carousel extends React.Component {
             timeout={{ enter: 250, exit: 0 }}
           >
             <ItemWrapper direction={direction} className={`move-items-${direction}`}>
-              {items.map(({ title }) => (
+              {items.map(({ title, imgUrl }) => (
                 <CarouselItem key={title}>
                   <StyledLink to="/">
                     <PureServiceCard
                       service={{
                         name: title,
-                        image: 'http://thecatapi.com/api/images/get',
+                        image: imgUrl,
                       }}
                     />
                   </StyledLink>

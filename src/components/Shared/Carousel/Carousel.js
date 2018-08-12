@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
+
 import { ButtonBody } from './caretButton';
-import { ServiceLocationCard } from '../Cards/ServiceCard/ServiceCard';
+import { ServiceLocationCard, ServicePricingCard } from '../Cards/ServiceCard/ServiceCard';
 import { CarouselItemWrapper } from './carouselItem';
 import { CaretSmall as Caret } from '../Icon/Icon';
 
@@ -74,17 +74,6 @@ const CaretButtonRight = ButtonBody.extend`
   }
 `;
 
-const prop = {
-  service: {
-    name: 'House cleaning',
-    pros: Math.round(Math.random() * 1000),
-    image: 'https://source.unsplash.com/collection/1791908/250x350',
-  },
-  // image: 'http://thecatapi.com/api/images/get?format=src&size=full',
-  // image: 'http://thecatapi.com/api/images/get',
-  width: '100%',
-};
-
 class Carousel extends React.Component {
   constructor() {
     super();
@@ -95,21 +84,16 @@ class Carousel extends React.Component {
         left: false,
         right: true,
       },
-      items: [
-        { title: '0', color: '#a9b2d0' },
-        { title: '1', color: '#56a81e' },
-        { title: '2', color: '#cf155d' },
-        { title: '3', color: '#78c469' },
-        { title: '4', color: '#8dbdd3' },
-        { title: '5', color: '#4c9253' },
-      ],
+      items: [],
     };
     this.updateItemCount = this.updateItemCount.bind(this);
   }
 
   componentDidMount() {
     this.updateItemCount();
+    const { cardContent } = this.props;
     window.addEventListener('resize', this.updateItemCount);
+    this.setState({ items: cardContent });
   }
 
   componentWillUnmount() {
@@ -117,7 +101,6 @@ class Carousel extends React.Component {
   }
 
   updateItemCount = () => {
-    console.log('resized');
     const { position, itemCount } = this.state;
     if (itemCount === 3 && position === 2) {
       this.setState({ position: 1 });
@@ -169,15 +152,23 @@ class Carousel extends React.Component {
       buttonVisibility: { left, right },
       items,
     } = this.state;
+
+    const { cardType } = this.props;
     return (
       <CarouselWrapper>
         <CarouselBody>
           <ItemWrapper currentPosition={position}>
-            {items.map(item => (
-              <CarouselItemWrapper key={item.title}>
-                <ServiceLocationCard {...prop} />
-              </CarouselItemWrapper>
-            ))}
+            {items.length > 0 &&
+              items.map(({ title, imgUrl }) => (
+                <CarouselItemWrapper title={title} key={title}>
+                  {cardType === 'pricing' && (
+                    <ServicePricingCard width="100%" service={{ name: title, image: imgUrl }} />
+                  )}
+                  {cardType === 'location' && (
+                    <ServiceLocationCard width="100%" service={{ name: title, image: imgUrl }} />
+                  )}
+                </CarouselItemWrapper>
+              ))}
           </ItemWrapper>
         </CarouselBody>
         <ButtonWrapper>

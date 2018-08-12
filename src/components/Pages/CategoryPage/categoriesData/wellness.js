@@ -3,27 +3,10 @@ function splitServices(service) {
 }
 
 export const wellness = {
-  heroImgUrl: 'https://source.unsplash.com/random',
+  heroImgUrl:
+    'https://images.unsplash.com/photo-1533323905636-7f0bfa0ba5ad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3905b67517b7ab7ad65ad3d740019515&auto=format&fit=crop&w=1350&q=80',
   pageTitle: 'Wellness',
   pageSlogan: 'Improve your well-being. Get introduced to experienced wellness professionals.',
-  popularServices: [
-    {
-      title: 'Personal Training',
-      name: 'personal-trainers',
-    },
-    {
-      title: 'Nutritionist',
-      name: 'nutritionists',
-    },
-    {
-      title: 'Pilates Training',
-      name: 'pilates',
-    },
-    {
-      title: 'Massage Therapy',
-      name: 'massage',
-    },
-  ],
   subcategories: [
     {
       subcategorieTitle: 'Beauty Services',

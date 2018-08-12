@@ -88,6 +88,7 @@ class ServiceNearMe extends React.Component {
     showModal: false,
     showCancelRequest: false,
     heroInfo: {},
+    service: '',
   };
 
   componentDidMount() {
@@ -101,7 +102,7 @@ class ServiceNearMe extends React.Component {
     if (!implementedServices.includes(service)) {
       history.push('/service-not-found');
     } else {
-      this.setState({ heroInfo: pageData[service] });
+      this.setState({ heroInfo: pageData[service], service });
     }
   }
 
@@ -125,6 +126,7 @@ class ServiceNearMe extends React.Component {
     const {
       showModal,
       showCancelRequest,
+      service,
       heroInfo: { nameSingle, namePlural, imgUrl },
     } = this.state;
     return (
@@ -132,6 +134,7 @@ class ServiceNearMe extends React.Component {
         {showModal ? (
           <Modal
             service
+            whichService={service}
             showCloseRequest={showCancelRequest}
             closeModal={this.closeModalHandler}
             continueRequest={this.continueRequestHandler}

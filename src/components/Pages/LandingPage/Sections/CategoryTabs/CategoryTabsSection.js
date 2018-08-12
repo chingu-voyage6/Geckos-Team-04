@@ -5,8 +5,8 @@ import { ServiceHeader } from '../../../../Shared/Cards/ServiceCard/ServiceCard'
 import { CarouselTempLocation } from '../../../../Shared/CarouselTemp/CarouselTemp';
 import Section from '../../../../Layout/Section/Section';
 import { categories } from './tab-data';
+import { cardContent } from '../../../../Shared/Cards/card-data';
 import CategoryBanner from './categoryBanner';
-// import CardTitle from '../../../../Shared/Cards/CardTitle';
 
 const Categorie = styled.div`
   font-size: 18px;
@@ -45,12 +45,22 @@ export default class CategoryTabsSection extends React.Component {
   state = {
     activeTab: 'Home',
     categoryTabs: [],
+    cards: [],
   };
 
   componentDidMount() {
     const tabs = categories.map(({ title }) => title);
+    const cards = tabs.reduce((acc, curr) => {
+      acc[curr] = cardContent
+        .filter(({ category }) => category === curr)
+        .filter((_, idx) => idx < 3);
 
-    this.setState({ categoryTabs: tabs });
+      return acc;
+    }, {});
+    this.setState({
+      categoryTabs: tabs,
+      cards,
+    });
   }
 
   updateActiveTab = tab => {
@@ -58,7 +68,7 @@ export default class CategoryTabsSection extends React.Component {
   };
 
   render() {
-    const { activeTab, categoryTabs } = this.state;
+    const { activeTab, categoryTabs, cards } = this.state;
 
     const { imageUrl, icon, link, text } = categories.filter(({ title }) => title === activeTab)[0];
     return (
@@ -79,7 +89,7 @@ export default class CategoryTabsSection extends React.Component {
           <ServiceHeader image="https://source.unsplash.com/collection/1791908/250x350" />
         </CategoryBanner>
 
-        <CarouselTempLocation />
+        <CarouselTempLocation cards={cards[activeTab]} />
       </Section>
     );
   }

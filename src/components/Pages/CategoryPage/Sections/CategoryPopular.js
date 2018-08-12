@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Section from '../../../Layout/Section/Section';
 import { PureServiceCard } from '../../../Shared/Cards/ServiceCard/ServiceCard';
+import { cardContent } from '../../../Shared/Cards/card-data';
 
 const SectionTitle = styled.div`
   text-align: center;
@@ -39,11 +40,9 @@ const categoryPopular = ({ services, sectionTitle }) => (
       {sectionTitle === 'Lessons' ? 'Popular Services' : `Popular ${sectionTitle} Services`}
     </SectionTitle>
     <CardSubsection>
-      {services.map(({ title, name }) => (
-        <CardWrapper key={title} to={`/${name.toLowerCase()}/near-me`}>
-          <PureServiceCard
-            service={{ name: title, image: 'http://thecatapi.com/api/images/get', catPage: true }}
-          />
+      {cardContent.filter(({ category }) => category === sectionTitle).map(({ title, imgUrl }) => (
+        <CardWrapper key={title} to={`/${title.toLowerCase().replace(/ /g, '-')}/near-me`}>
+          <PureServiceCard service={{ name: title, image: imgUrl, catPage: true }} />
         </CardWrapper>
       ))}
     </CardSubsection>
@@ -52,7 +51,6 @@ const categoryPopular = ({ services, sectionTitle }) => (
 
 categoryPopular.propTypes = {
   sectionTitle: PropTypes.string.isRequired,
-  services: PropTypes.array.isRequired,
 };
 
 export default categoryPopular;
