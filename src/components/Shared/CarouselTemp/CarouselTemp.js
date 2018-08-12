@@ -4,21 +4,27 @@ import { ServiceLocationCard, ServicePricingCard } from '../Cards/ServiceCard/Se
 
 const CrouselNeeded = styled.div`
   display: flex;
-  margin: 0 -8px;
+
   width: 100%;
-  > div:first-child {
+  > a:first-child {
     display: none;
+    padding-left: 0;
+  }
+  > a:last-child {
+    padding-right: 0;
   }
   @media (min-width: 701px) {
-    > div:first-child {
+    > a:first-child {
       display: initial;
     }
   }
 `;
 
-const CardWrapper = styled.div`
+const CardWrapper = styled(Link)`
   width: 50%;
-  padding: 5px;
+  padding: 8px;
+  display: block;
+  text-decoration: none;
 
   @media (min-width: 701px) {
     width: 33.33%;
