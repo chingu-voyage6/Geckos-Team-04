@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const ItemBody = styled.div`
 
@@ -22,11 +23,12 @@ const ItemBody = styled.div`
   }
 `;
 
-const ItemBodyLarge = styled.div`
+const ItemBodyLarge = styled(Link)`
  min-width: 75%;
   max-width: 75%;
   padding: 0 5px;
-
+  display: block;
+  text-decoration: none;
   }
   @media (min-width: 482px) {
     min-width: 50%;
@@ -40,6 +42,8 @@ const ItemBodyLarge = styled.div`
 
 const carouselItem = ({ children }) => <ItemBody>{children}</ItemBody>;
 
-export const CarouselItemWrapper = ({ children }) => <ItemBodyLarge>{children}</ItemBodyLarge>;
+export const CarouselItemWrapper = ({ children, title }) => (
+  <ItemBodyLarge to={`/${title.toLowerCase().replace(/ /, '-')}/near-me`}>{children}</ItemBodyLarge>
+);
 
 export default carouselItem;
