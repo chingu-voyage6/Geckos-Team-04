@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import Layout from '../../Layout/Layout';
 import CategoryHero from './Sections/CategoryHero';
 import CategoryPopular from './Sections/CategoryPopular';
-import catData from './categoriesData/index';
+import catData from './categoriesData';
 import CategoryServices from './Sections/CategoryServices';
 
 import PillBar from './Sections/PillBar';
-
 
 // https://source.unsplash.com/random
 class CategoryPage extends React.Component {

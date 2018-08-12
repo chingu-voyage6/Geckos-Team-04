@@ -1,8 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import styled from 'styled-components';
-// import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+
 import { HashLink as Link } from 'react-router-hash-link';
 
 const GetIcon = ({ tag, size, viewBoxSize }) => {

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { Link } from 'react-router-dom';
 import './search.css';
-import styled from '../../../../node_modules/styled-components';
+import styled from 'styled-components';
 
 import * as services from '../../Pages/MoreServicesPage/pageData/servicesData';
 

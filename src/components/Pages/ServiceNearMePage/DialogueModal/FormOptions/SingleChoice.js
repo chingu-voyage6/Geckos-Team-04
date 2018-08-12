@@ -33,11 +33,14 @@ const Option = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    min-width: 20px !important;
+    max-width: 20px !important;
+    height: 20px !important;
     border: ${({ checked }) => (checked ? 'none' : '2px solid rgb(211, 212, 213)')};
     border-radius: 50%;
+
     margin-right: 10px;
+    box-sizing: border-box;
   }
 `;
 

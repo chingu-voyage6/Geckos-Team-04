@@ -1,66 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ServiceLocationCard, ServicePricingCard } from '../Cards/ServiceCard/ServiceCard';
+import { Link } from 'react-router-dom';
+import { ServiceLocationCard } from '../Cards/ServiceCard/ServiceCard';
 
 const CrouselNeeded = styled.div`
   display: flex;
-  margin: 0 -8px;
+
   width: 100%;
-  > div:first-child {
+  > a:first-child {
     display: none;
+    padding-left: 0;
+  }
+  > a:last-child {
+    padding-right: 0;
   }
   @media (min-width: 701px) {
-    > div:first-child {
+    > a:first-child {
       display: initial;
     }
   }
 `;
 
-const CardWrapper = styled.div`
+const CardWrapper = styled(Link)`
   width: 50%;
-  padding: 5px;
+  padding: 8px;
+  display: block;
+  text-decoration: none;
 
   @media (min-width: 701px) {
     width: 33.33%;
   }
 `;
-const prop = {
-  service: {
-    name: 'House cleaning',
-    pros: Math.round(Math.random() * 1000),
-    image: 'https://source.unsplash.com/collection/1791908/250x350',
-  },
-  // image: 'http://thecatapi.com/api/images/get?format=src&size=full',
-  // image: 'http://thecatapi.com/api/images/get',
-  width: '100%',
-};
 
-const CarouselTempLocation = () => (
+const CarouselTempLocation = ({ cards }) => (
   <CrouselNeeded>
-    <CardWrapper>
-      <ServiceLocationCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServiceLocationCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServiceLocationCard {...prop} />
-    </CardWrapper>
+    {cards &&
+      cards.map(({ title, imgUrl }) => ({ name: title, image: imgUrl })).map(service => (
+        <CardWrapper
+          to={`/${service.name.toLowerCase().replace(/ /, '-')}/near-me`}
+          key={service.name}
+        >
+          <ServiceLocationCard width="100%" service={service} />
+        </CardWrapper>
+      ))}
   </CrouselNeeded>
 );
 
-const CarouselTempPricing = () => (
-  <CrouselNeeded>
-    <CardWrapper>
-      <ServicePricingCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServicePricingCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServicePricingCard {...prop} />
-    </CardWrapper>
-  </CrouselNeeded>
-);
-
-export { CarouselTempLocation, CarouselTempPricing };
+export { CarouselTempLocation };

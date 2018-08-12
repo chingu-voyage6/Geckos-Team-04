@@ -29,7 +29,7 @@ const Navigation = styled.nav`
     transform: ${({ isClosed }) => (isClosed ? ' translateY(-100vh)' : 'translateY(60px)')};
     padding: 0;
     width: 100%;
-    height: 50vh;
+    height: 100vh;
     background: #fff;
     z-index: 999;
   }

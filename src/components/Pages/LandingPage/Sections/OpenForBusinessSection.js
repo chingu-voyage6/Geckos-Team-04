@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { DefaultButton } from '../../../Shared/UI/Button/Button';
 import Section from '../../../Layout/Section/Section';
 
-/* <div class="pro-upsell__image" style="background-image:url(https://static.thumbtackstatic.com/fe-assets/pages/homepage/subcomponents/pro-upsell/pro-upsell-illustration.d37ba3a3bd2d29038bded72ec4d5e0d7.png)" alt="Pro Upsell Illustation"></div> */
-
 const StyledSection = styled(Section)`
   > div {
     display: flex;
