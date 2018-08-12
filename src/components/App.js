@@ -33,6 +33,8 @@ class App extends Component {
         <Route path="/more-services" component={MoreServicesPage} />
         <Route path="/home-improvement" component={CategoryPage} />
         <Route path="/wellness" component={CategoryPage} />
+        <Route path="/lessons" component={CategoryPage} />
+        <Route path="/weddings" component={CategoryPage} />
         <Route path="/events" component={CategoryPage} />
         <Route path="/service-not-found" component={ServiceNotFound} />
         <Route path="/:service/near-me" component={ServiceNearMe} />
