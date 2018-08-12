@@ -22,7 +22,7 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.any.isRequired,
   search: PropTypes.bool,
   footerIsVisible: PropTypes.bool,
   defaultCopyright: PropTypes.bool,

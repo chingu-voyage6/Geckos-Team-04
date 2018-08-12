@@ -18,9 +18,9 @@ export const cardContent = [
     category: 'Home',
   },
   {
-    title: 'Lawn Mowing and Trimming',
+    title: 'Lawn Mowing',
     imgUrl:
-      'https://images.unsplash.com/photo-1453539263483-01e088416133?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=41c930112331aa884ef100427daff5c4&auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1458245201577-fc8a130b8829?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6175d2dfb463a56e862f8f0a10598ae5&auto=format&fit=crop&w=200&q=80',
     category: 'Home',
   },
   {

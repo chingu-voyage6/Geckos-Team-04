@@ -3,35 +3,10 @@ function splitServices(service) {
 }
 
 export const home = {
-  heroImgUrl: 'https://source.unsplash.com/random',
+  heroImgUrl:
+    'https://images.unsplash.com/photo-1531904300735-5f40721f712f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c3e3041edae7e2e3715d7222e1763bed&auto=format&fit=crop&w=1351&q=80',
   pageTitle: 'Home',
   pageSlogan: 'Complete your home improvement project with the right professionals.',
-  popularServices: [
-    {
-      title: 'House Cleaning',
-      name: 'house-cleaning',
-    },
-    {
-      title: 'Handyman',
-      name: 'handyman',
-    },
-    {
-      title: 'General Contractors',
-      name: 'general-contractors',
-    },
-    {
-      title: 'Interior Design',
-      name: 'interior-designers',
-    },
-    {
-      title: 'Landscaping',
-      name: 'landscaping',
-    },
-    {
-      title: 'Tv Mounting',
-      name: 'tv-mounting',
-    },
-  ],
   subcategories: [
     {
       subcategorieTitle: 'Accessibility Construction and Remodels',

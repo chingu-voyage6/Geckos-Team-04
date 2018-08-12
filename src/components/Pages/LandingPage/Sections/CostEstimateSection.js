@@ -17,7 +17,6 @@ const SectionTitle = styled.div`
 `;
 
 const cardItems = _.sampleSize(cardContent, 6);
-console.log(cardItems);
 const SectionTextWrapper = styled.div`
   width: 100%;
   margin-bottom: 2rem;

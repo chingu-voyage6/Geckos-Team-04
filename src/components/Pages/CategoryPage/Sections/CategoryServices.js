@@ -55,7 +55,7 @@ const SubCategorie = ({ subcategorieTitle, subcategorieServices }) => (
         <StyledLink
           to={`${sub
             .trim()
-            .replace(' ', '-')
+            .replace(/ /g, '-')
             .toLowerCase()}/near-me`}
         >
           {sub}

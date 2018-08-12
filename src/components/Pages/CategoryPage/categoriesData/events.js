@@ -3,27 +3,10 @@ function splitServices(service) {
 }
 
 export const events = {
-  heroImgUrl: 'https://source.unsplash.com/random',
+  heroImgUrl:
+    'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6b2b3eeca79a80926667ec71b01eac12&auto=format&fit=crop&w=1350&q=80',
   pageTitle: 'Events',
   pageSlogan: 'Throw the perfect event. Get introduced to the right event professionals',
-  popularServices: [
-    {
-      title: 'DJ',
-      name: 'djs',
-    },
-    {
-      title: 'Wedding Officants',
-      name: 'wedding-officants',
-    },
-    {
-      title: 'Magician',
-      name: 'magicians',
-    },
-    {
-      title: 'Bartending',
-      name: 'bartenders',
-    },
-  ],
   subcategories: [
     {
       subcategorieTitle: 'Driver',
