@@ -104,16 +104,11 @@ const PureServiceCard = props => {
 };
 
 const ServiceLocationCard = props => {
-  const {
-    service,
-    service: { pros },
-    width,
-  } = props;
-  const title = `${pros} pros in your area`;
+  const { service, width } = props;
   return (
     <ServiceCard service={service} width={width}>
       <LocationIcon />
-      <span>{title}</span>
+      <span>See pros near you</span>
     </ServiceCard>
   );
 };
