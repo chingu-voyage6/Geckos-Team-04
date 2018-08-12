@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ServiceLocationCard, ServicePricingCard } from '../Cards/ServiceCard/ServiceCard';
+import { Link } from 'react-router-dom';
+import { ServiceLocationCard } from '../Cards/ServiceCard/ServiceCard';
 
 const CrouselNeeded = styled.div`
   display: flex;
@@ -41,32 +42,18 @@ const prop = {
   width: '100%',
 };
 
-const CarouselTempLocation = () => (
+const CarouselTempLocation = ({ cards }) => (
   <CrouselNeeded>
-    <CardWrapper>
-      <ServiceLocationCard {...prop} />
+    {cards &&
+      cards.map(({ title, imgUrl }) => ({ name: title, image: imgUrl })).map(service => (
+        <CardWrapper
+          to={`/${service.name.toLowerCase().replace(/ /, '-')}/near-me`}
+          key={service.name}
+        >
+          <ServiceLocationCard width="100%" service={service} />
     </CardWrapper>
-    <CardWrapper>
-      <ServiceLocationCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServiceLocationCard {...prop} />
-    </CardWrapper>
+      ))}
   </CrouselNeeded>
 );
 
-const CarouselTempPricing = () => (
-  <CrouselNeeded>
-    <CardWrapper>
-      <ServicePricingCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServicePricingCard {...prop} />
-    </CardWrapper>
-    <CardWrapper>
-      <ServicePricingCard {...prop} />
-    </CardWrapper>
-  </CrouselNeeded>
-);
-
-export { CarouselTempLocation, CarouselTempPricing };
+export { CarouselTempLocation };
