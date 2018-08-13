@@ -42,12 +42,9 @@ const categorieSection = ({ categoryId, categoryTitle, cards, categoryServices }
   const serviceCards = cards ? (
     <ServicesSection>
       <CardMobileScroll>
-        {cards.map(({ title, imgUrl, to }) => (
-          <CardWrapper to={to} key={title}>
-            <PureServiceCard
-              width="100%"
-              service={{ name: title, image: 'http://thecatapi.com/api/images/get' }}
-            />
+        {cards.map(({ title, imgUrl }) => (
+          <CardWrapper to={`/${title.toLowerCase().replace(/ /g, '-')}/near-me`} key={title}>
+            <PureServiceCard width="100%" service={{ name: title, image: imgUrl }} />
           </CardWrapper>
         ))}
       </CardMobileScroll>
