@@ -30,7 +30,7 @@ const StyledCategoryBar = styled(CategoryBar)`
 `;
 const StyledSection = styled(Section)`
   overflow: unset;
-
+  padding-top: 20px;
   > div {
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ const StyledSection = styled(Section)`
 
   @media (min-width: 701px) {
     overflow: unset;
-
+    padding-top: 60px;
     > div {
       display: flex;
       flex-direction: row;
@@ -52,6 +52,7 @@ const CategoriesWrapper = styled.div`
 
   div:last-child {
     border-bottom: none;
+    margin-bottom: -20px;
   }
 
   @media (min-width: 701px) {

@@ -10,7 +10,7 @@ import { isAuthenticated } from '../../auth/auth-helper';
 import Dropdown from './Profile/Dropdown';
 
 const HeaderStyled = styled.header`
-  margin-bottom: 60px;
+  margin-bottom: 45px;
 
   @media (min-width: 700px) {
     margin-bottom: 0;

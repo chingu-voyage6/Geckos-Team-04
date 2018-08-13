@@ -1,4 +1,6 @@
 import * as services from './servicesData';
+import { cardContent } from '../../../Shared/Cards/card-data';
+
 import {
   HomeImprovementIcon,
   WellnessIcon,
@@ -15,6 +17,10 @@ import {
   WritingIcon,
 } from '../../../Shared/Icon/Icon';
 
+function getCategoryItems(items, categoryName) {
+  return items.filter(({ category }) => category === categoryName);
+}
+
 function splitServices(service) {
   return service.split('\n');
 }
@@ -24,84 +30,41 @@ export const categories = [
     categoryId: 'category-group-home-improvement',
     categoryTitle: 'Home Improvement',
     categoryServices: splitServices(services.homeImprovementServices),
-    cards: [
-      {
-        title: 'House Cleaning',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/318793008367067357/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'Lawn Mowing and Trimming',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/327896627728072894/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'Interior Design',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323484759907016831/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'Handyman',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323489611327971335/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'Roof Repair or Maintenance',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323302369127555169/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'General Contracting',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323300767250423877/small/standard/hero',
-        to: '/',
-      },
-    ],
+    cards: getCategoryItems(cardContent, 'Home'),
   },
   {
     icon: WellnessIcon,
     categoryId: 'category-group-wellness',
     categoryTitle: 'Wellness',
     categoryServices: splitServices(services.wellnessServices),
+    cards: getCategoryItems(cardContent, 'Wellness'),
   },
   {
     icon: PetsIcon,
     categoryId: 'category-group-pets',
     categoryTitle: 'Pets',
     categoryServices: splitServices(services.petsServices),
-    cards: [
-      {
-        title: 'Dog Walking',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323233931878015045/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'Aquarium Services',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323484883825975401/small/standard/hero',
-        to: '/',
-      },
-      {
-        title: 'Cat Grooming',
-        imgUrl: 'https://d1vg1gqh4nkuns.cloudfront.net/i/323233515756093545/small/standard/hero',
-        to: '/',
-      },
-    ],
+    cards: getCategoryItems(cardContent, 'Pets'),
   },
   {
     icon: BusinessIcon,
     categoryId: 'category-group-business',
     categoryTitle: 'Business',
+    cards: getCategoryItems(cardContent, 'Business'),
     categoryServices: splitServices(services.businessServices),
   },
   {
     icon: EventsIcon,
     categoryId: 'category-group-events',
     categoryTitle: 'Events',
+    cards: getCategoryItems(cardContent, 'Events'),
     categoryServices: splitServices(services.eventsServices),
   },
   {
     icon: LessonsIcon,
     categoryId: 'category-group-lessons',
     categoryTitle: 'Lessons',
+    cards: getCategoryItems(cardContent, 'Lessons'),
     categoryServices: splitServices(services.lessonsServices),
   },
 
