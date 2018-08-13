@@ -60,7 +60,13 @@ const categorieSection = ({ categoryId, categoryTitle, cards, categoryServices }
       {serviceCards}
       <ServicesSection>
         {categoryServices.map(service => (
-          <ServiceLink key={service} to="/">
+          <ServiceLink
+            key={service}
+            to={`/${service
+              .toLowerCase()
+              .trim()
+              .replace(/ /g, '-')}/near-me`}
+          >
             {service}
           </ServiceLink>
         ))}
