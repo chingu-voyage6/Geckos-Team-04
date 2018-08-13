@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+import ScrollToTop from './components/ScrollToTop';
 
 injectGlobal`
   *{
@@ -34,7 +35,9 @@ injectGlobal`
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <ScrollToTop>
+      <App />
+    </ScrollToTop>
   </BrowserRouter>,
   document.getElementById('root')
 );
