@@ -129,8 +129,18 @@ class Header extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollToTop);
+  }
+
   openDropdownHandler = () => {
+    window.addEventListener('scroll', this.scrollToTop);
     this.setState(previousState => ({ isClosed: !previousState.isClosed }));
+  };
+
+  scrollToTop = () => {
+    const { isClosed } = this.state;
+    if (!isClosed) window.scrollTo(0, 0);
   };
 
   render() {
