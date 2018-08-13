@@ -10,7 +10,7 @@ import { isAuthenticated } from '../../auth/auth-helper';
 import Dropdown from './Profile/Dropdown';
 
 const HeaderStyled = styled.header`
-  margin-bottom: 60px;
+  margin-bottom: 45px;
 
   @media (min-width: 700px) {
     margin-bottom: 0;
@@ -21,10 +21,12 @@ const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
+
+  z-index: 1000;
   > ul {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     transition: transform 0.3s linear;
     transform: ${({ isClosed }) => (isClosed ? ' translateY(-100vh)' : 'translateY(60px)')};
     padding: 0;
@@ -127,8 +129,18 @@ class Header extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollToTop);
+  }
+
   openDropdownHandler = () => {
+    window.addEventListener('scroll', this.scrollToTop);
     this.setState(previousState => ({ isClosed: !previousState.isClosed }));
+  };
+
+  scrollToTop = () => {
+    const { isClosed } = this.state;
+    if (!isClosed) window.scrollTo(0, 0);
   };
 
   render() {

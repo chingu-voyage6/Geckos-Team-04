@@ -43,7 +43,9 @@ const ItemBodyLarge = styled(Link)`
 const carouselItem = ({ children }) => <ItemBody>{children}</ItemBody>;
 
 export const CarouselItemWrapper = ({ children, title }) => (
-  <ItemBodyLarge to={`/${title.toLowerCase().replace(/ /, '-')}/near-me`}>{children}</ItemBodyLarge>
+  <ItemBodyLarge to={`/${title.toLowerCase().replace(/ /g, '-')}/near-me`}>
+    {children}
+  </ItemBodyLarge>
 );
 
 export default carouselItem;
