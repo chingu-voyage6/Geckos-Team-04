@@ -21,10 +21,12 @@ const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
+
+  z-index: 1000;
   > ul {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     transition: transform 0.3s linear;
     transform: ${({ isClosed }) => (isClosed ? ' translateY(-100vh)' : 'translateY(60px)')};
     padding: 0;
