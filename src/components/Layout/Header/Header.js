@@ -28,7 +28,7 @@ const Navigation = styled.nav`
     flex-direction: column;
     position: fixed;
     transition: transform 0.3s linear;
-    transform: ${({ isClosed }) => (isClosed ? ' translateY(-100vh)' : 'translateY(60px)')};
+    transform: ${({ isClosed }) => (isClosed ? ' translateY(-110vh)' : 'translateY(60px)')};
     padding: 0;
     width: 100%;
     height: 100vh;

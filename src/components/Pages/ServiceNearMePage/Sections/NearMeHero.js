@@ -8,7 +8,7 @@ import { DefaultButton } from '../../../Shared/UI/Button/Button';
 const StyledSection = styled(Section)`
   background-image: linear-gradient(rgba(170, 170, 170, 0.3), rgba(170, 170, 170, 0.3)),
     url(${({ imgUrl }) => imgUrl});
-  min-height: calc(100vh - 60px);
+  min-height: 500px;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -18,9 +18,8 @@ const StyledSection = styled(Section)`
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 115px);
+    min-height: calc(100vh - 55px);
     top: 55px;
-    position: relative;
     margin: auto;
   }
 `;
@@ -35,10 +34,12 @@ const TitleWrapper = styled.div`
   color: #fff;
   margin-bottom: 1rem;
   letter-spacing: 1px;
+  margin-top: 85px;
   @media (min-width: 701px) {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 1.5rem;
+    margin-top: 0px;
   }
 `;
 
@@ -61,7 +62,6 @@ const ModalTitle = styled.div`
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 2rem;
-
   @media (min-width: 701px) {
     font-size: 24px;
   }

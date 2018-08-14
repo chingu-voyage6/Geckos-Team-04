@@ -30,7 +30,7 @@ const TitleWrapper = styled.div`
   text-align: center;
   font-weight: bold;
   font-size: 30px;
-  padding: 15px 30px 30px 30px;
+  padding: 15px 15px 15px 15px;
 `;
 const TextWrapper = styled.div`
   color: #fff;
