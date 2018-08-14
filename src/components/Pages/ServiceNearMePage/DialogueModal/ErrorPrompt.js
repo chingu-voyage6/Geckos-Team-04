@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const ErrorBody = styled.div`
   position: absolute;
   display: block;
+  pointer-events: none
   padding: 10px;
   color: #ff5a5f;
   width: 100%;

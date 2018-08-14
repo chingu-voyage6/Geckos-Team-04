@@ -13,14 +13,15 @@ const ModalBody = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 20px);
+  min-height: 320px;
   background: ${({ isBlue }) => (isBlue ? '#009fd9' : '#fafafa')};
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -47%);
   width: 100%;
   z-index: 1100;
   min-width: 100%;
+  height: 90%;
   @media (min-width: 601px) {
     min-width: 600px;
     width: 600px;
