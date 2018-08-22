@@ -52,7 +52,6 @@ const CategoriesWrapper = styled.div`
 
   div:last-child {
     border-bottom: none;
-    margin-bottom: -20px;
   }
 
   @media (min-width: 701px) {
